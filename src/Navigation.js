@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import CreatePendanaan from "./pages/createPendanaan/CreatePendanaan";
+import CreatePendanaan from "./pages/CreatePendanaan";
 import Home from "./pages/Home";
 
 export default function Navigation() {

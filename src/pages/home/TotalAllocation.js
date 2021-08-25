@@ -5,7 +5,7 @@ const TotalAllocation = () => {
   return (
     <div className="p-4">
       <div
-        className="bg-green-400 m-4 text-white rounded-xl p-4 lg:w-2/4 w-full mx-auto"
+        className="bg-green-400 m-4 text-white rounded-xl p-4 w-full mx-auto"
         style={{ height: "200px" }}
       >
         <h1>Total Dana Dialokasikan</h1>
