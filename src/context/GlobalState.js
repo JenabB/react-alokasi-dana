@@ -1,8 +1,8 @@
-import React, { createContext, useReducer, useEffect } from "react";
+import React, { createContext, useReducer } from "react";
 import Reducer from "./Reducer";
 
 const initialState = {
-  totalPendanaan: [],
+  totalDana: [],
   test: "ini test",
 };
 
@@ -11,8 +11,14 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = (props) => {
   const [state, dispatch] = useReducer(Reducer, initialState);
 
+  function getTotalDana(dana) {
+    dispatch({
+      type: "GET_TOTAL_DANA",
+      payload: dana,
+    });
+  }
   return (
-    <GlobalContext.Provider value={{ test: state.test }}>
+    <GlobalContext.Provider value={{ test: state.test, getTotalDana }}>
       {props.children}
     </GlobalContext.Provider>
   );

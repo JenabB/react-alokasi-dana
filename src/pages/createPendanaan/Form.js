@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
-import Swal from "sweetalert2";
+import React, { useState } from "react";
+// import Swal from "sweetalert2";
 import { formatRp } from "../../utils/formatRp";
-import { GlobalContext } from "../../context/GlobalState";
+// import { GlobalContext } from "../../context/GlobalState";
 
 const Form = () => {
   const [totalDanaAwal, setTotalDanaAwal] = useState(0);
   const [totalDanaAkhir, setTotalDanaAkhir] = useState(0);
   const [semuaProduk, setSemuaProduk] = useState([{ nama: "", harga: 0 }]);
 
-  const { test } = useContext(GlobalContext);
+  //   const { test } = useContext(GlobalContext);
 
   const handleDanaChange = (e) => {
     setTotalDanaAwal(e.target.value);
