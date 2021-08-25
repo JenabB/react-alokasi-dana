@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
-
+import { formatRp } from "../../utils/formatRp";
 import { GlobalContext } from "../../context/GlobalState";
 
 const Form = () => {
@@ -35,16 +35,18 @@ const Form = () => {
 
   return (
     <div>
-      <div className="bg-green-400 grid grid-cols-2 m-4 p-4 rounded-lg">
+      {/* menampilkan dana */}
+      <div className="bg-green-500 text-white grid grid-cols-2 m-4 p-4 rounded-lg">
         <div>
           <h1>Dana Awal</h1>
-          <h1>{totalDanaAwal}</h1>
+          <h1>{formatRp(totalDanaAwal)}</h1>
         </div>
         <div>
           <h1>Dana Akhir</h1>
-          <h1>{totalDanaAkhir}</h1>
+          <h1>{formatRp(totalDanaAkhir)}</h1>
         </div>
       </div>
+
       <div className="p-4">
         <div>
           <h4 className="text-muted text-center mb-2">Buat Pendanaan</h4>
