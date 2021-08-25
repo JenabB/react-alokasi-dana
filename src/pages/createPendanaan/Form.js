@@ -45,19 +45,38 @@ const Form = () => {
           <h1>Dana Akhir</h1>
           <h1>{formatRp(totalDanaAkhir)}</h1>
         </div>
+        <div className="mt-4 text-center">
+          {semuaProduk.length > 0 ? (
+            <table>
+              <tr>
+                <th>No.</th>
+                <th>Nama</th>
+                <th>Harga</th>
+              </tr>
+              {semuaProduk.map((product, index) => (
+                <tr>
+                  <td>{semuaProduk.indexOf(product) + 1}</td>
+                  <td>{product.nama}</td>
+                  <td>{product.harga}</td>
+                </tr>
+              ))}
+            </table>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
 
       <div className="p-4">
-        <div>
-          <h4 className="text-muted text-center mb-2">Buat Pendanaan</h4>
+        <div className="text-center">
+          <h4 className="text-muted mb-2">Buat Pendanaan</h4>
           <input
-            className="p-2 rounded-xl text-center bg-gray-300 w-full"
+            className="p-2 rounded-xl bg-gray-300"
             type="number"
             value={totalDanaAwal}
             onChange={handleDanaChange}
             placeholder="dana"
           />
-          <input />
         </div>
 
         <div className="text-center">
@@ -68,6 +87,7 @@ const Form = () => {
                 <input
                   className="bg-gray-300 p-2 rounded-lg my-1"
                   type="text"
+                  maxlength="20"
                   name="nama"
                   value={produk.nama}
                   placeholder="produk"
@@ -78,7 +98,8 @@ const Form = () => {
                 <h1 className="text-left pl-4 mt-4">Harga</h1>
                 <input
                   className="bg-gray-100 p-2"
-                  type="number"
+                  maxlength="5"
+                  type="tel"
                   name="harga"
                   value={produk.harga}
                   placeholder="harga"
