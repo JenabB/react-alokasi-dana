@@ -47,7 +47,7 @@ const Form = () => {
   return (
     <div>
       {/* menampilkan dana */}
-      <div className="bg-green-500 text-center text-white  m-4 p-4 rounded-lg">
+      <div className="bg-green-600 text-center text-white  m-4 p-4 rounded-lg">
         <div className="grid grid-cols-2">
           <div>
             <h1>Dana Awal</h1>
@@ -61,20 +61,22 @@ const Form = () => {
 
         <div className="mt-8 text-center">
           {hargaProduk !== 0 && semuaProduk.length !== 0 ? (
-            <table className="table-fixed w-full">
-              <tr>
-                <th className="w-1/4">No.</th>
-                <th className="w-2/4">Nama</th>
-                <th className="w-2/4">Harga</th>
-              </tr>
-              {semuaProduk.map((product, index) => (
-                <tr key={index}>
-                  <td>{semuaProduk.indexOf(product) + 1}</td>
-                  <td width="300px">{product.nama}</td>
-                  <td>{product.harga}</td>
+            <div className="bg-green-900 rounded-lg px-2 py-3">
+              <table className="table-fixed w-full">
+                <tr>
+                  <th className="w-1/4">No.</th>
+                  <th className="w-2/4">Nama</th>
+                  <th className="w-2/4">Harga</th>
                 </tr>
-              ))}
-            </table>
+                {semuaProduk.map((product, index) => (
+                  <tr key={index}>
+                    <td>{semuaProduk.indexOf(product) + 1}</td>
+                    <td width="300px">{product.nama}</td>
+                    <td>{formatRp(product.harga)}</td>
+                  </tr>
+                ))}
+              </table>
+            </div>
           ) : (
             ""
           )}
@@ -136,7 +138,7 @@ const Form = () => {
         <br />
         <div className="text-center mt-4">
           <button
-            className="bg-green-400 text-white font-bold px-2 py-1 rounded"
+            className="bg-green-800 text-white font-bold px-2 py-1 rounded"
             onClick={save}
           >
             Save
