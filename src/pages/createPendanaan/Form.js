@@ -45,27 +45,30 @@ const Form = () => {
   return (
     <div>
       {/* menampilkan dana */}
-      <div className="bg-green-500 text-white grid grid-cols-2 m-4 p-4 rounded-lg">
-        <div>
-          <h1>Dana Awal</h1>
-          <h1>{formatRp(danaAwal)}</h1>
+      <div className="bg-green-500 text-center text-white  m-4 p-4 rounded-lg">
+        <div className="grid grid-cols-2">
+          <div>
+            <h1>Dana Awal</h1>
+            <h1 className="font-bold">{formatRp(danaAwal)}</h1>
+          </div>
+          <div>
+            <h1>Dana Akhir</h1>
+            <h1 className="font-bold">{formatRp(danaAkhir)}</h1>
+          </div>
         </div>
-        <div>
-          <h1>Dana Akhir</h1>
-          <h1>{formatRp(danaAkhir)}</h1>
-        </div>
-        <div className="mt-4 text-center">
+
+        <div className="mt-8 text-center">
           {semuaProduk.length > 0 ? (
-            <table>
+            <table className="table-fixed w-full">
               <tr>
-                <th>No.</th>
-                <th>Nama</th>
-                <th>Harga</th>
+                <th className="w-1/4">No.</th>
+                <th className="w-2/4">Nama</th>
+                <th className="w-2/4">Harga</th>
               </tr>
               {semuaProduk.map((product, index) => (
                 <tr key={index}>
                   <td>{semuaProduk.indexOf(product) + 1}</td>
-                  <td>{product.nama}</td>
+                  <td width="300px">{product.nama}</td>
                   <td>{product.harga}</td>
                 </tr>
               ))}
