@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import Swal from "sweetalert2";
 import { formatRp } from "../../utils/formatRp";
 // import { GlobalContext } from "../../context/GlobalState";
 
 const Form = () => {
-  const [totalDanaAwal, setTotalDanaAwal] = useState(0);
-  const [totalDanaAkhir, setTotalDanaAkhir] = useState(0);
+  const [danaAwal, setDanaAwal] = useState(0);
+  const [danaAkhir, setDanaAkhir] = useState(0);
   const [semuaProduk, setSemuaProduk] = useState([{ nama: "", harga: 0 }]);
-
   //   const { test } = useContext(GlobalContext);
 
   const handleDanaChange = (e) => {
-    setTotalDanaAwal(e.target.value);
-    setTotalDanaAkhir(e.target.value);
+    setDanaAwal(e.target.value);
   };
 
   const handleProdukChange = (index, e) => {
@@ -26,6 +24,7 @@ const Form = () => {
 
   const handleProdukSubmit = (e) => {
     e.preventDefault();
+    setDanaAkhir(danaAwal);
     setSemuaProduk([...semuaProduk, { nama: "", harga: 0 }]);
   };
 
@@ -33,17 +32,27 @@ const Form = () => {
     console.log(semuaProduk);
   };
 
+  useEffect(() => {
+    let hasil = 0;
+
+    semuaProduk.forEach((item) => {
+      hasil += parseInt(item.harga);
+    });
+
+    setDanaAkhir(danaAwal - parseInt(hasil));
+  }, [semuaProduk, danaAwal]);
+
   return (
     <div>
       {/* menampilkan dana */}
       <div className="bg-green-500 text-white grid grid-cols-2 m-4 p-4 rounded-lg">
         <div>
           <h1>Dana Awal</h1>
-          <h1>{formatRp(totalDanaAwal)}</h1>
+          <h1>{formatRp(danaAwal)}</h1>
         </div>
         <div>
           <h1>Dana Akhir</h1>
-          <h1>{formatRp(totalDanaAkhir)}</h1>
+          <h1>{formatRp(danaAkhir)}</h1>
         </div>
         <div className="mt-4 text-center">
           {semuaProduk.length > 0 ? (
@@ -54,7 +63,7 @@ const Form = () => {
                 <th>Harga</th>
               </tr>
               {semuaProduk.map((product, index) => (
-                <tr>
+                <tr key={index}>
                   <td>{semuaProduk.indexOf(product) + 1}</td>
                   <td>{product.nama}</td>
                   <td>{product.harga}</td>
@@ -73,7 +82,7 @@ const Form = () => {
           <input
             className="p-2 rounded-xl bg-gray-300"
             type="number"
-            value={totalDanaAwal}
+            value={danaAwal}
             onChange={handleDanaChange}
             placeholder="dana"
           />
@@ -87,7 +96,7 @@ const Form = () => {
                 <input
                   className="bg-gray-300 p-2 rounded-lg my-1"
                   type="text"
-                  maxlength="20"
+                  maxLength="20"
                   name="nama"
                   value={produk.nama}
                   placeholder="produk"
@@ -98,8 +107,7 @@ const Form = () => {
                 <h1 className="text-left pl-4 mt-4">Harga</h1>
                 <input
                   className="bg-gray-100 p-2"
-                  maxlength="5"
-                  type="tel"
+                  type="number"
                   name="harga"
                   value={produk.harga}
                   placeholder="harga"
