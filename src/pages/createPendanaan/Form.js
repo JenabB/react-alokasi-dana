@@ -7,6 +7,7 @@ const Form = () => {
   const [danaAwal, setDanaAwal] = useState(0);
   const [danaAkhir, setDanaAkhir] = useState(0);
   const [semuaProduk, setSemuaProduk] = useState([{ nama: "", harga: 0 }]);
+  const [hargaProduk, setHargaProduk] = useState(0);
   //   const { test } = useContext(GlobalContext);
 
   const handleDanaChange = (e) => {
@@ -40,6 +41,7 @@ const Form = () => {
     });
 
     setDanaAkhir(danaAwal - parseInt(hasil));
+    setHargaProduk(hasil);
   }, [semuaProduk, danaAwal]);
 
   return (
@@ -58,7 +60,7 @@ const Form = () => {
         </div>
 
         <div className="mt-8 text-center">
-          {semuaProduk.length > 0 ? (
+          {hargaProduk !== 0 && semuaProduk.length !== 0 ? (
             <table className="table-fixed w-full">
               <tr>
                 <th className="w-1/4">No.</th>
