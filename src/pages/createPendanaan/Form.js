@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 // import Swal from "sweetalert2";
 import { formatRp } from "../../utils/formatRp";
-// import { GlobalContext } from "../../context/GlobalState";
+import { GlobalContext } from "../../context/GlobalState";
 
 const Form = () => {
-  const [danaAwal, setDanaAwal] = useState(0);
-  const [danaAkhir, setDanaAkhir] = useState(0);
   const [semuaProduk, setSemuaProduk] = useState([{ nama: "", harga: 0 }]);
-  const [hargaProduk, setHargaProduk] = useState(0);
-  //   const { test } = useContext(GlobalContext);
+
+  const {
+    danaAwal,
+    danaAkhir,
+    getDanaAwal,
+    getDanaAkhir,
+    hargaProduk,
+    getHargaProduk,
+  } = useContext(GlobalContext);
 
   const handleDanaChange = (e) => {
-    setDanaAwal(e.target.value);
+    getDanaAwal(parseInt(e.target.value));
   };
 
   const handleProdukChange = (index, e) => {
@@ -25,7 +30,8 @@ const Form = () => {
 
   const handleProdukSubmit = (e) => {
     e.preventDefault();
-    setDanaAkhir(danaAwal);
+
+    getDanaAkhir(danaAwal);
     setSemuaProduk([...semuaProduk, { nama: "", harga: 0 }]);
   };
 
@@ -40,8 +46,9 @@ const Form = () => {
       hasil += parseInt(item.harga);
     });
 
-    setDanaAkhir(danaAwal - parseInt(hasil));
-    setHargaProduk(hasil);
+    getDanaAkhir(danaAwal - parseInt(hasil));
+    getHargaProduk(hasil);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [semuaProduk, danaAwal]);
 
   return (
