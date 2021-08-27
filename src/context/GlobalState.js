@@ -1,10 +1,13 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 import Reducer from "./Reducer";
 
 const initialState = {
   totalAlokasiDana: localStorage.getItem("total-alokasi-dana")
     ? localStorage.getItem("total-alokasi-dana")
     : 0,
+  history: localStorage.getItem("history-pendanaan")
+    ? JSON.parse(localStorage.getItem("history-pendanaan"))
+    : [],
   danaAwal: 0,
   danaAkhir: 0,
   semuaProduk: [{ nama: "", harga: 0 }],
@@ -15,6 +18,14 @@ export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = (props) => {
   const [state, dispatch] = useReducer(Reducer, initialState);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "total-alokasi-dana",
+      JSON.stringify(state.totalAlokasiDana)
+    );
+    localStorage.setItem("history-pendanaan", JSON.stringify(state.history));
+  }, [state]);
 
   function getTotalAlokasiDana(dana) {
     dispatch({
@@ -44,11 +55,20 @@ export const GlobalProvider = (props) => {
     });
   }
 
-  // function getSemuaProduk(dana) {
-  //   dispatch({
+  function getSemuaProduk(produk) {
+    dispatch({
+      type: "GET_SEMUA_PRODUK",
+      payload: produk,
+    });
+  }
 
-  //   })
-  // }
+  function setToHistory(dana) {
+    dispatch({
+      type: "SET_TO_HISTORY",
+      payload: dana,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -57,10 +77,13 @@ export const GlobalProvider = (props) => {
         danaAkhir: state.danaAkhir,
         semuaProduk: state.semuaProduk,
         hargaProduk: state.hargaProduk,
+        history: state.history,
         getTotalAlokasiDana,
         getDanaAwal,
         getDanaAkhir,
         getHargaProduk,
+        getSemuaProduk,
+        setToHistory,
       }}
     >
       {props.children}

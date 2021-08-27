@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CreatePendanaan from "./pages/CreatePendanaan";
+import DanaDetail from "./pages/DanaDetail";
 import Home from "./pages/Home";
 
 export default function Navigation() {
@@ -9,34 +10,10 @@ export default function Navigation() {
       <div>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/about">
-            <About />
-          </Route>
           <Route path="/create" component={CreatePendanaan} />
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
+          <Route path="/pendanaan/:id" component={DanaDetail} />
         </Switch>
       </div>
     </Router>
-  );
-}
-
-// You can think of these components as "pages"
-// in your app.
-
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
-  );
-}
-
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
   );
 }

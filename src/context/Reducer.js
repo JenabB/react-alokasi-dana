@@ -25,6 +25,18 @@ export default (state, action) => {
         hargaProduk: action.payload,
       };
 
+    case "GET_SEMUA_PRODUK":
+      return {
+        ...state,
+        semuaProduk: action.payload,
+      };
+
+    case "SET_TO_HISTORY":
+      return {
+        ...state,
+        history: [action.payload, ...state.history],
+      };
+
     default:
       return state;
   }

@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 // import Swal from "sweetalert2";
-import { formatRp } from "../../utils/formatRp";
 import { GlobalContext } from "../../context/GlobalState";
 
 const Form = () => {
-  const [semuaProduk, setSemuaProduk] = useState([{ nama: "", harga: 0 }]);
-
+  const [namaPendanaan, setNamaPendaan] = useState("");
   const {
     danaAwal,
     danaAkhir,
@@ -13,7 +11,14 @@ const Form = () => {
     getDanaAkhir,
     hargaProduk,
     getHargaProduk,
+    semuaProduk,
+    getSemuaProduk,
+    setToHistory,
   } = useContext(GlobalContext);
+
+  const handleNamaPendanaanChange = (e) => {
+    setNamaPendaan(e.target.value);
+  };
 
   const handleDanaChange = (e) => {
     getDanaAwal(parseInt(e.target.value));
@@ -25,18 +30,26 @@ const Form = () => {
 
     produks[index] = { ...produk, [e.target.name]: e.target.value };
 
-    setSemuaProduk(produks);
+    getSemuaProduk(produks);
   };
 
   const handleProdukSubmit = (e) => {
     e.preventDefault();
 
     getDanaAkhir(danaAwal);
-    setSemuaProduk([...semuaProduk, { nama: "", harga: 0 }]);
+    getSemuaProduk([...semuaProduk, { nama: "", harga: 0 }]);
   };
 
   const save = () => {
     console.log(semuaProduk);
+    setToHistory({
+      id: "_" + Math.random().toString(36).substr(2, 9),
+      createdAt: new Date(),
+      namaPendanaan: namaPendanaan,
+      danaAwal: danaAwal,
+      danaAkhir: danaAkhir,
+      semuaProduk: semuaProduk,
+    });
   };
 
   useEffect(() => {
@@ -53,46 +66,18 @@ const Form = () => {
 
   return (
     <div>
-      {/* menampilkan dana */}
-      <div className="bg-green-600 text-center text-white  m-4 p-4 rounded-lg">
-        <div className="grid grid-cols-2">
-          <div>
-            <h1>Dana Awal</h1>
-            <h1 className="font-bold">{formatRp(danaAwal)}</h1>
-          </div>
-          <div>
-            <h1>Dana Akhir</h1>
-            <h1 className="font-bold">{formatRp(danaAkhir)}</h1>
-          </div>
-        </div>
-
-        <div className="mt-8 text-center">
-          {hargaProduk !== 0 && semuaProduk.length !== 0 ? (
-            <div className="bg-green-900 rounded-lg px-2 py-3">
-              <table className="table-fixed w-full">
-                <tr>
-                  <th className="w-1/4">No.</th>
-                  <th className="w-2/4">Nama</th>
-                  <th className="w-2/4">Harga</th>
-                </tr>
-                {semuaProduk.map((product, index) => (
-                  <tr key={index}>
-                    <td>{semuaProduk.indexOf(product) + 1}</td>
-                    <td width="300px">{product.nama}</td>
-                    <td>{formatRp(product.harga)}</td>
-                  </tr>
-                ))}
-              </table>
-            </div>
-          ) : (
-            ""
-          )}
-        </div>
-      </div>
-
       <div className="p-4">
         <div className="text-center">
-          <h4 className="text-muted mb-2">Buat Pendanaan</h4>
+          <h4 className="text-muted mb-6">Buat Pendanaan</h4>
+          <h1 className="text-left ml-7">Nama Pendanaan</h1>
+          <input
+            type="text"
+            className="p-2 mb-6 rounded-xl bg-gray-300"
+            placeholder="contoh: beli album lyly"
+            value={namaPendanaan}
+            onChange={handleNamaPendanaanChange}
+          />
+          <h1 className="text-left ml-7">Total Pendanaan</h1>
           <input
             className="p-2 rounded-xl bg-gray-300"
             type="number"
@@ -103,6 +88,7 @@ const Form = () => {
         </div>
 
         <div className="text-center">
+          <h1 className="mt-8">Alokasi Dana</h1>
           {semuaProduk.length > 0 ? (
             semuaProduk.map((produk, index) => (
               <div key={index} className="my-4 shadow p-4">
@@ -140,7 +126,7 @@ const Form = () => {
           className="my-4 bg-gray-100 px-2 py-1 rounded-lg"
           onClick={handleProdukSubmit}
         >
-          Add more
+          Tambah lagi
         </button>
         <br />
         <div className="text-center mt-4">
@@ -148,7 +134,7 @@ const Form = () => {
             className="bg-green-800 text-white font-bold px-2 py-1 rounded"
             onClick={save}
           >
-            Save
+            Simpan
           </button>
         </div>
       </div>
