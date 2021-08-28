@@ -4,7 +4,7 @@ export default (state, action) => {
     case "GET_TOTAL_ALOKASI_DANA":
       return {
         ...state,
-        totalAlokasiDana: parseInt(action.payload),
+        totalAlokasiDana: action.payload,
       };
 
     case "GET_DANA_AWAL":

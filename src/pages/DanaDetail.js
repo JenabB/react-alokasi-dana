@@ -13,8 +13,6 @@ const DanaDetail = () => {
     setQuery(e.target.value);
   };
 
-  console.log(detail);
-
   const items = detail.semuaProduk.filter((data) => {
     return data.nama.toLowerCase().includes(query.toLowerCase());
   });

@@ -2,9 +2,7 @@ import React, { createContext, useReducer, useEffect } from "react";
 import Reducer from "./Reducer";
 
 const initialState = {
-  totalAlokasiDana: localStorage.getItem("total-alokasi-dana")
-    ? localStorage.getItem("total-alokasi-dana")
-    : 0,
+  totalAlokasiDana: 0,
   history: localStorage.getItem("history-pendanaan")
     ? JSON.parse(localStorage.getItem("history-pendanaan"))
     : [],
@@ -21,10 +19,6 @@ export const GlobalProvider = (props) => {
   const [state, dispatch] = useReducer(Reducer, initialState);
 
   useEffect(() => {
-    localStorage.setItem(
-      "total-alokasi-dana",
-      JSON.stringify(state.totalAlokasiDana)
-    );
     localStorage.setItem("history-pendanaan", JSON.stringify(state.history));
   }, [state]);
 

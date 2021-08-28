@@ -12,6 +12,16 @@ const History = () => {
     <div className="m-4 rounded-xl p-4 w-full mx-auto">
       <h1>History</h1>
       <hr />
+      <div className="text-center my-7">
+        <input
+          type="search"
+          className="bg-gray-200 w-3/4 rounded-lg px-2 py-1"
+          placeholder="cari pendanaan"
+          // value={query}
+          // onChange={handleQueryChange}
+        />
+      </div>
+
       {history.length > 0 ? (
         <div>
           {history.map((h, i) => (

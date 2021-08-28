@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalState";
 import { formatRp } from "../../utils/formatRp";
 
 const TotalAlokasiDana = () => {
-  const { history } = useContext(GlobalContext);
-  const [total, setTotal] = useState(0);
-
-  // console.log(total);
+  const { history, totalAlokasiDana, getTotalAlokasiDana } =
+    useContext(GlobalContext);
 
   useEffect(() => {
     let arrayy = [];
@@ -23,18 +22,21 @@ const TotalAlokasiDana = () => {
     const totalHargaSemuaProduk = arrayHarga.reduce(
       (prev, curee) => prev + curee
     );
-    setTotal(totalHargaSemuaProduk);
+    getTotalAlokasiDana(totalHargaSemuaProduk);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history]);
 
   return (
     <div className="p-4">
-      <div
-        className="bg-green-800 m-4 text-white rounded-xl p-4 w-full mx-auto"
-        style={{ height: "200px" }}
-      >
-        <h1>Total Dana Dialokasikan</h1>
-        <h2 className="text-4xl my-4">{formatRp(total)}</h2>
-      </div>
+      <Link to="detail">
+        <div
+          className="bg-green-800 m-4 text-white rounded-xl p-4 w-full mx-auto"
+          style={{ height: "200px" }}
+        >
+          <h1>Total Dana Dialokasikan</h1>
+          <h2 className="text-4xl my-4">{formatRp(totalAlokasiDana)}</h2>
+        </div>
+      </Link>
     </div>
   );
 };
