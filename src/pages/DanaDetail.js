@@ -3,6 +3,7 @@ import moment from "moment";
 import AppBarWithBackButton from "../components/AppBarWithBackButton";
 import { GlobalContext } from "../context/GlobalState";
 import { formatRp } from "../utils/formatRp";
+import { Link } from "react-router-dom";
 
 const DanaDetail = () => {
   const { pendanaanDetail } = useContext(GlobalContext);
@@ -22,8 +23,14 @@ const DanaDetail = () => {
       <AppBarWithBackButton />
       <div className="lg:w-2/4 mx-auto w-full">
         <div className="px-4">
-          <div className="text-center text-white rounded-xl mt-4 py-8 bg-green-600">
-            <h1 className="text-3xl">{detail.namaPendanaan}</h1>
+          <div className="text-center text-white rounded-xl mt-4 pb-8 pt-4 bg-green-600">
+            <div className="flex justify-between px-4">
+              <div></div>
+              <h1 className="text-3xl">{detail.namaPendanaan}</h1>
+              <Link to={`${detail.id}/edit`}>
+                <span class="material-icons md-24">edit</span>
+              </Link>
+            </div>
             <p>
               {moment(detail.createdAt).format("dddd, MMMM Do YYYY, h:mm:ss a")}
             </p>
@@ -38,6 +45,11 @@ const DanaDetail = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="text-left mt-4 px-4">
+          <h1>Total Pengeluaran</h1>
+          <p>{formatRp(detail.danaAwal - detail.danaAkhir)}</p>
         </div>
 
         <div>
