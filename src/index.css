@@ -14,17 +14,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.modal {
-  width: 80%;
-  top: 30%;
-  left: 50%;
-  overflow: scroll;
-  transform: translate(-50%, -50%);
-}
-
-@media only screen and (max-width: 800px) {
-  .modal {
-    width: 95%;
-  }
-}
