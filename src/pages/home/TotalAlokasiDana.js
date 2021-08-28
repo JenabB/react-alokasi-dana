@@ -68,7 +68,9 @@ const TotalAlokasiDana = () => {
           style={{ height: "200px" }}
         >
           <h1>Total Dana Dialokasikan</h1>
-          <h2 className="text-4xl my-4">{formatRp(totalAlokasiDana)}</h2>
+          <h2 className="text-4xl my-4 font-bold">
+            {formatRp(totalAlokasiDana)}
+          </h2>
           <div className="grid grid-cols-2 text-center mt-4">
             <div>
               <h1>Total Dana Awal</h1>

@@ -26,7 +26,7 @@ const DanaDetail = () => {
           <div className="text-center text-white rounded-xl mt-4 pb-8 pt-4 bg-green-600">
             <div className="flex justify-between px-4">
               <div></div>
-              <h1 className="text-3xl">{detail.namaPendanaan}</h1>
+              <h1 className="text-3xl font-bold">{detail.namaPendanaan}</h1>
               <Link to={`${detail.id}/edit`}>
                 <span class="material-icons md-24">edit</span>
               </Link>
