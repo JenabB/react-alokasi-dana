@@ -107,8 +107,8 @@ const History = () => {
                   key={i}
                   className="p-4 m-2 shadow-lg rounded-lg"
                   whileHover={{
-                    scale: 1.2,
-                    transition: { duration: 1 },
+                    scale: 1.05,
+                    transition: { duration: 0.6 },
                   }}
                   whileTap={{ scale: 0.9 }}
                 >
