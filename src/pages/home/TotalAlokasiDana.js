@@ -16,10 +16,9 @@ const TotalAlokasiDana = () => {
     const arrayHarga = [].concat(
       ...arrayy.map((totalHarga) => totalHarga.map((a) => parseInt(a.harga)))
     );
-    console.log(arrayHarga);
-
     const totalHargaSemuaProduk = arrayHarga.reduce(
-      (prev, curee) => prev + curee
+      (prev, curee) => prev + curee,
+      0
     );
     getTotalAlokasiDana(totalHargaSemuaProduk);
     // eslint-disable-next-line react-hooks/exhaustive-deps
