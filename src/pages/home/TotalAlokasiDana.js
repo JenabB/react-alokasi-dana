@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalState";
 import { formatRp } from "../../utils/formatRp";
@@ -6,10 +6,9 @@ import { formatRp } from "../../utils/formatRp";
 const TotalAlokasiDana = () => {
   const { history, totalAlokasiDana, getTotalAlokasiDana } =
     useContext(GlobalContext);
+  const [arrayy] = useState([]);
 
   useEffect(() => {
-    let arrayy = [];
-
     history.forEach((item) => {
       arrayy.push(item.semuaProduk);
     });
