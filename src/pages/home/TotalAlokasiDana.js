@@ -8,7 +8,7 @@ const TotalAlokasiDana = () => {
     useContext(GlobalContext);
 
   useEffect(() => {
-    let arrayy = [];
+    let arrayy = null;
 
     history.forEach((item) => {
       arrayy.push(item.semuaProduk);
