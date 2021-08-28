@@ -3,6 +3,8 @@ import Reducer from "./Reducer";
 
 const initialState = {
   totalAlokasiDana: 0,
+  totalDanaAwal: 0,
+  totalDanaAkhir: 0,
   history: localStorage.getItem("history-pendanaan")
     ? JSON.parse(localStorage.getItem("history-pendanaan"))
     : [],
@@ -25,6 +27,20 @@ export const GlobalProvider = (props) => {
   function getTotalAlokasiDana(dana) {
     dispatch({
       type: "GET_TOTAL_ALOKASI_DANA",
+      payload: dana,
+    });
+  }
+
+  function getTotalDanaAwal(dana) {
+    dispatch({
+      type: "GET_TOTAL_DANA_AWAL",
+      payload: dana,
+    });
+  }
+
+  function getTotalDanaAkhir(dana) {
+    dispatch({
+      type: "GET_TOTAL_DANA_AKHIR",
       payload: dana,
     });
   }
@@ -82,6 +98,8 @@ export const GlobalProvider = (props) => {
     <GlobalContext.Provider
       value={{
         totalAlokasiDana: state.totalAlokasiDana,
+        totalDanaAwal: state.totalDanaAwal,
+        totalDanaAkhir: state.totalDanaAkhir,
         danaAwal: state.danaAwal,
         danaAkhir: state.danaAkhir,
         semuaProduk: state.semuaProduk,
@@ -89,6 +107,8 @@ export const GlobalProvider = (props) => {
         history: state.history,
         pendanaanDetail: state.pendanaanDetail,
         getTotalAlokasiDana,
+        getTotalDanaAwal,
+        getTotalDanaAkhir,
         getDanaAwal,
         getDanaAkhir,
         getHargaProduk,

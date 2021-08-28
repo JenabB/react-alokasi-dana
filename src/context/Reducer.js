@@ -7,6 +7,18 @@ export default (state, action) => {
         totalAlokasiDana: action.payload,
       };
 
+    case "GET_TOTAL_DANA_AWAL":
+      return {
+        ...state,
+        totalDanaAwal: action.payload,
+      };
+
+    case "GET_TOTAL_DANA_AKHIR":
+      return {
+        ...state,
+        totalDanaAkhir: action.payload,
+      };
+
     case "GET_DANA_AWAL":
       return {
         ...state,

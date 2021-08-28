@@ -4,13 +4,18 @@ import { GlobalContext } from "../../context/GlobalState";
 import { formatRp } from "../../utils/formatRp";
 
 const TotalAlokasiDana = () => {
-  const { history, totalAlokasiDana, getTotalAlokasiDana } =
-    useContext(GlobalContext);
+  const {
+    history,
+    totalAlokasiDana,
+    getTotalAlokasiDana,
+    totalDanaAwal,
+    totalDanaAkhir,
+    getTotalDanaAwal,
+    getTotalDanaAkhir,
+  } = useContext(GlobalContext);
   const [arrayy] = useState([]);
   const [arrayDanaAwal] = useState([]);
   const [arrayDanaAkhir] = useState([]);
-  const [totalAwal, setTotalAwal] = useState(0);
-  const [totalAkhir, setTotalAkhir] = useState(0);
 
   useEffect(() => {
     //memasukkan array semua produk ke array baru
@@ -40,7 +45,7 @@ const TotalAlokasiDana = () => {
       (prev, curee) => prev + curee,
       0
     );
-    setTotalAwal(totalDanaAwal);
+    getTotalDanaAwal(totalDanaAwal);
 
     // memasukkan semua dana akhir ke array baru
     history.forEach((item) => {
@@ -51,8 +56,7 @@ const TotalAlokasiDana = () => {
       (prev, curee) => prev + curee,
       0
     );
-    setTotalAkhir(totalDanaAkhir);
-
+    getTotalDanaAkhir(totalDanaAkhir);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history]);
 
@@ -68,11 +72,11 @@ const TotalAlokasiDana = () => {
           <div className="grid grid-cols-2 text-center mt-4">
             <div>
               <h1>Total Dana Awal</h1>
-              <p>{formatRp(totalAwal)}</p>
+              <p>{formatRp(totalDanaAwal)}</p>
             </div>
             <div>
               <h1>Total Dana Akhir</h1>
-              <p>{formatRp(totalAkhir)}</p>
+              <p>{formatRp(totalDanaAkhir)}</p>
             </div>
           </div>
         </div>

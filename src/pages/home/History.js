@@ -37,7 +37,7 @@ const History = () => {
           {query !== "" ? (
             <div>
               {items.map((h, i) => (
-                <div key={i} className="p-4 m-4 shadow-lg rounded-lg">
+                <div key={i} className="p-4 m-2 shadow-lg rounded-lg">
                   <div>
                     <div className="flex justify-between">
                       <Link
@@ -93,7 +93,7 @@ const History = () => {
           ) : (
             <div>
               {history.map((h, i) => (
-                <div key={i} className="p-4 m-4 shadow-lg rounded-lg">
+                <div key={i} className="p-4 m-2 shadow-lg rounded-lg">
                   <div>
                     <div className="flex justify-between">
                       <Link
