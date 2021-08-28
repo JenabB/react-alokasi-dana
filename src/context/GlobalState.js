@@ -12,6 +12,7 @@ const initialState = {
   danaAkhir: 0,
   semuaProduk: [{ nama: "", harga: 0 }],
   hargaProduk: 0,
+  pendanaanDetail: null,
 };
 
 export const GlobalContext = createContext(initialState);
@@ -69,6 +70,20 @@ export const GlobalProvider = (props) => {
     });
   }
 
+  function deleteOnePendanaan(danaId) {
+    dispatch({
+      type: "DELETE_ONE_PENDANAAN",
+      payload: danaId,
+    });
+  }
+
+  function getPendanaanDetail(pendanaan) {
+    dispatch({
+      type: "GET_PENDANAAN_DETAIL",
+      payload: pendanaan,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -78,12 +93,15 @@ export const GlobalProvider = (props) => {
         semuaProduk: state.semuaProduk,
         hargaProduk: state.hargaProduk,
         history: state.history,
+        pendanaanDetail: state.pendanaanDetail,
         getTotalAlokasiDana,
         getDanaAwal,
         getDanaAkhir,
         getHargaProduk,
         getSemuaProduk,
         setToHistory,
+        deleteOnePendanaan,
+        getPendanaanDetail,
       }}
     >
       {props.children}

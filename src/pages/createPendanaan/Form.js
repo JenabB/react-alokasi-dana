@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 import { GlobalContext } from "../../context/GlobalState";
 
 const Form = () => {
@@ -9,7 +9,6 @@ const Form = () => {
     danaAkhir,
     getDanaAwal,
     getDanaAkhir,
-    hargaProduk,
     getHargaProduk,
     semuaProduk,
     getSemuaProduk,
@@ -37,11 +36,13 @@ const Form = () => {
     e.preventDefault();
 
     getDanaAkhir(danaAwal);
-    getSemuaProduk([...semuaProduk, { nama: "", harga: 0 }]);
+    getSemuaProduk([
+      ...semuaProduk,
+      { id: "_" + Math.random().toString(36).substr(2, 9), nama: "", harga: 0 },
+    ]);
   };
 
   const save = () => {
-    console.log(semuaProduk);
     setToHistory({
       id: "_" + Math.random().toString(36).substr(2, 9),
       createdAt: new Date(),
@@ -49,6 +50,11 @@ const Form = () => {
       danaAwal: danaAwal,
       danaAkhir: danaAkhir,
       semuaProduk: semuaProduk,
+    });
+    Swal.fire({
+      icon: "success",
+      title: "Tersimpan",
+      text: `${namaPendanaan} tersimpan`,
     });
   };
 

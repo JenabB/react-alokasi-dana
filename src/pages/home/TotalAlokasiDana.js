@@ -1,9 +1,30 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { GlobalContext } from "../../context/GlobalState";
 import { formatRp } from "../../utils/formatRp";
 
 const TotalAlokasiDana = () => {
-  const { totalAlokasiDana } = useContext(GlobalContext);
+  const { totalAlokasiDana, history } = useContext(GlobalContext);
+  const [total, setTotal] = useState(0);
+
+  // console.log(total);
+
+  useEffect(() => {
+    let hasil = 0;
+    let arrayy = [];
+    let arrayyy = [];
+    history.forEach((item) => {
+      arrayy.push(item.semuaProduk);
+    });
+
+    arrayy.forEach((item) => {
+      arrayyy.push(item.map((i) => parseInt(i.harga)));
+    });
+
+    console.log("arrayy", arrayy);
+    console.log("hasil", arrayyy);
+    console.log("hasil", arrayyy.concat());
+  }, [history]);
+
   return (
     <div className="p-4">
       <div

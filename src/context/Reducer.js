@@ -37,6 +37,18 @@ export default (state, action) => {
         history: [action.payload, ...state.history],
       };
 
+    case "DELETE_ONE_PENDANAAN":
+      return {
+        ...state,
+        history: state.history.filter((item) => item.id !== action.payload),
+      };
+
+    case "GET_PENDANAAN_DETAIL":
+      return {
+        ...state,
+        pendanaanDetail: action.payload,
+      };
+
     default:
       return state;
   }
