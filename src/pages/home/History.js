@@ -4,6 +4,7 @@ import moment from "moment";
 import Swal from "sweetalert2";
 import { GlobalContext } from "../../context/GlobalState";
 import { formatRp } from "../../utils/formatRp";
+import { motion } from "framer-motion";
 
 const History = () => {
   const [query, setQuery] = useState("");
@@ -37,7 +38,16 @@ const History = () => {
           {query !== "" ? (
             <div>
               {items.map((h, i) => (
-                <div key={i} className="p-4 m-2 shadow-lg rounded-lg">
+                <motion.div
+                  key={i}
+                  className="p-4 m-2 shadow-lg rounded-lg"
+                  whileHover={{
+                    scale: 1.2,
+                    transition: {
+                      duration: 0.2,
+                    },
+                  }}
+                >
                   <div>
                     <div className="flex justify-between">
                       <Link
@@ -87,13 +97,21 @@ const History = () => {
                       {moment(h.createdAt).fromNow()}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           ) : (
             <div>
               {history.map((h, i) => (
-                <div key={i} className="p-4 m-2 shadow-lg rounded-lg">
+                <motion.div
+                  key={i}
+                  className="p-4 m-2 shadow-lg rounded-lg"
+                  whileHover={{
+                    scale: 1.2,
+                    transition: { duration: 1 },
+                  }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <div>
                     <div className="flex justify-between">
                       <Link
@@ -143,7 +161,7 @@ const History = () => {
                       {moment(h.createdAt).fromNow()}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           )}

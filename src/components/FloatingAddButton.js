@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const FloatingAddButton = () => {
   return (
     <Link to="/create">
-      <button className="p-0 fixed bottom-10 right-10 w-16 h-16 bg-green-600 rounded-full hover:bg-green-600 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
+      <motion.button
+        className="p-0 fixed bottom-10 right-10 w-16 h-16 bg-green-600 rounded-full"
+        whileHover={{
+          scale: 1.2,
+          transition: { duration: 1 },
+        }}
+        whileTap={{ scale: 0.3 }}
+      >
         <svg
           viewBox="0 0 20 20"
           enable-background="new 0 0 20 20"
@@ -16,7 +24,7 @@ const FloatingAddButton = () => {
                                     C15.952,9,16,9.447,16,10z"
           />
         </svg>
-      </button>
+      </motion.button>
     </Link>
   );
 };
