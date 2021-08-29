@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import Swal from "sweetalert2";
 import { GlobalContext } from "../../context/GlobalState";
+import { v4 as uuidv4 } from "uuid";
+import { useHistory } from "react-router-dom";
 
 const Form = () => {
   const [namaPendanaan, setNamaPendaan] = useState("");
@@ -15,7 +17,7 @@ const Form = () => {
     getSemuaProduk,
     setToHistory,
   } = useContext(GlobalContext);
-
+  let history = useHistory();
   const handleNamaPendanaanChange = (e) => {
     setNamaPendaan(e.target.value);
   };
@@ -37,15 +39,12 @@ const Form = () => {
     e.preventDefault();
 
     getDanaAkhir(danaAwal);
-    getSemuaProduk([
-      ...semuaProduk,
-      { id: "_" + Math.random().toString(36).substr(2, 9), nama: "", harga: 0 },
-    ]);
+    getSemuaProduk([...semuaProduk, { id: uuidv4(), nama: "", harga: 0 }]);
   };
 
   const save = () => {
     setToHistory({
-      id: "_" + Math.random().toString(36).substr(2, 9),
+      id: uuidv4(),
       createdAt: new Date(),
       namaPendanaan: namaPendanaan,
       danaAwal: danaAwal,
@@ -57,6 +56,7 @@ const Form = () => {
       title: "Tersimpan",
       text: `${namaPendanaan} tersimpan`,
     });
+    history.push("/home");
   };
 
   useEffect(() => {
