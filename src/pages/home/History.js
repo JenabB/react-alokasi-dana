@@ -42,10 +42,11 @@ const History = () => {
                   key={i}
                   className="p-4 m-2 shadow-lg rounded-lg"
                   whileHover={{
-                    scale: 1.2,
-                    transition: {
-                      duration: 0.2,
-                    },
+                    scale: 1.05,
+                    transition: { duration: 0.7 },
+                  }}
+                  whileTap={{
+                    scale: 1,
                   }}
                 >
                   <div>
@@ -108,9 +109,11 @@ const History = () => {
                   className="p-4 m-2 shadow-lg rounded-lg"
                   whileHover={{
                     scale: 1.05,
-                    transition: { duration: 0.6 },
+                    transition: { duration: 0.7 },
                   }}
-                  whileTap={{ scale: 0.9 }}
+                  whileTap={{
+                    scale: 1,
+                  }}
                 >
                   <div>
                     <div className="flex justify-between">

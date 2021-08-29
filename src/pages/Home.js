@@ -8,10 +8,21 @@ import { motion } from "framer-motion";
 const Home = () => {
   return (
     <motion.div
-      initial={{ scaleY: 0 }} //This is the style of the component at the beginning of the animation when it is animating in.
-      animate={{ scaleY: 1 }} //This is the style of the component at the end of the animation when it is animating in.
-      exit={{ scaleY: 0 }} //This is the style of the component at the end of the animation when it is animating out.
-      transition={{ duration: 0.5 }} //Transition configuration. Here, we're specifying how long we want the duration to last for (in our case, 0.5 seconds).
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: {
+          scale: 0.8,
+          opacity: 0,
+        },
+        visible: {
+          scale: 1,
+          opacity: 1,
+          transition: {
+            delay: 0.4,
+          },
+        },
+      }} //Transition configuration. Here, we're specifying how long we want the duration to last for (in our case, 0.5 seconds).
     >
       <AppBar />
       <div className="lg:w-2/4 mx-auto w-full">

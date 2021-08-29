@@ -4,6 +4,7 @@ import { GlobalContext } from "../../context/GlobalState";
 
 const Form = () => {
   const [namaPendanaan, setNamaPendaan] = useState("");
+  const [isFilled, setIsfilled] = useState(false);
   const {
     danaAwal,
     danaAkhir,
@@ -67,8 +68,18 @@ const Form = () => {
 
     getDanaAkhir(danaAwal - parseInt(hasil));
     getHargaProduk(hasil);
+
+    if (namaPendanaan === "" && danaAwal <= 0) {
+      setIsfilled(false);
+    } else if (namaPendanaan === "" && isNaN(danaAwal)) {
+      setIsfilled(false);
+    } else {
+      setIsfilled(true);
+    }
+
+    console.log(danaAwal);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [semuaProduk, danaAwal]);
+  }, [semuaProduk, danaAwal, namaPendanaan]);
 
   return (
     <div>
@@ -76,12 +87,14 @@ const Form = () => {
         <div className="text-center">
           <h4 className="text-muted mb-6">Buat Pendanaan</h4>
           <h1 className="text-left ml-7">Nama Pendanaan</h1>
+
           <input
             type="text"
             className="p-2 mb-6 rounded-xl bg-gray-300"
             placeholder="contoh: beli album lyly"
             value={namaPendanaan}
             onChange={handleNamaPendanaanChange}
+            required
           />
           <h1 className="text-left ml-7">Total Pendanaan</h1>
           <input
@@ -90,6 +103,7 @@ const Form = () => {
             value={danaAwal}
             onChange={handleDanaChange}
             placeholder="dana"
+            required
           />
         </div>
 
@@ -136,12 +150,21 @@ const Form = () => {
         </button>
         <br />
         <div className="text-center mt-4">
-          <button
-            className="bg-green-800 text-white font-bold px-2 py-1 rounded"
-            onClick={save}
-          >
-            Simpan
-          </button>
+          {isFilled ? (
+            <button
+              className="bg-green-800 text-white font-bold px-2 py-1 rounded"
+              onClick={save}
+            >
+              Simpan
+            </button>
+          ) : (
+            <button
+              className="bg-gray-300 text-white font-bold px-2 py-1 rounded"
+              disabled
+            >
+              Simpan
+            </button>
+          )}
         </div>
       </div>
     </div>
