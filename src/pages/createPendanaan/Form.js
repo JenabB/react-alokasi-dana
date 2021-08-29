@@ -73,6 +73,8 @@ const Form = () => {
       setIsfilled(false);
     } else if (namaPendanaan === "" && isNaN(danaAwal)) {
       setIsfilled(false);
+    } else if (namaPendanaan === "" && danaAwal > 0) {
+      setIsfilled(false);
     } else {
       setIsfilled(true);
     }
