@@ -94,6 +94,13 @@ export const GlobalProvider = (props) => {
     });
   }
 
+  function editPendanaan(dana) {
+    dispatch({
+      type: "EDIT_PENDANAAN",
+      payload: dana,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -116,6 +123,7 @@ export const GlobalProvider = (props) => {
         setToHistory,
         deleteOnePendanaan,
         getPendanaanDetail,
+        editPendanaan,
       }}
     >
       {props.children}

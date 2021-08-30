@@ -28,7 +28,6 @@ const TotalAlokasiDana = () => {
     const arrayHarga = [].concat(
       ...arrayy.map((totalHarga) => totalHarga.map((a) => parseInt(a.harga)))
     );
-    console.log(arrayHarga);
 
     //menjumlahkan nilai array harga
     const totalHargaSemuaProduk = arrayHarga.reduce(

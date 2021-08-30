@@ -61,6 +61,20 @@ export default (state, action) => {
         pendanaanDetail: action.payload,
       };
 
+    case "EDIT_PENDANAAN":
+      const update = action.payload;
+      const updates = state.history.map((h) => {
+        if (h.id === update.id) {
+          return update;
+        }
+
+        return h;
+      });
+      return {
+        ...state,
+        history: updates,
+      };
+
     default:
       return state;
   }
