@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 const AppBarWithBackButton = () => {
   let history = useHistory();
 
+  //kembali ke page sebelumnya
   const goBack = () => {
     history.goBack();
   };

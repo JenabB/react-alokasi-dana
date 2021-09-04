@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import Swal from "sweetalert2";
@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 const History = () => {
   const [query, setQuery] = useState("");
+  const [groups] = useState({});
   const { history, getPendanaanDetail, deleteOnePendanaan } =
     useContext(GlobalContext);
 
@@ -18,6 +19,18 @@ const History = () => {
   const items = history.filter((data) => {
     return data.namaPendanaan.toLowerCase().includes(query.toLowerCase());
   });
+
+  useEffect(() => {
+    history.forEach((dana) => {
+      const date = String(dana.createdAt).split("T")[0];
+      if (groups[date]) {
+        groups[date].push(dana);
+      } else {
+        groups[date] = [dana];
+      }
+    });
+    console.log(groups);
+  }, [groups, history]);
 
   return (
     <div className="m-4 rounded-xl p-4 w-full mx-auto">

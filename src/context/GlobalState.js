@@ -1,29 +1,33 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import Reducer from "./Reducer";
 
+//state awal context
 const initialState = {
   totalAlokasiDana: 0,
   totalDanaAwal: 0,
   totalDanaAkhir: 0,
+  //memeriksa apakah ada nilai pada localstorage history pendanaan
   history: localStorage.getItem("history-pendanaan")
     ? JSON.parse(localStorage.getItem("history-pendanaan"))
     : [],
   danaAwal: 0,
   danaAkhir: 0,
-  semuaProduk: [{ nama: "", harga: 0 }],
-  hargaProduk: 0,
+  semuaProduk: [{ nama: "", harga: 0 }], //state awal semua produk
   pendanaanDetail: null,
 };
 
+//inisiasi context
 export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = (props) => {
   const [state, dispatch] = useReducer(Reducer, initialState);
 
+  //menambahkan nilai ke localstorage ketika terjadi perubahan pada state
   useEffect(() => {
     localStorage.setItem("history-pendanaan", JSON.stringify(state.history));
   }, [state]);
 
+  //mendapatkan total alokasi dana
   function getTotalAlokasiDana(dana) {
     dispatch({
       type: "GET_TOTAL_ALOKASI_DANA",
@@ -31,6 +35,7 @@ export const GlobalProvider = (props) => {
     });
   }
 
+  //mendapatkan total dana awal
   function getTotalDanaAwal(dana) {
     dispatch({
       type: "GET_TOTAL_DANA_AWAL",
@@ -38,6 +43,7 @@ export const GlobalProvider = (props) => {
     });
   }
 
+  //mendapatkan total dana akhir
   function getTotalDanaAkhir(dana) {
     dispatch({
       type: "GET_TOTAL_DANA_AKHIR",
@@ -45,6 +51,7 @@ export const GlobalProvider = (props) => {
     });
   }
 
+  //mendapatkan dana awal
   function getDanaAwal(dana) {
     dispatch({
       type: "GET_DANA_AWAL",
@@ -52,6 +59,7 @@ export const GlobalProvider = (props) => {
     });
   }
 
+  //mendapatkan dana akhir
   function getDanaAkhir(dana) {
     dispatch({
       type: "GET_DANA_AKHIR",
@@ -59,13 +67,7 @@ export const GlobalProvider = (props) => {
     });
   }
 
-  function getHargaProduk(harga) {
-    dispatch({
-      type: "GET_HARGA_PRODUK",
-      payload: harga,
-    });
-  }
-
+  //mendapatkan semua produk
   function getSemuaProduk(produk) {
     dispatch({
       type: "GET_SEMUA_PRODUK",
@@ -73,6 +75,7 @@ export const GlobalProvider = (props) => {
     });
   }
 
+  //menyimpan ke history pendanaan
   function setToHistory(dana) {
     dispatch({
       type: "SET_TO_HISTORY",
@@ -80,6 +83,7 @@ export const GlobalProvider = (props) => {
     });
   }
 
+  //menghapus semua pendanaan
   function deleteOnePendanaan(danaId) {
     dispatch({
       type: "DELETE_ONE_PENDANAAN",
@@ -87,6 +91,7 @@ export const GlobalProvider = (props) => {
     });
   }
 
+  //mendapatkan detail satu pendanaan
   function getPendanaanDetail(pendanaan) {
     dispatch({
       type: "GET_PENDANAAN_DETAIL",
@@ -94,6 +99,7 @@ export const GlobalProvider = (props) => {
     });
   }
 
+  //mengedit pendanaan
   function editPendanaan(dana) {
     dispatch({
       type: "EDIT_PENDANAAN",
@@ -110,7 +116,6 @@ export const GlobalProvider = (props) => {
         danaAwal: state.danaAwal,
         danaAkhir: state.danaAkhir,
         semuaProduk: state.semuaProduk,
-        hargaProduk: state.hargaProduk,
         history: state.history,
         pendanaanDetail: state.pendanaanDetail,
         getTotalAlokasiDana,
@@ -118,7 +123,6 @@ export const GlobalProvider = (props) => {
         getTotalDanaAkhir,
         getDanaAwal,
         getDanaAkhir,
-        getHargaProduk,
         getSemuaProduk,
         setToHistory,
         deleteOnePendanaan,

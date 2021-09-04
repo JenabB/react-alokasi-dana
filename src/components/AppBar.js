@@ -1,5 +1,6 @@
 import React from "react";
 
+//app bar
 const AppBar = () => {
   return (
     <nav className="bg-green-800 p-4 text-center text-white">

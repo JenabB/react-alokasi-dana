@@ -3,8 +3,7 @@ import { GlobalContext } from "../../context/GlobalState";
 import { formatRp } from "../../utils/formatRp";
 
 const Header = () => {
-  const { danaAwal, danaAkhir, hargaProduk, semuaProduk } =
-    useContext(GlobalContext);
+  const { danaAwal, danaAkhir, semuaProduk } = useContext(GlobalContext);
 
   return (
     <div className="bg-green-600 sticky top-4 z-10 text-center text-white  m-4 p-4 rounded-lg">
@@ -19,7 +18,7 @@ const Header = () => {
         </div>
       </div>
       <div className="mt-8 text-center">
-        {hargaProduk !== 0 && semuaProduk.length !== 0 ? (
+        {semuaProduk.length !== 0 ? (
           <div className="bg-green-900 rounded-lg px-2 py-3">
             <table className="table-fixed w-full">
               <tr>

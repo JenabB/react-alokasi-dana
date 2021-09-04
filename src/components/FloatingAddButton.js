@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+//button untuk menambahkan pendanaan
 const FloatingAddButton = () => {
   return (
     <Link to="/create">
       <motion.button
         className="p-0 fixed bottom-10 right-10 w-16 h-16 bg-green-600 rounded-full"
+        //efek ketika cursor mouse berada diatas(berlaku hanya di desktop)
         whileHover={{
           scale: 1.2,
           transition: { duration: 1 },
         }}
+        //efek ketika di tekan
         whileTap={{ scale: 0.8 }}
       >
         <svg

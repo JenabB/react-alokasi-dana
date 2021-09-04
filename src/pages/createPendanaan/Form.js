@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useHistory } from "react-router-dom";
 
 const Form = () => {
+  //state
   const [namaPendanaan, setNamaPendaan] = useState("");
   const [isFilled, setIsfilled] = useState(false);
   const {
@@ -12,12 +13,14 @@ const Form = () => {
     danaAkhir,
     getDanaAwal,
     getDanaAkhir,
-    getHargaProduk,
     semuaProduk,
     getSemuaProduk,
     setToHistory,
   } = useContext(GlobalContext);
+
   let history = useHistory();
+
+  //action handler
   const handleNamaPendanaanChange = (e) => {
     setNamaPendaan(e.target.value);
   };
@@ -67,8 +70,8 @@ const Form = () => {
     });
 
     getDanaAkhir(danaAwal - parseInt(hasil));
-    getHargaProduk(hasil);
 
+    //mencegah nama dan dana kosong
     if (namaPendanaan === "" && danaAwal <= 0) {
       setIsfilled(false);
     } else if (namaPendanaan === "" && isNaN(danaAwal)) {
@@ -79,7 +82,6 @@ const Form = () => {
       setIsfilled(true);
     }
 
-    console.log(danaAwal);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [semuaProduk, danaAwal, namaPendanaan]);
 
