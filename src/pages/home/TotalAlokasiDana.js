@@ -18,13 +18,6 @@ const TotalAlokasiDana = () => {
   const [arrayDanaAwal, setArrayDanaAwal] = useState([]);
   const [arrayDanaAkhir, setArrayDanaAkhir] = useState([]);
 
-  console.log({
-    historyPendanaan: historyPendanaan,
-    arraySemua: arraySemua,
-    arrayDanaAwal: arrayDanaAwal,
-    arrayDanaAkhir: arrayDanaAkhir,
-  });
-
   useEffect(() => {
     //memasukkan array semua produk ke array baru
     setArraySemua([]);
@@ -32,7 +25,6 @@ const TotalAlokasiDana = () => {
     setArrayDanaAkhir([]);
 
     historyPendanaan.forEach((item) => {
-      console.log(arraySemua);
       arraySemua.push(item.semuaProduk);
     });
 

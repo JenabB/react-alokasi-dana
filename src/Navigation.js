@@ -5,6 +5,7 @@ import DanaDetail from "./pages/DanaDetail";
 import EditPendanaan from "./pages/EditPendanaan";
 import Home from "./pages/Home";
 import TotalDetail from "./pages/TotalDetail";
+import ViewAllPendanaan from "./pages/ViewAllPendanaan";
 import Welcome from "./pages/Welcome";
 
 export default function Navigation() {
@@ -16,6 +17,7 @@ export default function Navigation() {
           <Route path="/home" component={Home} />
           <Route path="/create" component={CreatePendanaan} />
           <Route path="/detail" component={TotalDetail} />
+          <Route path="/all" component={ViewAllPendanaan} />
           <Route exact path="/pendanaan/:id" component={DanaDetail} />
           <Route path="/pendanaan/:id/edit" component={EditPendanaan} />
         </Switch>

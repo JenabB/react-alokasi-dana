@@ -8,7 +8,8 @@ import { motion } from "framer-motion";
 
 const HistoryPendanaan = () => {
   const [query, setQuery] = useState("");
-  const [groups] = useState({});
+  const [groupss, setGroupss] = useState({});
+  console.log(groupss);
   const { historyPendanaan, getPendanaanDetail, deleteOnePendanaan } =
     useContext(GlobalContext);
 
@@ -22,20 +23,33 @@ const HistoryPendanaan = () => {
 
   //grouping by date
   useEffect(() => {
-    historyPendanaan.forEach((dana) => {
+    // this gives an object with dates as keys
+
+    const groups = historyPendanaan.reduce((groups, dana) => {
       const date = String(dana.createdAt).split("T")[0];
-      if (groups[date]) {
-        groups[date].push(dana);
-      } else {
-        groups[date] = [dana];
+      if (!groups[date]) {
+        groups[date] = [];
       }
+      groups[date].push(dana);
+      return groups;
+    }, {});
+
+    // Edit: to add it in the array format instead
+    const groupArrays = Object.keys(groups).map((date) => {
+      return {
+        date,
+        dana: groups[date],
+      };
     });
-  }, [groups, historyPendanaan]);
+    setGroupss(groupArrays);
+  }, [historyPendanaan]);
 
   return (
     <div className="m-4 rounded-xl p-4 w-full mx-auto">
       <h1>History</h1>
       <hr />
+      {/* 
+      {groupss ? <div>{group.map}</div> : ""} */}
 
       {historyPendanaan.length > 0 ? (
         <div>
@@ -179,6 +193,11 @@ const HistoryPendanaan = () => {
                   </div>
                 </motion.div>
               ))}
+              <Link to="/all">
+                <div className="text-center font-bold text-green-700 mt-10 mb-4">
+                  <h1>Lihat semua</h1>
+                </div>
+              </Link>
             </div>
           )}
         </div>
