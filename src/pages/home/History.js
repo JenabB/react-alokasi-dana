@@ -20,6 +20,7 @@ const History = () => {
     return data.namaPendanaan.toLowerCase().includes(query.toLowerCase());
   });
 
+  //grouping by date
   useEffect(() => {
     history.forEach((dana) => {
       const date = String(dana.createdAt).split("T")[0];
@@ -29,7 +30,6 @@ const History = () => {
         groups[date] = [dana];
       }
     });
-    console.log(groups);
   }, [groups, history]);
 
   return (
@@ -84,6 +84,7 @@ const History = () => {
                           }).then((result) => {
                             if (result.isConfirmed) {
                               deleteOnePendanaan(h.id);
+
                               Swal.fire(
                                 "Deleted!",
                                 "Your file has been deleted.",

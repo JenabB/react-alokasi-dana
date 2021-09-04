@@ -52,10 +52,7 @@ const TotalAlokasiDana = () => {
       arrayDanaAkhir.push(item.danaAkhir);
     });
 
-    const totalDanaAkhir = arrayDanaAkhir.reduce(
-      (prev, curee) => prev + curee,
-      0
-    );
+    const totalDanaAkhir = arrayDanaAkhir.reduce((prev, cur) => prev + cur, 0);
     getTotalDanaAkhir(totalDanaAkhir);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history]);
