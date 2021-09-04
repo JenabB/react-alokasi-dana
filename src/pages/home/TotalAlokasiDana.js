@@ -14,12 +14,12 @@ const TotalAlokasiDana = () => {
     getTotalDanaAwal,
     getTotalDanaAkhir,
   } = useContext(GlobalContext);
-  const [arraySemua] = useState([]);
-  const [arrayDanaAwal] = useState([]);
-  const [arrayDanaAkhir] = useState([]);
+  const [arraySemua, setArraySemua] = useState([]);
+  const [arrayDanaAwal, setArrayDanaAwal] = useState([]);
+  const [arrayDanaAkhir, setArrayDanaAkhir] = useState([]);
 
   console.log({
-    history: historyPendanaan,
+    historyPendanaan: historyPendanaan,
     arraySemua: arraySemua,
     arrayDanaAwal: arrayDanaAwal,
     arrayDanaAkhir: arrayDanaAkhir,
@@ -27,7 +27,12 @@ const TotalAlokasiDana = () => {
 
   useEffect(() => {
     //memasukkan array semua produk ke array baru
+    setArraySemua([]);
+    setArrayDanaAwal([]);
+    setArrayDanaAkhir([]);
+
     historyPendanaan.forEach((item) => {
+      console.log(arraySemua);
       arraySemua.push(item.semuaProduk);
     });
 
@@ -61,9 +66,6 @@ const TotalAlokasiDana = () => {
     const totalDanaAkhir = arrayDanaAkhir.reduce((prev, cur) => prev + cur, 0);
     getTotalDanaAkhir(totalDanaAkhir);
 
-    if (historyPendanaan.length !== arraySemua.length) {
-      window.location.reload();
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [historyPendanaan]);
 

@@ -84,7 +84,6 @@ const HistoryPendanaan = () => {
                           }).then((result) => {
                             if (result.isConfirmed) {
                               deleteOnePendanaan(h.id);
-
                               Swal.fire(
                                 "Deleted!",
                                 "Your file has been deleted.",
