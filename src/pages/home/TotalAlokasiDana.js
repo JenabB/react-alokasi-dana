@@ -31,7 +31,7 @@ const TotalAlokasiDana = () => {
 
     //menjumlahkan nilai array harga
     const totalHargaSemuaProduk = arrayHarga.reduce(
-      (prev, curee) => prev + curee,
+      (prev, cure) => prev + cure,
       0
     );
     getTotalAlokasiDana(totalHargaSemuaProduk);
@@ -41,10 +41,7 @@ const TotalAlokasiDana = () => {
       arrayDanaAwal.push(item.danaAwal);
     });
 
-    const totalDanaAwal = arrayDanaAwal.reduce(
-      (prev, curee) => prev + curee,
-      0
-    );
+    const totalDanaAwal = arrayDanaAwal.reduce((prev, cur) => prev + cur, 0);
     getTotalDanaAwal(totalDanaAwal);
 
     // memasukkan semua dana akhir ke array baru
