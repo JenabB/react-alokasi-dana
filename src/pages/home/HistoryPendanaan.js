@@ -6,23 +6,23 @@ import { GlobalContext } from "../../context/GlobalState";
 import { formatRp } from "../../utils/formatRp";
 import { motion } from "framer-motion";
 
-const History = () => {
+const HistoryPendanaan = () => {
   const [query, setQuery] = useState("");
   const [groups] = useState({});
-  const { history, getPendanaanDetail, deleteOnePendanaan } =
+  const { historyPendanaan, getPendanaanDetail, deleteOnePendanaan } =
     useContext(GlobalContext);
 
   const handleQueryChange = (e) => {
     setQuery(e.target.value);
   };
 
-  const items = history.filter((data) => {
+  const items = historyPendanaan.filter((data) => {
     return data.namaPendanaan.toLowerCase().includes(query.toLowerCase());
   });
 
   //grouping by date
   useEffect(() => {
-    history.forEach((dana) => {
+    historyPendanaan.forEach((dana) => {
       const date = String(dana.createdAt).split("T")[0];
       if (groups[date]) {
         groups[date].push(dana);
@@ -30,14 +30,14 @@ const History = () => {
         groups[date] = [dana];
       }
     });
-  }, [groups, history]);
+  }, [groups, historyPendanaan]);
 
   return (
     <div className="m-4 rounded-xl p-4 w-full mx-auto">
       <h1>History</h1>
       <hr />
 
-      {history.length > 0 ? (
+      {historyPendanaan.length > 0 ? (
         <div>
           <div className="text-center my-7">
             <input
@@ -117,7 +117,7 @@ const History = () => {
             </div>
           ) : (
             <div>
-              {history.map((h, i) => (
+              {historyPendanaan.map((h, i) => (
                 <motion.div
                   key={i}
                   className="p-4 m-2 shadow-lg rounded-lg"
@@ -192,4 +192,4 @@ const History = () => {
   );
 };
 
-export default History;
+export default HistoryPendanaan;

@@ -7,7 +7,7 @@ const initialState = {
   totalDanaAwal: 0,
   totalDanaAkhir: 0,
   //memeriksa apakah ada nilai pada localstorage history pendanaan
-  history: localStorage.getItem("history-pendanaan")
+  historyPendanaan: localStorage.getItem("history-pendanaan")
     ? JSON.parse(localStorage.getItem("history-pendanaan"))
     : [],
   danaAwal: 0,
@@ -24,7 +24,10 @@ export const GlobalProvider = (props) => {
 
   //menambahkan nilai ke localstorage ketika terjadi perubahan pada state
   useEffect(() => {
-    localStorage.setItem("history-pendanaan", JSON.stringify(state.history));
+    localStorage.setItem(
+      "history-pendanaan",
+      JSON.stringify(state.historyPendanaan)
+    );
   }, [state]);
 
   //mendapatkan total alokasi dana
@@ -116,7 +119,7 @@ export const GlobalProvider = (props) => {
         danaAwal: state.danaAwal,
         danaAkhir: state.danaAkhir,
         semuaProduk: state.semuaProduk,
-        history: state.history,
+        historyPendanaan: state.historyPendanaan,
         pendanaanDetail: state.pendanaanDetail,
         getTotalAlokasiDana,
         getTotalDanaAwal,

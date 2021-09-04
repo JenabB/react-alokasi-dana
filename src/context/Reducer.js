@@ -47,7 +47,7 @@ export default (state, action) => {
     case "SET_TO_HISTORY":
       return {
         ...state,
-        history: [action.payload, ...state.history],
+        historyPendanaan: [action.payload, ...state.historyPendanaan],
       };
 
     //menghapus satu pendanaan
@@ -55,7 +55,9 @@ export default (state, action) => {
       return {
         ...state,
         //menghapus satu pendanaan yang memiliki id yang sama dengan payload
-        history: state.history.filter((item) => item.id !== action.payload),
+        historyPendanaan: state.historyPendanaan.filter(
+          (item) => item.id !== action.payload
+        ),
       };
 
     //mendapatkan 1 pendanaan detail
@@ -68,7 +70,7 @@ export default (state, action) => {
     //mengubah data pendanaan
     case "EDIT_PENDANAAN":
       const updatePendanaan = action.payload;
-      const updatesPendanaan = state.history.map((dana) => {
+      const updatesPendanaan = state.historyPendanaan.map((dana) => {
         if (dana.id === updatePendanaan.id) {
           return updatePendanaan;
         }
@@ -77,7 +79,7 @@ export default (state, action) => {
       });
       return {
         ...state,
-        history: updatesPendanaan,
+        historyPendanaan: updatesPendanaan,
       };
 
     default:

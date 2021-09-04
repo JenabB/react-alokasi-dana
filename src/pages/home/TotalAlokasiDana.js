@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const TotalAlokasiDana = () => {
   const {
-    history,
+    historyPendanaan,
     totalAlokasiDana,
     getTotalAlokasiDana,
     totalDanaAwal,
@@ -14,19 +14,28 @@ const TotalAlokasiDana = () => {
     getTotalDanaAwal,
     getTotalDanaAkhir,
   } = useContext(GlobalContext);
-  const [arrayy] = useState([]);
+  const [arraySemua] = useState([]);
   const [arrayDanaAwal] = useState([]);
   const [arrayDanaAkhir] = useState([]);
 
+  console.log({
+    history: historyPendanaan,
+    arraySemua: arraySemua,
+    arrayDanaAwal: arrayDanaAwal,
+    arrayDanaAkhir: arrayDanaAkhir,
+  });
+
   useEffect(() => {
     //memasukkan array semua produk ke array baru
-    history.forEach((item) => {
-      arrayy.push(item.semuaProduk);
+    historyPendanaan.forEach((item) => {
+      arraySemua.push(item.semuaProduk);
     });
 
     //array untuk semua harga
     const arrayHarga = [].concat(
-      ...arrayy.map((totalHarga) => totalHarga.map((a) => parseInt(a.harga)))
+      ...arraySemua.map((totalHarga) =>
+        totalHarga.map((a) => parseInt(a.harga))
+      )
     );
 
     //menjumlahkan nilai array harga
@@ -37,7 +46,7 @@ const TotalAlokasiDana = () => {
     getTotalAlokasiDana(totalHargaSemuaProduk);
 
     // memasukkan semua dana awal ke array baru
-    history.forEach((item) => {
+    historyPendanaan.forEach((item) => {
       arrayDanaAwal.push(item.danaAwal);
     });
 
@@ -45,14 +54,18 @@ const TotalAlokasiDana = () => {
     getTotalDanaAwal(totalDanaAwal);
 
     // memasukkan semua dana akhir ke array baru
-    history.forEach((item) => {
+    historyPendanaan.forEach((item) => {
       arrayDanaAkhir.push(item.danaAkhir);
     });
 
     const totalDanaAkhir = arrayDanaAkhir.reduce((prev, cur) => prev + cur, 0);
     getTotalDanaAkhir(totalDanaAkhir);
+
+    if (historyPendanaan.length !== arraySemua.length) {
+      window.location.reload();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [history]);
+  }, [historyPendanaan]);
 
   return (
     <div className="p-4">
