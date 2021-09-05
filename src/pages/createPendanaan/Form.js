@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { GlobalContext } from "../../context/GlobalState";
 import { v4 as uuidv4 } from "uuid";
 import { useHistory } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Form = () => {
   //state
@@ -87,7 +88,24 @@ const Form = () => {
 
   return (
     <div>
-      <div className="p-4">
+      <motion.div
+        className="p-4"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {
+            scale: 0.8,
+            opacity: 0,
+          },
+          visible: {
+            scale: 1,
+            opacity: 1,
+            transition: {
+              delay: 0.9,
+            },
+          },
+        }}
+      >
         <div className="text-center">
           <h4 className="text-muted mb-6">Buat Pendanaan</h4>
           <h1 className="text-left ml-7">Nama Pendanaan</h1>
@@ -170,7 +188,7 @@ const Form = () => {
             </button>
           )}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

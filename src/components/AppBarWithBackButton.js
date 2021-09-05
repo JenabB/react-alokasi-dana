@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const AppBarWithBackButton = () => {
+const AppBarWithBackButton = ({ title }) => {
   let history = useHistory();
 
   //kembali ke page sebelumnya
@@ -14,7 +14,7 @@ const AppBarWithBackButton = () => {
       <button className="material-icons md-24" onClick={goBack}>
         arrow_back
       </button>
-      <div></div>
+      <div>{title}</div>
       <div></div>
     </nav>
   );

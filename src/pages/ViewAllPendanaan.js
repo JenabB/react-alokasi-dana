@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import AppBarWithBackButton from "../components/AppBarWithBackButton";
 import { GlobalContext } from "../context/GlobalState";
 import Pendanaan from "./home/Pendanaan";
+import Helmet from "react-helmet";
 
 const ViewAllPendanaan = () => {
   const [groupss, setGroupss] = useState([]);
@@ -41,7 +42,12 @@ const ViewAllPendanaan = () => {
   }, [historyPendanaan]);
   return (
     <div>
-      <AppBarWithBackButton />
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Semua Pendanaan</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+      <AppBarWithBackButton title="Semua Pendanaan" />
       <div className="text-center my-7">
         <input
           type="search"

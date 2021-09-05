@@ -13,6 +13,11 @@ const FloatingAddButton = () => {
           transition: { duration: 1 },
         }}
         //efek ketika di tekan
+        animate={{
+          scale: [1, 2, 2, 1, 1],
+          rotate: [0, 160, 270, 360, 0],
+        }}
+        transition={{ duration: 2 }}
       >
         <svg
           viewBox="0 0 20 20"

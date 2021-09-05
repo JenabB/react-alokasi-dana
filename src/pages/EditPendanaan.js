@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import AppBarWithBackButton from "../components/AppBarWithBackButton";
 import { useHistory } from "react-router-dom";
+import Helmet from "react-helmet";
 
 const EditPendanaan = (props) => {
   const [selectedDana, setSelectedDana] = useState({
@@ -58,7 +59,14 @@ const EditPendanaan = (props) => {
 
   return (
     <div>
-      <AppBarWithBackButton />
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Edit Pendanaan</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+
+      <AppBarWithBackButton title="Edit Pendanaan" />
+
       <div className="mt-4 text-center">
         <h1 className="my-10">Ubah Pendanaan</h1>
         <div></div>

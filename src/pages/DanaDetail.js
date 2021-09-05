@@ -4,6 +4,7 @@ import AppBarWithBackButton from "../components/AppBarWithBackButton";
 import { GlobalContext } from "../context/GlobalState";
 import { formatRp } from "../utils/formatRp";
 import { Link } from "react-router-dom";
+import Helmet from "react-helmet";
 
 const DanaDetail = () => {
   const { pendanaanDetail } = useContext(GlobalContext);
@@ -20,7 +21,14 @@ const DanaDetail = () => {
 
   return (
     <div>
-      <AppBarWithBackButton />
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Dana Detail</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+
+      <AppBarWithBackButton title="Dana Detail" />
+
       <div className="lg:w-2/4 mx-auto w-full">
         <div className="px-4">
           <div className="text-center text-white rounded-xl mt-4 pb-8 pt-4 bg-green-600">

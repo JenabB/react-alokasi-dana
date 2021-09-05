@@ -7,7 +7,13 @@ const Header = () => {
   const { danaAwal, danaAkhir, semuaProduk } = useContext(GlobalContext);
 
   return (
-    <motion.div className="bg-green-600 sticky top-4 z-10 text-center text-white  m-4 p-4 rounded-lg">
+    <motion.div
+      className="bg-green-600 sticky top-4 z-10 text-center text-white  m-4 p-4 rounded-lg"
+      animate={{
+        scale: [2, 1],
+      }}
+      transition={{ duration: 0.8 }}
+    >
       <div className="grid grid-cols-2">
         <div>
           <h1>Dana Awal</h1>

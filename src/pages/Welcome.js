@@ -2,10 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import welcome from "../assets/images/welcome.jpg";
 import { motion } from "framer-motion";
-
+import Helmet from "react-helmet";
 const Welcome = () => {
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Alokasi Dana</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+
       <div className="lg:w-1/4 w-full mx-auto">
         <img src={welcome} alt="welcome" />
       </div>
