@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import AppBarWithBackButton from "../components/AppBarWithBackButton";
-import { GlobalContext } from "../context/GlobalState";
-import Pendanaan from "./home/Pendanaan";
 import Helmet from "react-helmet";
+
+//context
+import { GlobalContext } from "../context/GlobalState";
+
+//component
+import AppBarWithBackButton from "../components/AppBarWithBackButton";
+import Pendanaan from "./home/Pendanaan";
 
 const ViewAllPendanaan = () => {
   const [groupss, setGroupss] = useState([]);

@@ -1,6 +1,9 @@
 import React from "react";
-import AppBarWithBackButton from "../components/AppBarWithBackButton";
 import Helmet from "react-helmet";
+
+//component
+import AppBarWithBackButton from "../components/AppBarWithBackButton";
+
 const TotalDetail = () => {
   return (
     <div>

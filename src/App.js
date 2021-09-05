@@ -1,6 +1,9 @@
 import React from "react";
 import Navigation from "./Navigation";
+
+//context
 import { GlobalProvider } from "./context/GlobalState";
+
 const App = () => {
   return (
     <GlobalProvider>

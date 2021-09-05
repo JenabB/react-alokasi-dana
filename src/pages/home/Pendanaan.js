@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../../context/GlobalState";
 import { Link } from "react-router-dom";
+
+//context
+import { GlobalContext } from "../../context/GlobalState";
+
+//utils
 import moment from "moment";
 import Swal from "sweetalert2";
 import { motion } from "framer-motion";

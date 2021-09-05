@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+
+//context
 import { GlobalContext } from "../../context/GlobalState";
+
+//utils
 import { formatRp } from "../../utils/formatRp";
 import { motion } from "framer-motion";
 

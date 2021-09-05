@@ -1,10 +1,16 @@
 import React, { useState, useContext } from "react";
-import moment from "moment";
-import AppBarWithBackButton from "../components/AppBarWithBackButton";
-import { GlobalContext } from "../context/GlobalState";
-import { formatRp } from "../utils/formatRp";
 import { Link } from "react-router-dom";
 import Helmet from "react-helmet";
+
+//context
+import { GlobalContext } from "../context/GlobalState";
+
+//utils
+import moment from "moment";
+import { formatRp } from "../utils/formatRp";
+
+//components
+import AppBarWithBackButton from "../components/AppBarWithBackButton";
 
 const DanaDetail = () => {
   const { pendanaanDetail } = useContext(GlobalContext);

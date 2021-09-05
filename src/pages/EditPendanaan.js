@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import { GlobalContext } from "../context/GlobalState";
-import AppBarWithBackButton from "../components/AppBarWithBackButton";
 import { useHistory } from "react-router-dom";
 import Helmet from "react-helmet";
+
+//context
+import { GlobalContext } from "../context/GlobalState";
+
+//component
+import AppBarWithBackButton from "../components/AppBarWithBackButton";
 
 const EditPendanaan = (props) => {
   const [selectedDana, setSelectedDana] = useState({

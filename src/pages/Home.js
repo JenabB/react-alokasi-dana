@@ -1,10 +1,14 @@
 import React from "react";
+
+//components
 import AppBar from "../components/AppBar";
 import FloatingAddButton from "../components/FloatingAddButton";
-// import Footer from "./home/Footer";
 import HistoryPendanaan from "./home/HistoryPendanaan";
 import TotalAlokasiDana from "./home/TotalAlokasiDana";
+
+//utils
 import { motion } from "framer-motion";
+
 const Home = () => {
   return (
     <motion.div

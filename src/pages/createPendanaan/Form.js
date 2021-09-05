@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import Swal from "sweetalert2";
-import { GlobalContext } from "../../context/GlobalState";
-import { v4 as uuidv4 } from "uuid";
 import { useHistory } from "react-router-dom";
+
+//context
+import { GlobalContext } from "../../context/GlobalState";
+
+//utility
+import Swal from "sweetalert2";
+import { v4 as uuidv4 } from "uuid";
 import { motion } from "framer-motion";
 
 const Form = () => {

@@ -1,3 +1,5 @@
+//menformat number menjadi format rupiah
+
 export const formatRp = (nominal) => {
   return new Intl.NumberFormat("id-ID", {
     style: "currency",

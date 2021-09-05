@@ -1,8 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import welcome from "../assets/images/welcome.jpg";
-import { motion } from "framer-motion";
 import Helmet from "react-helmet";
+
+//assets
+import welcome from "../assets/images/welcome.jpg";
+
+//utils
+import { motion } from "framer-motion";
+
 const Welcome = () => {
   return (
     <div>
