@@ -1,20 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalState";
 import Pendanaan from "./Pendanaan";
 
 const HistoryPendanaan = () => {
-  const [query, setQuery] = useState("");
-
   const { historyPendanaan } = useContext(GlobalContext);
+  const [group, setGroup] = useState([]);
 
-  const handleQueryChange = (e) => {
-    setQuery(e.target.value);
-  };
-
-  const items = historyPendanaan.filter((data) => {
-    return data.namaPendanaan.toLowerCase().includes(query.toLowerCase());
-  });
+  useEffect(() => {
+    const arrayBaru = historyPendanaan.filter((x, y) => y < 5);
+    setGroup(arrayBaru);
+  }, [historyPendanaan]);
 
   return (
     <div className="m-4 rounded-xl p-4 w-full mx-auto">
@@ -26,29 +22,26 @@ const HistoryPendanaan = () => {
       {historyPendanaan.length > 0 ? (
         <div>
           <div className="text-center my-7">
-            <input
-              type="search"
-              className="bg-gray-200 w-3/4 rounded-lg px-2 py-1"
-              placeholder="cari pendanaan"
-              value={query}
-              onChange={handleQueryChange}
-            />
+            <Link to="/all">
+              <input
+                type="search"
+                className="bg-gray-200 w-3/4 rounded-lg px-2 py-1"
+                placeholder="cari pendanaan"
+              />
+            </Link>
           </div>
-          {query !== "" ? (
-            <div>
-              {items.map((h, i) => (
-                <Pendanaan h={h} i={i} />
-              ))}
-            </div>
+          <div>
+            {/* 6 pendanaan terbaru */}
+            {group.map((h, i) => (
+              <Pendanaan h={h} i={i} />
+            ))}
+          </div>
+          {group.length < 5 ? (
+            ""
           ) : (
-            <div>
-              {historyPendanaan.map((h, i) => (
-                <Pendanaan h={h} i={i} />
-              ))}
+            <div className="text-center my-10">
               <Link to="/all">
-                <div className="text-center font-bold text-green-700 mt-10 mb-4">
-                  <h1>Lihat semua</h1>
-                </div>
+                <h1 className="font-bold text-green-700">Lihat Semua</h1>
               </Link>
             </div>
           )}

@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalState";
 import { formatRp } from "../../utils/formatRp";
+import { motion } from "framer-motion";
 
 const Header = () => {
   const { danaAwal, danaAkhir, semuaProduk } = useContext(GlobalContext);
 
   return (
-    <div className="bg-green-600 sticky top-4 z-10 text-center text-white  m-4 p-4 rounded-lg">
+    <motion.div className="bg-green-600 sticky top-4 z-10 text-center text-white  m-4 p-4 rounded-lg">
       <div className="grid grid-cols-2">
         <div>
           <h1>Dana Awal</h1>
@@ -39,7 +40,7 @@ const Header = () => {
           ""
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

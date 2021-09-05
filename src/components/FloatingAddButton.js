@@ -13,7 +13,6 @@ const FloatingAddButton = () => {
           transition: { duration: 1 },
         }}
         //efek ketika di tekan
-        whileTap={{ scale: 0.8 }}
       >
         <svg
           viewBox="0 0 20 20"
