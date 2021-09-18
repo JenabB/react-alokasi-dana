@@ -47,6 +47,8 @@ export default (state, action) => {
     case "SET_TO_HISTORY":
       return {
         ...state,
+        //array baru
+        //berisi object payload (terbaru), kemudian history pendanaan yang lama
         historyPendanaan: [action.payload, ...state.historyPendanaan],
       };
 
@@ -54,7 +56,8 @@ export default (state, action) => {
     case "DELETE_ONE_PENDANAAN":
       return {
         ...state,
-        //menghapus satu pendanaan yang memiliki id yang sama dengan payload
+        //menghapus satu pendanaan
+        //.filter menhapus pendanaan yang memilik id yang sama dgn payload
         historyPendanaan: state.historyPendanaan.filter(
           (item) => item.id !== action.payload
         ),

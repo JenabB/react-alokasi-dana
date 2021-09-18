@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 //context
 import { GlobalContext } from "../../context/GlobalState";
 
-//utility
+//utils
 import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
 import { motion } from "framer-motion";
@@ -12,7 +12,11 @@ import { motion } from "framer-motion";
 const Form = () => {
   //state
   const [namaPendanaan, setNamaPendaan] = useState("");
+  //sebagai validator ketika nama pendanaan dan dana awal terisi
+  //bernilai true ketika input nama pendanaan dan dana awal terisi
   const [isFilled, setIsfilled] = useState(false);
+
+  //context
   const {
     danaAwal,
     danaAkhir,
@@ -26,13 +30,15 @@ const Form = () => {
   let history = useHistory();
 
   //action handler
+  //nama pendanaan handler
   const handleNamaPendanaanChange = (e) => {
     setNamaPendaan(e.target.value);
   };
-
+  //dana awal handler
   const handleDanaChange = (e) => {
     getDanaAwal(parseInt(e.target.value));
   };
+  //produk change
 
   const handleProdukChange = (index, e) => {
     let produks = [...semuaProduk];
@@ -43,14 +49,14 @@ const Form = () => {
     getSemuaProduk(produks);
   };
 
+  //menyimpan ke daftar produk
   const handleProdukSubmit = (e) => {
     e.preventDefault();
-
     getDanaAkhir(danaAwal);
     getSemuaProduk([...semuaProduk, { id: uuidv4(), nama: "", harga: 0 }]);
   };
 
-  const save = () => {
+  const saveToHistory = () => {
     setToHistory({
       id: uuidv4(),
       createdAt: new Date(),
@@ -64,6 +70,8 @@ const Form = () => {
       title: "Tersimpan",
       text: `${namaPendanaan} tersimpan`,
     });
+
+    //setelah history pendanaan disimpan, akan dilempar kembali ke home
     history.push("/home");
   };
 
@@ -74,9 +82,10 @@ const Form = () => {
       hasil += parseInt(item.harga);
     });
 
+    //dana akhir = dana awal - semua harga dari produk
     getDanaAkhir(danaAwal - parseInt(hasil));
 
-    //mencegah nama dan dana kosong
+    //mencegah nama pendanaan dan dana awal kosong
     if (namaPendanaan === "" && danaAwal <= 0) {
       setIsfilled(false);
     } else if (namaPendanaan === "" && isNaN(danaAwal)) {
@@ -175,11 +184,13 @@ const Form = () => {
           Tambah lagi
         </button>
         <br />
+
+        {/* button simpan akan aktif jika ada input nama pendanaan dan dana awal */}
         <div className="text-center mt-4">
           {isFilled ? (
             <button
               className="bg-green-800 text-white font-bold px-2 py-1 rounded"
-              onClick={save}
+              onClick={saveToHistory}
             >
               Simpan
             </button>
