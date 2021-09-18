@@ -71,6 +71,12 @@ const EditPendanaan = (props) => {
   //   history.push("/home");
   // };
 
+  const handleDeleteProduk = (id) => {
+    const semu = [...updatedDana.semuaProduk];
+    const updatedP = semu.slice(1).filter((s) => s.id !== id);
+    setUpdatedDana({ ...updatedDana, semuaProduk: [semu[0], ...updatedP] });
+  };
+
   useEffect(() => {
     let hasil = 0;
 
@@ -179,7 +185,11 @@ const EditPendanaan = (props) => {
                   <td>{updatedDana.semuaProduk.indexOf(p) + 1}</td>
                   <th>{p.nama}</th>
                   <th>{p.harga}</th>
-                  <button>Delete</button>
+                  <th>
+                    <button onClick={() => handleDeleteProduk(p.id)}>
+                      Delete
+                    </button>
+                  </th>
                 </tr>
               ))}
             </table>
