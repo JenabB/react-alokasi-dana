@@ -174,7 +174,7 @@ const EditPendanaan = (props) => {
                 <th className="w-2/4">Harga</th>
                 <th className="w-2/4">Aksi</th>
               </tr>
-              {updatedDana.semuaProduk.map((p, i) => (
+              {updatedDana.semuaProduk.slice(1).map((p, i) => (
                 <tr key={i}>
                   <td>{updatedDana.semuaProduk.indexOf(p) + 1}</td>
                   <th>{p.nama}</th>
