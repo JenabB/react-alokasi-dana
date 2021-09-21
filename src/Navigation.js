@@ -7,6 +7,7 @@ import Home from "./pages/B.Home";
 import TotalDetail from "./pages/G.TotalDetail";
 import ViewAllPendanaan from "./pages/F.ViewAllPendanaan";
 import Welcome from "./pages/A.Welcome";
+import ProdukByCategory from "./pages/H.ProdukByCategory";
 
 export default function Navigation() {
   return (
@@ -20,6 +21,11 @@ export default function Navigation() {
           <Route path="/all" component={ViewAllPendanaan} />
           <Route exact path="/pendanaan/:id" component={DanaDetail} />
           <Route path="/pendanaan/:id/edit" component={EditPendanaan} />
+          <Route
+            exact
+            path="/kategori/:kategori"
+            component={ProdukByCategory}
+          />
         </Switch>
       </div>
     </Router>

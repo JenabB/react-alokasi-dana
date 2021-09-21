@@ -1,5 +1,4 @@
 import React from "react";
-
 import Dana from "../danaDetail/D.Dana";
 
 const AllProduct = ({ semua }) => {

@@ -13,8 +13,13 @@ const TotalDetail = () => {
   const [semuaProduk, setSemuaProduk] = useState([]);
   const [semua, setSemua] = useState([]);
   const [semuaHarga, setSemuaHarga] = useState(0);
-  const { historyPendanaan, totalAlokasiDana, totalDanaAwal, totalDanaAkhir } =
-    useContext(GlobalContext);
+  const {
+    historyPendanaan,
+    totalAlokasiDana,
+    totalDanaAwal,
+    totalDanaAkhir,
+    getSemuaProduk,
+  } = useContext(GlobalContext);
   console.log(semuaProduk);
 
   useEffect(() => {
@@ -25,6 +30,7 @@ const TotalDetail = () => {
     //array untuk semua harga
     const arrayHarga = [].concat(...semuaProduk.map((el) => el));
     setSemua(arrayHarga);
+    getSemuaProduk(arrayHarga);
 
     //yare
     //menjumlahkan nilai array harga
