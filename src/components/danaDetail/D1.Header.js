@@ -4,7 +4,6 @@ import moment from "moment";
 import { formatRp } from "../../utils/formatRp";
 
 const Header = ({ detail }) => {
-  console.log(detail);
   return (
     <div>
       <motion.div
@@ -23,7 +22,7 @@ const Header = ({ detail }) => {
             },
           },
         }}
-        className="px-4"
+        className="px-2"
       >
         <div className="text-center text-white rounded-xl mt-4 pb-8 pt-4 bg-green-600">
           <div className="flex justify-between px-4">
@@ -39,12 +38,20 @@ const Header = ({ detail }) => {
           <div className="grid grid-cols-2 mt-8">
             <div>
               <h1>Dana Awal</h1>
-              <h1>{formatRp(detail.danaAwal)}</h1>
+              <h1 className="font-bold text-xl">{formatRp(detail.danaAwal)}</h1>
             </div>
             <div>
               <h1>Dana Akhir</h1>
-              <h1>{formatRp(detail.danaAkhir)}</h1>
+              <h1 className="font-bold text-xl">
+                {formatRp(detail.danaAkhir)}
+              </h1>
             </div>
+          </div>
+          <div className=" mt-4 px-4">
+            <h1>Total Pengeluaran</h1>
+            <p className="font-bold text-xl">
+              {formatRp(detail.danaAwal - detail.danaAkhir)}
+            </p>
           </div>
         </div>
       </motion.div>

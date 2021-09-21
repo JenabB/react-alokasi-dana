@@ -95,6 +95,7 @@ const EditPendanaan = (props) => {
       ...updatedDana,
       danaAkhir: updatedDana.danaAwal - parseInt(hasil),
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [updatedDana.danaAwal, updatedDana.semuaProduk]);
 
   const handleSubmit = (e) => {

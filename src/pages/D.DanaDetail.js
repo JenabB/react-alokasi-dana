@@ -4,9 +4,6 @@ import Helmet from "react-helmet";
 //context
 import { GlobalContext } from "../context/GlobalState";
 
-//utils
-import { formatRp } from "../utils/formatRp";
-
 //components
 import AppBarWithBackButton from "../components/AppBarWithBackButton";
 import Dana from "../components/danaDetail/D.Dana";
@@ -37,11 +34,6 @@ const DanaDetail = () => {
 
       <div className="lg:w-2/4 mx-auto w-full">
         <Header detail={detail} />
-
-        <div className="text-left mt-4 px-4">
-          <h1>Total Pengeluaran</h1>
-          <p>{formatRp(detail.danaAwal - detail.danaAkhir)}</p>
-        </div>
 
         <div>
           <h1 className="text-center mt-10">Alokasi Dana</h1>
