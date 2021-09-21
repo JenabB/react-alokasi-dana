@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import CreatePendanaan from "./pages/CreatePendanaan";
-import DanaDetail from "./pages/DanaDetail";
-import EditPendanaan from "./pages/EditPendanaan";
-import Home from "./pages/Home";
-import TotalDetail from "./pages/TotalDetail";
-import ViewAllPendanaan from "./pages/ViewAllPendanaan";
-import Welcome from "./pages/Welcome";
+import CreatePendanaan from "./pages/C.CreatePendanaan";
+import DanaDetail from "./pages/D.DanaDetail";
+import EditPendanaan from "./pages/E.EditPendanaan";
+import Home from "./pages/B.Home";
+import TotalDetail from "./pages/G.TotalDetail";
+import ViewAllPendanaan from "./pages/F.ViewAllPendanaan";
+import Welcome from "./pages/A.Welcome";
 
 export default function Navigation() {
   return (

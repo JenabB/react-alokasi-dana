@@ -4,6 +4,8 @@ import Helmet from "react-helmet";
 
 import { motion } from "framer-motion";
 import { formatRp } from "../utils/formatRp";
+import { v4 as uuidv4 } from "uuid";
+
 //context
 import { GlobalContext } from "../context/GlobalState";
 
@@ -12,6 +14,7 @@ import AppBarWithBackButton from "../components/AppBarWithBackButton";
 
 const EditPendanaan = (props) => {
   const { historyPendanaan, editPendanaan } = useContext(GlobalContext);
+
   const id = props.match.params.id;
 
   const matchDana = historyPendanaan.find((dana) => dana.id === id);
@@ -26,6 +29,8 @@ const EditPendanaan = (props) => {
 
   let historyy = useHistory();
 
+  const [semuaProo, setSemuaProo] = useState([...updatedDana.semuaProduk]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUpdatedDana({ ...updatedDana, [name]: value });
@@ -36,21 +41,21 @@ const EditPendanaan = (props) => {
     setUpdatedDana({ ...updatedDana, [name]: parseInt(value) });
   };
 
-  // const handleProdukChange = (index, e) => {
-  //   let produks = [...updatedDana.semuaProduk];
-  //   let produk = produks[index];
+  const handleProdukChange = (index, e) => {
+    let produks = [...updatedDana.semuaProduk];
+    let produk = produks[index];
 
-  //   produks[index] = { ...produk, [e.target.name]: e.target.value };
+    produks[index] = { ...produk, [e.target.name]: e.target.value };
 
-  //   getSemuaProduk(produks);
-  // };
+    setSemuaProo(produks);
+  };
 
-  // //menyimpan ke daftar produk
-  // const handleProdukSubmit = (e) => {
-  //   e.preventDefault();
-  //   getDanaAkhir(danaAwal);
-  //   getSemuaProduk([...semuaProduk, { id: uuidv4(), nama: "", harga: 0 }]);
-  // };
+  //menyimpan ke daftar produk
+  const handleProdukSubmit = (e) => {
+    e.preventDefault();
+    setUpdatedDana({ ...updatedDana, danaAkhir: updatedDana.danaAwal });
+    setSemuaProo([...semuaProo, { id: uuidv4(), nama: "", harga: 0 }]);
+  };
 
   // const saveToHistory = () => {
   //   setToHistory({
@@ -72,9 +77,11 @@ const EditPendanaan = (props) => {
   // };
 
   const handleDeleteProduk = (id) => {
-    const semu = [...updatedDana.semuaProduk];
-    const updatedP = semu.slice(1).filter((s) => s.id !== id);
-    setUpdatedDana({ ...updatedDana, semuaProduk: [semu[0], ...updatedP] });
+    const updatedP = semuaProo.slice(1).filter((s) => s.id !== id);
+    setUpdatedDana({
+      ...updatedDana,
+      semuaProduk: [semuaProo[0], ...updatedP],
+    });
   };
 
   useEffect(() => {
@@ -88,7 +95,7 @@ const EditPendanaan = (props) => {
       ...updatedDana,
       danaAkhir: updatedDana.danaAwal - parseInt(hasil),
     });
-  }, [updatedDana.danaAwal]);
+  }, [updatedDana.danaAwal, updatedDana.semuaProduk]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -110,7 +117,7 @@ const EditPendanaan = (props) => {
       <AppBarWithBackButton title="Edit Pendanaan" />
 
       <div className="mt-4 text-center">
-        <div>
+        <div className="lg:w-2/4 mx-auto w-full">
           <motion.div
             className="bg-green-600 sticky top-4 z-10 text-center text-white  m-4 p-4 rounded-lg"
             animate={{
@@ -153,24 +160,28 @@ const EditPendanaan = (props) => {
           </motion.div>
         </div>
 
-        <input
-          type="text"
-          className="p-2 mb-6 rounded-xl bg-gray-300"
-          placeholder="nama baru"
-          name="namaPendanaan"
-          value={updatedDana.namaPendanaan}
-          onChange={handleInputChange}
-        />
-        <input
-          type="number"
-          className="p-2 mb-6 rounded-xl bg-gray-300"
-          placeholder="dana awal"
-          name="danaAwal"
-          value={updatedDana.danaAwal}
-          onChange={handleDanaAwalChange}
-        />
+        <div className="mt-10">
+          <h1>Nama pendanaan</h1>
+          <input
+            type="text"
+            className="p-2 mb-6 rounded-xl bg-gray-300"
+            placeholder="nama baru"
+            name="namaPendanaan"
+            value={updatedDana.namaPendanaan}
+            onChange={handleInputChange}
+          />
+          <h1>Dana awal</h1>
+          <input
+            type="number"
+            className="p-2 mb-6 rounded-xl bg-gray-300"
+            placeholder="dana awal"
+            name="danaAwal"
+            value={updatedDana.danaAwal}
+            onChange={handleDanaAwalChange}
+          />
+        </div>
 
-        <div>
+        <div className="lg:w-2/4 mx-auto w-full">
           <h1 className="mt-10">Daftar Pendanaan</h1>
           <div className="my-10 px-4">
             <table>
@@ -195,6 +206,48 @@ const EditPendanaan = (props) => {
             </table>
           </div>
         </div>
+
+        <div className="lg:w-2/4 mx-auto w-full text-center">
+          <h1 className="mt-8">Alokasi Dana</h1>
+          {updatedDana.semuaProduk.length > 0 ? (
+            updatedDana.semuaProduk.map((produk, index) => (
+              <div key={index} className="my-4 shadow p-4">
+                <h1 className="text-left pl-4">Nama</h1>
+                <input
+                  className="bg-gray-300 p-2 rounded-lg my-1"
+                  type="text"
+                  maxLength="20"
+                  name="nama"
+                  value={produk.nama}
+                  placeholder="produk"
+                  onChange={(e) => {
+                    handleProdukChange(index, e);
+                  }}
+                />
+                <h1 className="text-left pl-4 mt-4">Harga</h1>
+                <input
+                  className="bg-gray-100 p-2"
+                  type="number"
+                  name="harga"
+                  value={produk.harga}
+                  placeholder="harga"
+                  onChange={(e) => {
+                    handleProdukChange(index, e);
+                  }}
+                />
+              </div>
+            ))
+          ) : (
+            <h1>blm ada produk</h1>
+          )}
+        </div>
+
+        <button
+          className="my-4 bg-gray-100 px-2 py-1 rounded-lg"
+          onClick={handleProdukSubmit}
+        >
+          Tambah lagi
+        </button>
 
         <button
           className="bg-green-700 px-4 py-2 text-white rounded-xl"

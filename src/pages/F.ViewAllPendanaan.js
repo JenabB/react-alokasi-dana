@@ -6,7 +6,7 @@ import { GlobalContext } from "../context/GlobalState";
 
 //component
 import AppBarWithBackButton from "../components/AppBarWithBackButton";
-import Pendanaan from "./home/Pendanaan";
+import Pendanaan from "../components/Pendanaan";
 
 const ViewAllPendanaan = () => {
   const [groupss, setGroupss] = useState([]);
@@ -55,7 +55,7 @@ const ViewAllPendanaan = () => {
       <div className="text-center my-7">
         <input
           type="search"
-          className="bg-gray-200 w-3/4 rounded-lg px-2 py-1"
+          className="bg-gray-200 w-2/4 rounded-lg px-2 py-1"
           placeholder="cari pendanaan"
           value={query}
           onChange={handleQueryChange}
@@ -63,20 +63,20 @@ const ViewAllPendanaan = () => {
       </div>
 
       {query !== "" ? (
-        <div>
+        <div className="lg:w-2/4 mx-auto w-full">
           {items.map((h, i) => (
             <Pendanaan h={h} i={i} />
           ))}
         </div>
       ) : (
-        <div>
+        <div className="lg:w-2/4 mx-auto w-full">
           {historyPendanaan.map((h, i) => (
             <Pendanaan h={h} i={i} />
           ))}
         </div>
       )}
 
-      <div className="m-4">
+      <div className="lg:w-2/4 mx-auto w-full">
         {groupss.length > 0 ? (
           groupss.map((g, i) => (
             <div key={i}>

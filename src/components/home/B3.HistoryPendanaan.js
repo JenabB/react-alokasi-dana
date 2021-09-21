@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalState";
 
 //component
-import Pendanaan from "./Pendanaan";
+import Pendanaan from "../Pendanaan";
 
 const HistoryPendanaan = () => {
   const { historyPendanaan } = useContext(GlobalContext);

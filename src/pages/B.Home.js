@@ -1,10 +1,10 @@
 import React from "react";
 
 //components
-import AppBar from "../components/AppBar";
-import FloatingAddButton from "../components/FloatingAddButton";
-import HistoryPendanaan from "./home/HistoryPendanaan";
-import TotalAlokasiDana from "./home/TotalAlokasiDana";
+import AppBar from "../components/home/B1.AppBar";
+import FloatingAddButton from "../components/home/B4.FloatingAddButton";
+import HistoryPendanaan from "../components/home/B3.HistoryPendanaan";
+import TotalAlokasiDana from "../components/home/B2.TotalAlokasiDana";
 
 //utils
 import { motion } from "framer-motion";

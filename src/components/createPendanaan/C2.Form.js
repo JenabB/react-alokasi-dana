@@ -8,6 +8,8 @@ import { GlobalContext } from "../../context/GlobalState";
 import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
 import { motion } from "framer-motion";
+import categories from "./categories";
+import Select from "react-select";
 
 const Form = () => {
   //state
@@ -27,8 +29,16 @@ const Form = () => {
     setToHistory,
   } = useContext(GlobalContext);
 
+  const [category, setCategory] = useState("pribadi");
+
   let history = useHistory();
 
+  const options = categories.map((c) => ({
+    value: c.value,
+    label: c.label,
+  }));
+
+  console.log(category);
   //action handler
   //nama pendanaan handler
   const handleNamaPendanaanChange = (e) => {
@@ -53,7 +63,16 @@ const Form = () => {
   const handleProdukSubmit = (e) => {
     e.preventDefault();
     getDanaAkhir(danaAwal);
-    getSemuaProduk([...semuaProduk, { id: uuidv4(), nama: "", harga: 0 }]);
+    getSemuaProduk([
+      ...semuaProduk,
+      {
+        id: uuidv4(),
+        nama: "",
+        kategori: category,
+        harga: 0,
+        createdAt: new Date(),
+      },
+    ]);
   };
 
   const saveToHistory = () => {
@@ -158,6 +177,10 @@ const Form = () => {
                   onChange={(e) => {
                     handleProdukChange(index, e);
                   }}
+                />
+                <Select
+                  options={options}
+                  onChange={(e) => setCategory(e.value)}
                 />
                 <h1 className="text-left pl-4 mt-4">Harga</h1>
                 <input
