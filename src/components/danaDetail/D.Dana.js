@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Dana = ({ dana }) => {
   return (
-    <div className="shadow-lg rounded m-4 p-4">
+    <div className="shadow-lg bg-white rounded-lg m-4 p-4">
       <h1 className="text-green-900 text-xl font-bold">{dana.nama}</h1>
       <Link to={`/kategori/${dana.kategori}`}>
         <h2

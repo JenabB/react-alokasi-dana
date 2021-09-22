@@ -16,7 +16,7 @@ const Pendanaan = ({ h, i }) => {
   return (
     <motion.div
       key={i}
-      className="p-4 m-2 shadow-lg rounded-lg"
+      className="p-4 m-2 shadow-lg bg-white rounded-lg"
       whileHover={{
         scale: 1.05,
         transition: { duration: 0.7 },
@@ -68,6 +68,12 @@ const Pendanaan = ({ h, i }) => {
         >
           Delete
         </button>
+      </div>
+
+      <div className="mb-4">
+        <p className="text-sm text-gray-500">
+          {h.semuaProduk.length} pendanaan
+        </p>
       </div>
 
       <div className="grid grid-cols-2 mt-2 mb-2">
