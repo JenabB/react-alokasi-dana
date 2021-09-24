@@ -18,10 +18,8 @@ const HistoryPendanaan = () => {
 
   return (
     <div className="m-4 rounded-xl p-4 w-full mx-auto">
-      <h1>History</h1>
+      <h1>Sejarah</h1>
       <hr />
-      {/* 
-      {groupss ? <div>{group.map}</div> : ""} */}
 
       {historyPendanaan.length > 0 ? (
         <div>
@@ -29,7 +27,7 @@ const HistoryPendanaan = () => {
             <Link to="/all">
               <input
                 type="search"
-                className="bg-gray-200 w-3/4 rounded-lg px-2 py-1"
+                className="bg-gray-200 w-3/4 rounded-full px-2 py-1"
                 placeholder="cari pendanaan"
               />
             </Link>

@@ -138,10 +138,9 @@ const Form = () => {
           },
         }}
       >
-        <div className="text-center">
+        <div className="text-center bg-white py-10 rounded-xl">
           <h4 className="text-muted mb-6">Buat Pendanaan</h4>
           <h1 className="text-left ml-7">Nama Pendanaan</h1>
-
           <input
             type="text"
             className="p-2 mb-6 rounded-xl bg-gray-300"
@@ -165,7 +164,7 @@ const Form = () => {
           <h1 className="mt-8">Alokasi Dana</h1>
           {semuaProduk.length > 0 ? (
             semuaProduk.map((produk, index) => (
-              <div key={index} className="my-4 shadow p-4">
+              <div key={index} className="my-4 shadow bg-white rounded-lg p-4">
                 <h1 className="text-left pl-4">Nama</h1>
                 <input
                   className="bg-gray-300 p-2 rounded-lg my-1"
@@ -201,7 +200,7 @@ const Form = () => {
         </div>
 
         <button
-          className="my-4 bg-gray-100 px-2 py-1 rounded-lg"
+          className="my-4 bg-gray-300 px-2 py-1 rounded-lg"
           onClick={handleProdukSubmit}
         >
           Tambah lagi

@@ -24,18 +24,21 @@ const Header = ({ detail }) => {
         }}
         className="px-2"
       >
-        <div className="text-center text-white rounded-xl mt-4 pb-8 pt-4 bg-green-600">
-          <div className="flex justify-between px-4">
-            <div></div>
-            <h1 className="text-3xl font-bold">{detail.namaPendanaan}</h1>
-            <Link to={`${detail.id}/edit`}>
-              <span className="material-icons md-24">edit</span>
-            </Link>
+        <div className="text-center text-white mt-2">
+          <div className="bg-green-800 p-4 rounded-xl">
+            <div className="flex justify-between px-4">
+              <div></div>
+              <h1 className="text-3xl font-bold">{detail.namaPendanaan}</h1>
+              <Link to={`${detail.id}/edit`}>
+                <span className="material-icons md-24">edit</span>
+              </Link>
+            </div>
+            <p>
+              {moment(detail.createdAt).format("dddd, MMMM Do YYYY, h:mm:ss a")}
+            </p>
           </div>
-          <p>
-            {moment(detail.createdAt).format("dddd, MMMM Do YYYY, h:mm:ss a")}
-          </p>
-          <div className="grid grid-cols-2 mt-8">
+
+          <div className="grid grid-cols-2 mt-2 bg-green-800 p-4 rounded-xl">
             <div>
               <h1>Dana Awal</h1>
               <h1 className="font-bold text-xl">{formatRp(detail.danaAwal)}</h1>
@@ -46,12 +49,16 @@ const Header = ({ detail }) => {
                 {formatRp(detail.danaAkhir)}
               </h1>
             </div>
-          </div>
-          <div className=" mt-4 px-4">
-            <h1>Total Pengeluaran</h1>
-            <p className="font-bold text-xl">
-              {formatRp(detail.danaAwal - detail.danaAkhir)}
-            </p>
+            <div className="mt-4">
+              <h1>Total Pengeluaran</h1>
+              <p className="font-bold text-xl">
+                {formatRp(detail.danaAwal - detail.danaAkhir)}
+              </p>
+            </div>
+            <div className="mt-4">
+              <h1>Pendanaan Produk</h1>
+              <p className="font-bold text-xl">{detail.semuaProduk.length}</p>
+            </div>
           </div>
         </div>
       </motion.div>

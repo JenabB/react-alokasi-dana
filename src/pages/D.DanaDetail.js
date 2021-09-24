@@ -40,7 +40,7 @@ const DanaDetail = () => {
           <div className="text-center my-4">
             <input
               type="search"
-              className="bg-gray-200 rounded-lg px-2 py-1"
+              className="bg-gray-200 rounded-full px-2 py-1"
               placeholder="cari pendanaan"
               value={query}
               onChange={handleQueryChange}

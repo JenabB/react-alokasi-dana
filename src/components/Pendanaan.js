@@ -49,6 +49,7 @@ const Pendanaan = ({ h, i }) => {
           {h.namaPendanaan}
         </Link>
         <button
+          className="text-red-700 text-sm"
           onClick={() => {
             Swal.fire({
               title: "Hapus pendanaan?",
@@ -66,15 +67,17 @@ const Pendanaan = ({ h, i }) => {
             });
           }}
         >
-          Delete
+          Hapus
         </button>
       </div>
 
-      <div className="mb-4">
+      <div className="mb-2">
         <p className="text-sm text-gray-500">
           {h.semuaProduk.length} pendanaan
         </p>
       </div>
+
+      <hr />
 
       <div className="grid grid-cols-2 mt-2 mb-2">
         <div>
@@ -86,7 +89,7 @@ const Pendanaan = ({ h, i }) => {
           <h1>{formatRp(h.danaAkhir)}</h1>
         </div>
       </div>
-      <p className="text-gray-400">{moment(h.createdAt).fromNow()}</p>
+      <p className="text-gray-400 text-xs">{moment(h.createdAt).fromNow()}</p>
     </motion.div>
   );
 };

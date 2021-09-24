@@ -98,14 +98,15 @@ const TotalAlokasiDana = () => {
           <h2 className="text-4xl my-4 font-bold">
             {formatRp(totalAlokasiDana)}
           </h2>
+          <hr />
           <div className="grid grid-cols-2 text-center mt-4">
             <div>
               <h1>Total Dana Awal</h1>
-              <p>{formatRp(totalDanaAwal)}</p>
+              <p className="font-bold">{formatRp(totalDanaAwal)}</p>
             </div>
             <div>
               <h1>Total Dana Akhir</h1>
-              <p>{formatRp(totalDanaAkhir)}</p>
+              <p className="font-bold">{formatRp(totalDanaAkhir)}</p>
             </div>
           </div>
         </motion.div>
