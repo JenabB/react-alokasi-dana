@@ -77,22 +77,24 @@ const ViewAllPendanaan = () => {
       )}
 
       <div className="lg:w-2/4 mx-auto w-full">
-        {groupss.length > 0 ? (
-          groupss.map((g, i) => (
-            <div key={i}>
-              <h1 className="text-center my-4 font-bold text-green-700">
-                {g.date}
-              </h1>
-              <div>
-                {g.dana.map((h, i) => (
-                  <Pendanaan h={h} i={i} />
-                ))}
+        <div className="grid grid-cols-2">
+          {groupss.length > 0 ? (
+            groupss.map((g, i) => (
+              <div key={i}>
+                <h1 className="text-center my-4 font-bold text-green-700">
+                  {g.date}
+                </h1>
+                <div>
+                  {g.dana.map((h, i) => (
+                    <Pendanaan h={h} i={i} />
+                  ))}
+                </div>
               </div>
-            </div>
-          ))
-        ) : (
-          <h1>Loading...</h1>
-        )}
+            ))
+          ) : (
+            <h1>Loading...</h1>
+          )}
+        </div>
       </div>
     </div>
   );

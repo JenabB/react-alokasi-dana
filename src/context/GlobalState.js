@@ -1,5 +1,6 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import Reducer from "./Reducer";
+import blogs from "../components/home/data/blogs.json";
 
 //state awal context
 const initialState = {
@@ -10,6 +11,8 @@ const initialState = {
   historyPendanaan: localStorage.getItem("history-pendanaan")
     ? JSON.parse(localStorage.getItem("history-pendanaan"))
     : [],
+  blogs: blogs,
+  selectedBlog: null,
   danaAwal: 0,
   danaAkhir: 0,
   semuaProduk: [{ nama: "", harga: 0 }], //state awal semua produk
@@ -110,9 +113,18 @@ export const GlobalProvider = (props) => {
     });
   }
 
+  function getSelectedBlog(blog) {
+    dispatch({
+      type: "GET_SELECTED_BLOG",
+      payload: blog,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
+        blogs: state.blogs,
+        selectedBlog: state.selectedBlog,
         totalAlokasiDana: state.totalAlokasiDana,
         totalDanaAwal: state.totalDanaAwal,
         totalDanaAkhir: state.totalDanaAkhir,
@@ -131,6 +143,7 @@ export const GlobalProvider = (props) => {
         deleteOnePendanaan,
         getPendanaanDetail,
         editPendanaan,
+        getSelectedBlog,
       }}
     >
       {props.children}

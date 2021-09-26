@@ -1,23 +1,19 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
-//context
-import { GlobalContext } from "../../context/GlobalState";
 
 //utils
 import { formatRp } from "../../utils/formatRp";
 import { motion } from "framer-motion";
 
-const TotalAlokasiDana = () => {
-  const {
-    historyPendanaan,
-    totalAlokasiDana,
-    getTotalAlokasiDana,
-    totalDanaAwal,
-    totalDanaAkhir,
-    getTotalDanaAwal,
-    getTotalDanaAkhir,
-  } = useContext(GlobalContext);
+const TotalAlokasiDana = ({
+  historyPendanaan,
+  totalAlokasiDana,
+  getTotalAlokasiDana,
+  totalDanaAwal,
+  totalDanaAkhir,
+  getTotalDanaAwal,
+  getTotalDanaAkhir,
+}) => {
   const [arraySemua, setArraySemua] = useState([]);
   const [arrayDanaAwal, setArrayDanaAwal] = useState([]);
   const [arrayDanaAkhir, setArrayDanaAkhir] = useState([]);

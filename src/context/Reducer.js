@@ -85,6 +85,12 @@ export default (state, action) => {
         historyPendanaan: updatesPendanaan,
       };
 
+    case "GET_SELECTED_BLOG":
+      return {
+        ...state,
+        selectedBlog: action.payload,
+      };
+
     default:
       return state;
   }
