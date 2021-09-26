@@ -9,6 +9,7 @@ import ViewAllPendanaan from "./pages/F.ViewAllPendanaan";
 import Welcome from "./pages/A.Welcome";
 import ProdukByCategory from "./pages/H.ProdukByCategory";
 import Blogs from "./pages/I.Blogs";
+import AllBlogs from "./pages/J.AllBlogs";
 
 export default function Navigation() {
   return (
@@ -27,6 +28,7 @@ export default function Navigation() {
             path="/kategori/:kategori"
             component={ProdukByCategory}
           />
+          <Route path="/all-blogs" component={AllBlogs} />
           <Route exact path="/blogs/:id" component={Blogs} />
         </Switch>
       </div>

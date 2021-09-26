@@ -11,8 +11,7 @@ const initialState = {
   historyPendanaan: localStorage.getItem("history-pendanaan")
     ? JSON.parse(localStorage.getItem("history-pendanaan"))
     : [],
-  blogs: blogs,
-  selectedBlog: null,
+  blogs: blogs.blogs,
   danaAwal: 0,
   danaAkhir: 0,
   semuaProduk: [{ nama: "", harga: 0 }], //state awal semua produk
@@ -113,13 +112,6 @@ export const GlobalProvider = (props) => {
     });
   }
 
-  function getSelectedBlog(blog) {
-    dispatch({
-      type: "GET_SELECTED_BLOG",
-      payload: blog,
-    });
-  }
-
   return (
     <GlobalContext.Provider
       value={{
@@ -143,7 +135,6 @@ export const GlobalProvider = (props) => {
         deleteOnePendanaan,
         getPendanaanDetail,
         editPendanaan,
-        getSelectedBlog,
       }}
     >
       {props.children}

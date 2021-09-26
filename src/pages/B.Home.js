@@ -6,10 +6,11 @@ import FloatingAddButton from "../components/home/B4.FloatingAddButton";
 import HistoryPendanaan from "../components/home/B3.HistoryPendanaan";
 import TotalAlokasiDana from "../components/home/B2.TotalAlokasiDana";
 import Blogs from "../components/home/Blogs";
+
 //utils
 import { motion } from "framer-motion";
 
-//
+//context
 import { GlobalContext } from "../context/GlobalState";
 
 const Home = () => {
@@ -39,7 +40,7 @@ const Home = () => {
             delay: 0.4,
           },
         },
-      }} //Transition configuration. Here, we're specifying how long we want the duration to last for (in our case, 0.5 seconds).
+      }}
     >
       <AppBar />
 
@@ -57,7 +58,6 @@ const Home = () => {
         <HistoryPendanaan />
       </div>
       <FloatingAddButton />
-      {/* <Footer /> */}
     </motion.div>
   );
 };
