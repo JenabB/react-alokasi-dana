@@ -24,9 +24,11 @@ const Blogs = () => {
               />
               <div
                 className="bg-white rounded-lg p-4"
-                style={{ height: "150px" }}
+                style={{ height: "90px" }}
               >
-                <h1 className="text-sm">{b.title}</h1>
+                <h1 className="text-sm mb-2">{b.title}</h1>
+              </div>
+              <div className="bg-white p-4">
                 <h6 className="text-sm">{b.writer}</h6>
                 <p className="text-xs text-gray-400">
                   {moment(b.createdAt).fromNow()}
