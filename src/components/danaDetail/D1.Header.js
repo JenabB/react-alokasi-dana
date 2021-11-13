@@ -25,7 +25,7 @@ const Header = ({ detail }) => {
         className="px-2"
       >
         <div className="text-center text-white mt-2">
-          <div className="bg-green-800 p-4 rounded-xl">
+          <div className="bg-primary p-4 rounded-xl">
             <div className="flex justify-between px-4">
               <div></div>
               <h1 className="text-3xl font-bold">{detail.namaPendanaan}</h1>
@@ -38,7 +38,7 @@ const Header = ({ detail }) => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 mt-2 bg-green-800 p-4 rounded-xl">
+          <div className="grid grid-cols-2 mt-2 bg-primary p-4 rounded-xl">
             <div>
               <h1>Dana Awal</h1>
               <h1 className="font-bold text-xl">{formatRp(detail.danaAwal)}</h1>

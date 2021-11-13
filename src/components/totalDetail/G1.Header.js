@@ -3,7 +3,7 @@ import { formatRp } from "../../utils/formatRp";
 const Header = ({ totalAlokasiDana, totalDanaAwal, totalDanaAkhir, semua }) => {
   return (
     <div
-      className="m-4 p-4 rounded-xl text-white bg-green-800"
+      className="m-4 p-4 rounded-xl text-white bg-primary"
       style={{ height: "200px" }}
     >
       <div className="">

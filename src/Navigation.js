@@ -8,7 +8,7 @@ import TotalDetail from "./pages/G.TotalDetail";
 import ViewAllPendanaan from "./pages/F.ViewAllPendanaan";
 import Welcome from "./pages/A.Welcome";
 import ProdukByCategory from "./pages/H.ProdukByCategory";
-import Blogs from "./pages/I.Blogs";
+
 import AllBlogs from "./pages/J.AllBlogs";
 
 export default function Navigation() {
@@ -29,7 +29,6 @@ export default function Navigation() {
             component={ProdukByCategory}
           />
           <Route path="/all-blogs" component={AllBlogs} />
-          <Route exact path="/blogs/:id" component={Blogs} />
         </Switch>
       </div>
     </Router>

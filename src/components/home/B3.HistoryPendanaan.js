@@ -27,7 +27,7 @@ const HistoryPendanaan = () => {
             <Link to="/all">
               <input
                 type="search"
-                className="bg-gray-200 w-3/4 rounded-full px-2 py-1"
+                className="bg-white w-3/4 rounded-lg px-2 py-1"
                 placeholder="cari pendanaan"
               />
             </Link>

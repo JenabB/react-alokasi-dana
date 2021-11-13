@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Dana = ({ dana }) => {
   return (
     <div className="shadow-lg bg-white rounded-lg m-4 p-4">
-      <h1 className="text-green-900 text-xl font-bold">{dana.nama}</h1>
+      <h1 className="text-primary text-xl font-bold">{dana.nama}</h1>
       <Link to={`/kategori/${dana.kategori}`}>
         <h2
           className={`inline-block px-3 py-1 rounded-lg my-2 ${
