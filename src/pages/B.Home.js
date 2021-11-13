@@ -5,7 +5,6 @@ import AppBar from "../components/home/B1.AppBar";
 import FloatingAddButton from "../components/home/B4.FloatingAddButton";
 import HistoryPendanaan from "../components/home/B3.HistoryPendanaan";
 import TotalAlokasiDana from "../components/home/B2.TotalAlokasiDana";
-import Blogs from "../components/home/Blogs";
 
 //utils
 import { motion } from "framer-motion";
@@ -54,7 +53,6 @@ const Home = () => {
           getTotalDanaAwal={getTotalDanaAwal}
           getTotalDanaAkhir={getTotalDanaAkhir}
         />
-        <Blogs />
         <HistoryPendanaan />
       </div>
       <FloatingAddButton />

@@ -3,7 +3,7 @@ import React from "react";
 //app bar
 const AppBar = () => {
   return (
-    <nav className="bg-green-800 p-4 text-center text-white">
+    <nav className="bg-primary p-4 text-center text-white">
       <h1>Alokasi Dana</h1>
     </nav>
   );

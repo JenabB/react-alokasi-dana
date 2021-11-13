@@ -6,7 +6,7 @@ const FloatingAddButton = () => {
   return (
     <Link to="/create">
       <motion.button
-        className="p-0 fixed bottom-10 right-10 w-16 h-16 bg-green-600 rounded-full"
+        className="p-0 fixed bottom-10 right-10 w-16 h-16 bg-primary rounded-full"
         //efek ketika cursor mouse berada diatas(berlaku hanya di desktop)
         whileHover={{
           scale: 1.2,

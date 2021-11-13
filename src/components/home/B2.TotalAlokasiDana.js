@@ -65,7 +65,7 @@ const TotalAlokasiDana = ({
     <div className="p-4">
       <Link to="detail">
         <motion.div
-          className="bg-green-800 text-white rounded-xl p-4 w-full mx-auto"
+          className="bg-primary text-white rounded-xl p-4 w-full mx-auto"
           style={{ height: "200px" }}
           initial="hidden"
           animate="visible"
