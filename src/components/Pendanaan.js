@@ -44,12 +44,12 @@ const Pendanaan = ({ h, i }) => {
         <Link
           to={`pendanaan/${h.id}`}
           onClick={() => getPendanaanDetail(h)}
-          className="text-green-800 font-bold text-lg"
+          className="text-primary font-bold text-lg"
         >
           {h.namaPendanaan}
         </Link>
         <button
-          className="text-red-700 text-sm"
+          className="material-icons text-red"
           onClick={() => {
             Swal.fire({
               title: "Hapus pendanaan?",
@@ -67,7 +67,7 @@ const Pendanaan = ({ h, i }) => {
             });
           }}
         >
-          Hapus
+          delete
         </button>
       </div>
 
@@ -79,14 +79,14 @@ const Pendanaan = ({ h, i }) => {
 
       <hr />
 
-      <div className="grid grid-cols-2 mt-2 mb-2">
+      <div className="flex justify-between my-4 px-4">
         <div>
-          <h1>Dana awal</h1>
-          <h1>{formatRp(h.danaAwal)}</h1>
+          <h1 className="text-lg">Dana awal</h1>
+          <p>{formatRp(h.danaAwal)}</p>
         </div>
         <div>
-          <h1>Dana akhir</h1>
-          <h1>{formatRp(h.danaAkhir)}</h1>
+          <h1 className="text-lg">Dana akhir</h1>
+          <p>{formatRp(h.danaAkhir)}</p>
         </div>
       </div>
       <p className="text-gray-400 text-xs">{moment(h.createdAt).fromNow()}</p>

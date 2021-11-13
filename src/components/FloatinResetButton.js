@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const FloatingResetButton = () => {
   return (
     <motion.button
-      className="p-0 fixed bottom-10 right-10 w-16 h-16 bg-green-600 rounded-full"
+      className="p-0 fixed bottom-10 right-10 w-16 h-16 bg-primary rounded-full"
       animate={{ rotate: 360 }} //animasi memutar 360 derajat
       transition={{ duration: 2 }}
       whileTap={{

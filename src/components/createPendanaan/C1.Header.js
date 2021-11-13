@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <motion.div
-      className="bg-green-600 sticky top-4 z-10 text-center text-white  m-4 p-4 rounded-lg"
+      className="bg-primary sticky top-4 z-10 text-center text-white m-3 p-3 rounded-lg"
       animate={{
         scale: [2, 1],
       }}
@@ -30,7 +30,7 @@ const Header = () => {
       </div>
       <div className="mt-8 text-center">
         {semuaProduk.length !== 0 ? (
-          <div className="bg-green-900 rounded-lg px-2 py-3">
+          <div className="bg-primaryLight rounded-lg px-2 py-3">
             <table className="table-fixed w-full">
               <tr>
                 <th className="w-1/4">No.</th>

@@ -121,7 +121,7 @@ const Form = () => {
   return (
     <div>
       <motion.div
-        className="p-4"
+        className="px-4"
         initial="hidden"
         animate="visible"
         variants={{
@@ -138,36 +138,38 @@ const Form = () => {
           },
         }}
       >
-        <div className="text-center bg-white py-10 rounded-xl">
-          <h4 className="text-muted mb-6">Buat Pendanaan</h4>
-          <h1 className="text-left ml-7">Nama Pendanaan</h1>
-          <input
-            type="text"
-            className="p-2 mb-6 rounded-xl bg-gray-300"
-            placeholder="contoh: beli album lyly"
-            value={namaPendanaan}
-            onChange={handleNamaPendanaanChange}
-            required
-          />
-          <h1 className="text-left ml-7">Total Pendanaan</h1>
-          <input
-            className="p-2 rounded-xl bg-gray-300"
-            type="number"
-            value={danaAwal}
-            onChange={handleDanaChange}
-            placeholder="dana"
-            required
-          />
+        <div className="text-center bg-white py-6 px-6 rounded">
+          <h4 className="text-muted mb-6 text-lg">Buat Pendanaan</h4>
+          <div className="text-left mx-auto lg:w-1/2">
+            <h1 className="text-formLabel">Nama Pendanaan</h1>
+            <input
+              type="text"
+              className="p-2 mb-6 rounded bg-input w-full"
+              placeholder="contoh: beli album lyly"
+              value={namaPendanaan}
+              onChange={handleNamaPendanaanChange}
+              required
+            />
+            <h1 className="text-formLabel">Total Pendanaan</h1>
+            <input
+              className="p-2 rounded bg-input w-full"
+              type="number"
+              value={danaAwal}
+              onChange={handleDanaChange}
+              placeholder="dana"
+              required
+            />
+          </div>
         </div>
 
         <div className="text-center">
           <h1 className="mt-8">Alokasi Dana</h1>
           {semuaProduk.length > 0 ? (
             semuaProduk.map((produk, index) => (
-              <div key={index} className="my-4 shadow bg-white rounded-lg p-4">
-                <h1 className="text-left pl-4">Nama</h1>
+              <div key={index} className="my-4 shadow bg-white rounded p-6">
+                <h1 className="text-left text-formLabel">Nama</h1>
                 <input
-                  className="bg-gray-300 p-2 rounded-lg my-1"
+                  className="bg-input p-2 rounded my-2 w-full"
                   type="text"
                   maxLength="20"
                   name="nama"
@@ -181,9 +183,9 @@ const Form = () => {
                   options={options}
                   onChange={(e) => setCategory(e.value)}
                 />
-                <h1 className="text-left pl-4 mt-4">Harga</h1>
+                <h1 className="text-left text-formLabel mt-4">Harga</h1>
                 <input
-                  className="bg-gray-100 p-2"
+                  className="bg-input p-2 rounded mt-2 w-full"
                   type="number"
                   name="harga"
                   value={produk.harga}
@@ -208,17 +210,17 @@ const Form = () => {
         <br />
 
         {/* button simpan akan aktif jika ada input nama pendanaan dan dana awal */}
-        <div className="text-center mt-4">
+        <div className="text-center mt-4 mb-8">
           {isFilled ? (
             <button
-              className="bg-green-800 text-white font-bold px-2 py-1 rounded"
+              className="bg-primary text-white font-bold px-2 py-1 rounded"
               onClick={saveToHistory}
             >
               Simpan
             </button>
           ) : (
             <button
-              className="bg-gray-300 text-white font-bold px-2 py-1 rounded"
+              className="bg-formLabel text-white font-bold px-2 py-1 rounded"
               disabled
             >
               Simpan
