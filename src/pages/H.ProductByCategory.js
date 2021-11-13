@@ -4,7 +4,7 @@ import AppBarWithBackButton from "../components/AppBarWithBackButton";
 import { GlobalContext } from "../context/GlobalState";
 import Dana from "../components/danaDetail/D.Dana";
 
-const ProdukByCategory = (props) => {
+const ProductByCategory = (props) => {
   const kategori = props.match.params.kategori;
 
   const { semuaProduk } = useContext(GlobalContext);
@@ -32,4 +32,4 @@ const ProdukByCategory = (props) => {
   );
 };
 
-export default ProdukByCategory;
+export default ProductByCategory;

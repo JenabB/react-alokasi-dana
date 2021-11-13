@@ -9,7 +9,6 @@ import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
 import { motion } from "framer-motion";
 import categories from "./categories";
-import Select from "react-select";
 
 const Form = () => {
   //state
@@ -29,16 +28,10 @@ const Form = () => {
     setToHistory,
   } = useContext(GlobalContext);
 
-  const [category, setCategory] = useState("pribadi");
+  const [category] = useState("pribadi");
 
   let history = useHistory();
 
-  const options = categories.map((c) => ({
-    value: c.value,
-    label: c.label,
-  }));
-
-  console.log(category);
   //action handler
   //nama pendanaan handler
   const handleNamaPendanaanChange = (e) => {
@@ -68,7 +61,7 @@ const Form = () => {
       {
         id: uuidv4(),
         nama: "",
-        kategori: category,
+        category: category,
         harga: 0,
         createdAt: new Date(),
       },
@@ -76,6 +69,10 @@ const Form = () => {
   };
 
   const saveToHistory = () => {
+    //insert id to index 0
+    semuaProduk[0].id = uuidv4();
+
+    //save to history
     setToHistory({
       id: uuidv4(),
       createdAt: new Date(),
@@ -140,7 +137,7 @@ const Form = () => {
       >
         <div className="text-center bg-white py-6 px-6 rounded">
           <h4 className="text-muted mb-6 text-lg">Buat Pendanaan</h4>
-          <div className="text-left mx-auto lg:w-1/2">
+          <div className="text-left">
             <h1 className="text-formLabel">Nama Pendanaan</h1>
             <input
               type="text"
@@ -179,10 +176,18 @@ const Form = () => {
                     handleProdukChange(index, e);
                   }}
                 />
-                <Select
-                  options={options}
-                  onChange={(e) => setCategory(e.value)}
-                />
+                <h1 className="text-left text-formLabel mt-4">Kategori</h1>
+                <select
+                  name="category"
+                  className="p-2 w-full my-4"
+                  onChange={(e) => {
+                    handleProdukChange(index, e);
+                  }}
+                >
+                  {categories.map((c) => (
+                    <option value={c.value}>{c.label}</option>
+                  ))}
+                </select>
                 <h1 className="text-left text-formLabel mt-4">Harga</h1>
                 <input
                   className="bg-input p-2 rounded mt-2 w-full"
@@ -202,7 +207,7 @@ const Form = () => {
         </div>
 
         <button
-          className="my-4 bg-gray-300 px-2 py-1 rounded-lg"
+          className="my-4 bg-input px-2 py-1 rounded-lg"
           onClick={handleProdukSubmit}
         >
           Tambah lagi

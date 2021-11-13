@@ -4,27 +4,32 @@ import { formatRp } from "../../utils/formatRp";
 import { Link } from "react-router-dom";
 
 const Dana = ({ dana }) => {
+  function categoryClassName(category) {
+    const prefix = "inline-block px-3 py-1 rounded-lg text-white my-2 bg-";
+
+    switch (category) {
+      case "keluarga":
+        return prefix + "red";
+      case "pribadi":
+        return prefix + "primary";
+      case "hiburan":
+        return prefix + "primaryLight";
+
+      default:
+        return prefix + "white";
+    }
+  }
+
   return (
     <div className="shadow-lg bg-white rounded-lg m-4 p-4">
       <h1 className="text-primary text-xl font-bold">{dana.nama}</h1>
-      <Link to={`/kategori/${dana.kategori}`}>
-        <h2
-          className={`inline-block px-3 py-1 rounded-lg my-2 ${
-            dana.kategori === "pribadi"
-              ? "bg-blue-400"
-              : "ibadah"
-              ? "bg-green-300"
-              : "pendidikan"
-              ? "bg-yellow-500"
-              : "umum"
-              ? "bg-red-400"
-              : "bg-red-300"
-          }`}
-        >
-          {dana.kategori}
-        </h2>
-      </Link>
-      <h3>{formatRp(dana.harga)}</h3>
+      <div className="grid grid-cols-3 items-center">
+        <Link to={`/kategori/${dana.category}`}>
+          <h2 className={categoryClassName(dana.category)}>{dana.category}</h2>
+        </Link>
+        <h3 className="mx-2">{formatRp(dana.harga)}</h3>
+      </div>
+
       <p className="text-gray-400 text-sm mt-4">
         {moment(dana.createdAt).fromNow()}
       </p>

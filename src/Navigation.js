@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import CreatePendanaan from "./pages/C.CreatePendanaan";
-import DanaDetail from "./pages/D.DanaDetail";
-import EditPendanaan from "./pages/E.EditPendanaan";
-import Home from "./pages/B.Home";
-import TotalDetail from "./pages/G.TotalDetail";
-import ViewAllPendanaan from "./pages/F.ViewAllPendanaan";
-import Welcome from "./pages/A.Welcome";
-import ProdukByCategory from "./pages/H.ProdukByCategory";
-
-import AllBlogs from "./pages/J.AllBlogs";
+import {
+  Home,
+  Welcome,
+  CreatePendanaan,
+  TotalDetail,
+  ViewAllPendanaan,
+  DanaDetail,
+  EditPendanaan,
+  ProductByCategory,
+} from "./pages";
 
 export default function Navigation() {
   return (
@@ -26,9 +26,8 @@ export default function Navigation() {
           <Route
             exact
             path="/kategori/:kategori"
-            component={ProdukByCategory}
+            component={ProductByCategory}
           />
-          <Route path="/all-blogs" component={AllBlogs} />
         </Switch>
       </div>
     </Router>

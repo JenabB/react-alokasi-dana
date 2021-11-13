@@ -12,13 +12,13 @@ const Header = () => {
 
   return (
     <motion.div
-      className="bg-primary sticky top-4 z-10 text-center text-white m-3 p-3 rounded-lg"
+      className="bg-primary sticky top-4 z-10 text-center text-white m-3 rounded-lg"
       animate={{
         scale: [2, 1],
       }}
       transition={{ duration: 0.8 }}
     >
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 py-4 px-8">
         <div>
           <h1>Dana Awal</h1>
           <h1 className="font-bold">{formatRp(danaAwal)}</h1>
@@ -28,9 +28,9 @@ const Header = () => {
           <h1 className="font-bold">{formatRp(danaAkhir)}</h1>
         </div>
       </div>
-      <div className="mt-8 text-center">
+      <div className="mt-4 text-center">
         {semuaProduk.length !== 0 ? (
-          <div className="bg-primaryLight rounded-lg px-2 py-3">
+          <div className="bg-primaryLight p-4 rounded-b-lg">
             <table className="table-fixed w-full">
               <tr>
                 <th className="w-1/4">No.</th>
