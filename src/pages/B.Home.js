@@ -20,6 +20,8 @@ const Home = () => {
     totalDanaAwal,
     totalDanaAkhir,
     getTotalDanaAwal,
+    getTotalProduk,
+    getSemuaProduk,
     getTotalDanaAkhir,
   } = useContext(GlobalContext);
 
@@ -50,8 +52,10 @@ const Home = () => {
           getTotalAlokasiDana={getTotalAlokasiDana}
           totalDanaAwal={totalDanaAwal}
           totalDanaAkhir={totalDanaAkhir}
+          getSemuaProduk={getSemuaProduk}
           getTotalDanaAwal={getTotalDanaAwal}
           getTotalDanaAkhir={getTotalDanaAkhir}
+          getTotalProduk={getTotalProduk}
         />
         <HistoryPendanaan />
       </div>

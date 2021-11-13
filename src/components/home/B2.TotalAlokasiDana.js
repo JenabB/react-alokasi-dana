@@ -11,16 +11,19 @@ const TotalAlokasiDana = ({
   getTotalAlokasiDana,
   totalDanaAwal,
   totalDanaAkhir,
+  getTotalProduk,
   getTotalDanaAwal,
   getTotalDanaAkhir,
 }) => {
   const [arraySemua, setArraySemua] = useState([]);
   const [arrayDanaAwal, setArrayDanaAwal] = useState([]);
   const [arrayDanaAkhir, setArrayDanaAkhir] = useState([]);
+  const [semuaProduk, setSemuaProduk] = useState([]);
 
   useEffect(() => {
     //memasukkan array semua produk ke array baru
     setArraySemua([]);
+    setSemuaProduk([]);
     setArrayDanaAwal([]);
     setArrayDanaAkhir([]);
 
@@ -28,6 +31,15 @@ const TotalAlokasiDana = ({
       arraySemua.push(item.semuaProduk);
     });
 
+    //mendapatkan semua produk tiap pendanaan
+    historyPendanaan.forEach((el) => semuaProduk.push(el.semuaProduk));
+
+    // menggabungkan semua produk dari semua array Pendanaan
+    const allProd = [].concat(...semuaProduk.map((el) => el));
+    setSemuaProduk(allProd);
+
+    getTotalProduk(allProd);
+    console.log(allProd);
     //array untuk semua harga
     const arrayHarga = [].concat(
       ...arraySemua.map((totalHarga) =>

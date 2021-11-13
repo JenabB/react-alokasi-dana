@@ -22,6 +22,12 @@ export default (state, action) => {
         totalDanaAkhir: action.payload,
       };
 
+    case "GET_TOTAL_PRODUK":
+      return {
+        ...state,
+        totalProduk: action.payload,
+      };
+
     //mendapatkan dana awal
     case "GET_DANA_AWAL":
       return {

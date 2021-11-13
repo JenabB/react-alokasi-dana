@@ -25,7 +25,7 @@ export default function Navigation() {
           <Route path="/pendanaan/:id/edit" component={EditPendanaan} />
           <Route
             exact
-            path="/kategori/:kategori"
+            path="/category/:category"
             component={ProductByCategory}
           />
         </Switch>

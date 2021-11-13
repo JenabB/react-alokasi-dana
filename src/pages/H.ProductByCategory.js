@@ -5,24 +5,24 @@ import { GlobalContext } from "../context/GlobalState";
 import Dana from "../components/danaDetail/D.Dana";
 
 const ProductByCategory = (props) => {
-  const kategori = props.match.params.kategori;
+  const category = props.match.params.category;
 
   const { semuaProduk } = useContext(GlobalContext);
-  const filtered = semuaProduk.filter((x) => x.kategori === kategori);
+  const filtered = semuaProduk.filter((x) => x.category === category);
 
   return (
     <div>
       <Helmet>
-        <title>{kategori}</title>
+        <title>{category}</title>
       </Helmet>
-      <AppBarWithBackButton title={kategori} />
+      <AppBarWithBackButton title={category} />
       <div className="mt-10">
         <h1 className="text-center">
-          {filtered.length} produk dalam kategori {kategori}
+          {filtered.length} produk dalam kategori {category}
         </h1>
       </div>
       <div className="lg:w-2/4 mx-auto w-full">
-        <div className="grid grid-cols-2">
+        <div className="grid">
           {filtered.map((f, i) => (
             <Dana dana={f} key={i} />
           ))}

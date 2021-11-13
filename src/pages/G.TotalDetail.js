@@ -18,7 +18,7 @@ const TotalDetail = () => {
     totalAlokasiDana,
     totalDanaAwal,
     totalDanaAkhir,
-    getSemuaProduk,
+    totalProduk,
   } = useContext(GlobalContext);
   console.log(semuaProduk);
 
@@ -30,7 +30,6 @@ const TotalDetail = () => {
     //array untuk semua harga
     const arrayHarga = [].concat(...semuaProduk.map((el) => el));
     setSemua(arrayHarga);
-    getSemuaProduk(arrayHarga);
 
     //yare
     //menjumlahkan nilai array harga
@@ -58,7 +57,7 @@ const TotalDetail = () => {
           totalDanaAkhir={totalDanaAkhir}
           semua={semua}
         />
-        <AllProduct semuaHarga={semuaHarga} semua={semua} />
+        <AllProduct semuaHarga={semuaHarga} semua={totalProduk} />
       </div>
     </div>
   );

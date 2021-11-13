@@ -16,7 +16,7 @@ const Form = () => {
   //sebagai validator ketika nama pendanaan dan dana awal terisi
   //bernilai true ketika input nama pendanaan dan dana awal terisi
   const [isFilled, setIsfilled] = useState(false);
-
+  const [category] = useState("pribadi");
   //context
   const {
     danaAwal,
@@ -27,8 +27,6 @@ const Form = () => {
     getSemuaProduk,
     setToHistory,
   } = useContext(GlobalContext);
-
-  const [category] = useState("pribadi");
 
   let history = useHistory();
 
@@ -51,6 +49,8 @@ const Form = () => {
 
     getSemuaProduk(produks);
   };
+
+  console.log(semuaProduk);
 
   //menyimpan ke daftar produk
   const handleProdukSubmit = (e) => {

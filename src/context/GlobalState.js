@@ -1,20 +1,20 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import Reducer from "./Reducer";
-import blogs from "../components/home/data/blogs.json";
 
 //state awal context
 const initialState = {
   totalAlokasiDana: 0,
   totalDanaAwal: 0,
   totalDanaAkhir: 0,
-  //memeriksa apakah ada nilai pada localstorage history pendanaan
+  totalProduk: [],
   historyPendanaan: localStorage.getItem("history-pendanaan")
     ? JSON.parse(localStorage.getItem("history-pendanaan"))
     : [],
-  blogs: blogs.blogs,
   danaAwal: 0,
   danaAkhir: 0,
-  semuaProduk: [{ nama: "", harga: 0 }], //state awal semua produk
+  semuaProduk: [
+    { createAt: new Date(), nama: "", category: "pribadi", harga: 0 },
+  ], //state awal semua produk
   pendanaanDetail: null,
 };
 
@@ -72,6 +72,13 @@ export const GlobalProvider = (props) => {
     });
   }
 
+  function getTotalProduk(produk) {
+    dispatch({
+      type: "GET_TOTAL_PRODUK",
+      payload: produk,
+    });
+  }
+
   //mendapatkan semua produk
   function getSemuaProduk(produk) {
     dispatch({
@@ -115,11 +122,10 @@ export const GlobalProvider = (props) => {
   return (
     <GlobalContext.Provider
       value={{
-        blogs: state.blogs,
-        selectedBlog: state.selectedBlog,
         totalAlokasiDana: state.totalAlokasiDana,
         totalDanaAwal: state.totalDanaAwal,
         totalDanaAkhir: state.totalDanaAkhir,
+        totalProduk: state.totalProduk,
         danaAwal: state.danaAwal,
         danaAkhir: state.danaAkhir,
         semuaProduk: state.semuaProduk,
@@ -128,6 +134,7 @@ export const GlobalProvider = (props) => {
         getTotalAlokasiDana,
         getTotalDanaAwal,
         getTotalDanaAkhir,
+        getTotalProduk,
         getDanaAwal,
         getDanaAkhir,
         getSemuaProduk,
