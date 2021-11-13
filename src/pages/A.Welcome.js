@@ -2,9 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Helmet from "react-helmet";
 
-//assets
-import welcome from "../assets/images/welcome.jpg";
-
 //utils
 import { motion } from "framer-motion";
 
@@ -17,11 +14,7 @@ const Welcome = () => {
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
-      <div className="lg:w-1/4 w-full mx-auto">
-        <img src={welcome} alt="welcome" />
-      </div>
-
-      <div className="p-4 pt-0 lg:w-1/4 mx-auto">
+      <div className="p-4 lg:w-1/4 mx-auto">
         <motion.h1
           className="text-3xl text-center"
           initial="hidden"
@@ -88,7 +81,7 @@ const Welcome = () => {
         <motion.div
           animate={{ x: 100 }}
           transition={{ ease: "easeOut", duration: 3 }}
-          className="bg-green-600 px-6 py-2 rounded-xl text-white"
+          className="bg-primary px-6 py-2 rounded-xl text-white"
         >
           Mulai!
         </motion.div>
