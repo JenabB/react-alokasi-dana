@@ -8,6 +8,7 @@ import { GlobalContext } from "context/GlobalState";
 import AppBarWithBackButton from "components/AppBarWithBackButton";
 import Dana from "components/danaDetail/D.Dana";
 import Header from "components/danaDetail/D1.Header";
+import DanaChart from "components/common/DanaChart";
 
 const DanaDetail = () => {
   const { pendanaanDetail } = useContext(GlobalContext);
@@ -34,6 +35,8 @@ const DanaDetail = () => {
 
       <div className="lg:w-2/4 mx-auto w-full">
         <Header detail={detail} />
+
+        <DanaChart />
 
         <div>
           <h1 className="text-center mt-10">Alokasi Dana</h1>
