@@ -1,9 +1,9 @@
 import React from "react";
 import moment from "moment";
-import { formatRp } from "../../utils/formatRp";
-import categoryClassName from "../../utils/categoryClassName";
+import { formatRp } from "utils/formatRp";
+import { category } from "utils/categoryClassName";
 import { Link } from "react-router-dom";
-import { danaCard } from "../../theme/rectangularTheme";
+import { danaCard } from "theme/rectangularTheme";
 
 const Dana = ({ dana }) => {
   return (
@@ -11,7 +11,7 @@ const Dana = ({ dana }) => {
       <h1 className="text-primary text-xl font-bold">{dana.nama}</h1>
       <div className="grid grid-cols-3 items-center">
         <Link to={`/category/${dana.category}`}>
-          <h2 className={categoryClassName(dana.category)}>{dana.category}</h2>
+          <h2 className={category(dana.category)}>{dana.category}</h2>
         </Link>
         <h3 className="mx-2">{formatRp(dana.harga)}</h3>
       </div>

@@ -1,11 +1,11 @@
 import Dana from "../danaDetail/D.Dana";
 
-const AllProduct = ({ semua }) => {
+const AllProduct = ({ totalProduk }) => {
   return (
     <div className="m-4 mt-14">
       <h1 className="text-center">Semua Produk</h1>
       <div className="">
-        {semua.map((dana, i) => (
+        {totalProduk.map((dana, i) => (
           <Dana dana={dana} key={i} />
         ))}
       </div>

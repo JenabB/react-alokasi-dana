@@ -2,13 +2,14 @@ import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 //context
-import { GlobalContext } from "../../context/GlobalState";
+import { GlobalContext } from "context/GlobalState";
 
 //utils
 import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
 import { motion } from "framer-motion";
 import categories from "./categories";
+import { formInput } from "theme/inputTheme";
 
 const Form = () => {
   //state
@@ -141,7 +142,7 @@ const Form = () => {
             <h1 className="text-formLabel">Nama Pendanaan</h1>
             <input
               type="text"
-              className="p-2 mb-6 rounded bg-input w-full"
+              className={formInput}
               placeholder="contoh: beli album lyly"
               value={namaPendanaan}
               onChange={handleNamaPendanaanChange}
@@ -149,7 +150,7 @@ const Form = () => {
             />
             <h1 className="text-formLabel">Total Pendanaan</h1>
             <input
-              className="p-2 rounded bg-input w-full"
+              className={formInput}
               type="number"
               value={danaAwal}
               onChange={handleDanaChange}
@@ -166,7 +167,7 @@ const Form = () => {
               <div key={index} className="my-4 shadow bg-white rounded p-6">
                 <h1 className="text-left text-formLabel">Nama</h1>
                 <input
-                  className="bg-input p-2 rounded my-2 w-full"
+                  className={formInput}
                   type="text"
                   maxLength="20"
                   name="nama"
@@ -190,7 +191,7 @@ const Form = () => {
                 </select>
                 <h1 className="text-left text-formLabel mt-4">Harga</h1>
                 <input
-                  className="bg-input p-2 rounded mt-2 w-full"
+                  className={formInput}
                   type="number"
                   name="harga"
                   value={produk.harga}

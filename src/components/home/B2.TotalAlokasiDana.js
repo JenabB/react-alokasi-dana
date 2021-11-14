@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 //utils
-import { mainHeader } from "../../theme/rectangularTheme";
-import { formatRp } from "../../utils/formatRp";
+import { mainHeader } from "theme/rectangularTheme";
+import { formatRp } from "utils/formatRp";
 import { motion } from "framer-motion";
 
 const TotalAlokasiDana = ({

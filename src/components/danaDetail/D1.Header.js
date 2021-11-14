@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { formatRp } from "../../utils/formatRp";
+import { formatRp } from "utils/formatRp";
 
 const Header = ({ detail }) => {
   return (

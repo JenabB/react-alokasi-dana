@@ -1,7 +1,12 @@
 import React from "react";
-import { formatRp } from "../../utils/formatRp";
+import { formatRp } from "utils/formatRp";
 
-const Header = ({ totalAlokasiDana, totalDanaAwal, totalDanaAkhir, semua }) => {
+const Header = ({
+  totalAlokasiDana,
+  totalDanaAwal,
+  totalDanaAkhir,
+  totalProduk,
+}) => {
   return (
     <div
       className="m-4 p-4 rounded-xl text-white bg-primary"
@@ -22,7 +27,7 @@ const Header = ({ totalAlokasiDana, totalDanaAwal, totalDanaAkhir, semua }) => {
         </div>
         <div className="mt-4">
           <h1 className="font-bold">
-            {semua.length}
+            {totalProduk.length}
             <span className="font-normal"> produk telah ditambahkan</span>
           </h1>
         </div>

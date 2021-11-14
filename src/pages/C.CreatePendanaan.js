@@ -1,9 +1,9 @@
 //components
-import AppBarWithBackButton from "../components/AppBarWithBackButton";
-import FloatingResetButton from "../components/FloatinResetButton";
+import AppBarWithBackButton from "components/AppBarWithBackButton";
+import FloatingResetButton from "components/FloatinResetButton";
 
-import Header from "../components/createPendanaan/C1.Header";
-import Form from "../components/createPendanaan/C2.Form";
+import Header from "components/createPendanaan/C1.Header";
+import Form from "components/createPendanaan/C2.Form";
 
 import Helmet from "react-helmet";
 

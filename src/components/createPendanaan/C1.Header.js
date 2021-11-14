@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 
 //context
-import { GlobalContext } from "../../context/GlobalState";
+import { GlobalContext } from "context/GlobalState";
 
 //utils
-import { formatRp } from "../../utils/formatRp";
+import { formatRp } from "utils/formatRp";
 import { motion } from "framer-motion";
 
 const Header = () => {

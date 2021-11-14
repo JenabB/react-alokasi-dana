@@ -3,14 +3,14 @@ import { useHistory } from "react-router-dom";
 import Helmet from "react-helmet";
 
 import { motion } from "framer-motion";
-import { formatRp } from "../utils/formatRp";
+import { formatRp } from "utils/formatRp";
 import { v4 as uuidv4 } from "uuid";
 
 //context
-import { GlobalContext } from "../context/GlobalState";
+import { GlobalContext } from "context/GlobalState";
 
 //component
-import AppBarWithBackButton from "../components/AppBarWithBackButton";
+import AppBarWithBackButton from "components/AppBarWithBackButton";
 
 const EditPendanaan = (props) => {
   const { historyPendanaan, editPendanaan } = useContext(GlobalContext);

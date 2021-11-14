@@ -9,7 +9,7 @@ import {
   DanaDetail,
   EditPendanaan,
   ProductByCategory,
-} from "./pages";
+} from "pages";
 
 export default function Navigation() {
   return (

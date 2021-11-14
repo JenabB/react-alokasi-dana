@@ -2,12 +2,12 @@ import React, { useState, useContext } from "react";
 import Helmet from "react-helmet";
 
 //context
-import { GlobalContext } from "../context/GlobalState";
+import { GlobalContext } from "context/GlobalState";
 
 //components
-import AppBarWithBackButton from "../components/AppBarWithBackButton";
-import Dana from "../components/danaDetail/D.Dana";
-import Header from "../components/danaDetail/D1.Header";
+import AppBarWithBackButton from "components/AppBarWithBackButton";
+import Dana from "components/danaDetail/D.Dana";
+import Header from "components/danaDetail/D1.Header";
 
 const DanaDetail = () => {
   const { pendanaanDetail } = useContext(GlobalContext);

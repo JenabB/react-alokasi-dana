@@ -2,14 +2,14 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 //context
-import { GlobalContext } from "../context/GlobalState";
+import { GlobalContext } from "context/GlobalState";
 
 //utils
 import moment from "moment";
 import Swal from "sweetalert2";
 import { motion } from "framer-motion";
-import { danaCard } from "../theme/rectangularTheme";
-import { formatRp } from "../utils/formatRp";
+import { danaCard } from "theme/rectangularTheme";
+import { formatRp } from "utils/formatRp";
 
 const Pendanaan = ({ h, i }) => {
   const { getPendanaanDetail, deleteOnePendanaan } = useContext(GlobalContext);
