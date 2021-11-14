@@ -1,11 +1,43 @@
 import React from "react";
 import moment from "moment";
 import { formatRp } from "utils/formatRp";
-import { category } from "utils/categoryClassName";
+
 import { Link } from "react-router-dom";
 import { danaCard } from "theme/rectangularTheme";
 
 const Dana = ({ dana }) => {
+  function category(category) {
+    const prefix = "inline-block px-3 py-1 rounded-lg text-white my-2 bg-";
+
+    switch (category) {
+      case "pribadi":
+        return prefix + "pribadi";
+      case "umum":
+        return prefix + "umum";
+      case "keluarga":
+        return prefix + "keluarga";
+      case "tabungan":
+        return prefix + "tabungan";
+      case "hiburan":
+        return prefix + "hiburan";
+      case "asmara":
+        return prefix + "asmara";
+      case "pendidikan":
+        return prefix + "pendidikan";
+      case "kesehatan":
+        return prefix + "kesehatan";
+      case "pembangunan":
+        return prefix + "pembangunan";
+      case "makanan":
+        return prefix + "makanan";
+      case "ibadah":
+        return prefix + "ibadah";
+
+      default:
+        return prefix + "white";
+    }
+  }
+
   return (
     <div className={danaCard}>
       <h1 className="text-primary text-xl font-bold">{dana.nama}</h1>

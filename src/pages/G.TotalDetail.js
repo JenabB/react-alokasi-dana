@@ -5,6 +5,7 @@ import Helmet from "react-helmet";
 import AppBarWithBackButton from "components/AppBarWithBackButton";
 import AllProduct from "components/totalDetail/G2.AllProduct";
 import Header from "components/totalDetail/G1.Header";
+import { motion } from "framer-motion";
 
 //context
 import { GlobalContext } from "context/GlobalState";
@@ -14,7 +15,23 @@ const TotalDetail = () => {
     useContext(GlobalContext);
 
   return (
-    <div>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: {
+          scale: 0.8,
+          opacity: 0,
+        },
+        visible: {
+          scale: 1,
+          opacity: 1,
+          transition: {
+            delay: 0.4,
+          },
+        },
+      }}
+    >
       <Helmet>
         <meta charSet="utf-8" />
         <title>Total Dana Detail</title>
@@ -31,7 +48,7 @@ const TotalDetail = () => {
         />
         <AllProduct totalProduk={totalProduk} />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

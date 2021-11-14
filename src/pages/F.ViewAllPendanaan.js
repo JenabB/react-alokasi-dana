@@ -7,6 +7,7 @@ import { GlobalContext } from "context/GlobalState";
 //component
 import AppBarWithBackButton from "components/AppBarWithBackButton";
 import Pendanaan from "components/Pendanaan";
+import { motion } from "framer-motion";
 
 import { searchInput } from "theme/inputTheme";
 
@@ -47,7 +48,23 @@ const ViewAllPendanaan = () => {
     setGroupss(groupArrays);
   }, [historyPendanaan]);
   return (
-    <div>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: {
+          scale: 0.8,
+          opacity: 0,
+        },
+        visible: {
+          scale: 1,
+          opacity: 1,
+          transition: {
+            delay: 0.4,
+          },
+        },
+      }}
+    >
       <Helmet>
         <meta charSet="utf-8" />
         <title>Semua Pendanaan</title>
@@ -98,7 +115,7 @@ const ViewAllPendanaan = () => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

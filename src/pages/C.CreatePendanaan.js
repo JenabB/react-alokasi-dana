@@ -4,12 +4,29 @@ import FloatingResetButton from "components/FloatinResetButton";
 
 import Header from "components/createPendanaan/C1.Header";
 import Form from "components/createPendanaan/C2.Form";
+import { motion } from "framer-motion";
 
 import Helmet from "react-helmet";
 
 const CreatePendanaan = () => {
   return (
-    <div>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: {
+          scale: 0.8,
+          opacity: 0,
+        },
+        visible: {
+          scale: 1,
+          opacity: 1,
+          transition: {
+            delay: 0.4,
+          },
+        },
+      }}
+    >
       <Helmet>
         <meta charSet="utf-8" />
         <title>Buat Pendanaan</title>
@@ -23,7 +40,7 @@ const CreatePendanaan = () => {
         <Form />
       </div>
       <FloatingResetButton />
-    </div>
+    </motion.div>
   );
 };
 
