@@ -8,6 +8,7 @@ import { GlobalContext } from "../context/GlobalState";
 import moment from "moment";
 import Swal from "sweetalert2";
 import { motion } from "framer-motion";
+import { danaCard } from "../theme/rectangularTheme";
 import { formatRp } from "../utils/formatRp";
 
 const Pendanaan = ({ h, i }) => {
@@ -16,7 +17,7 @@ const Pendanaan = ({ h, i }) => {
   return (
     <motion.div
       key={i}
-      className="p-4 m-2 shadow-lg bg-white rounded-lg"
+      className={danaCard}
       whileHover={{
         scale: 1.05,
         transition: { duration: 0.7 },

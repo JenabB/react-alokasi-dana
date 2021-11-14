@@ -1,5 +1,6 @@
 import React from "react";
 import { formatRp } from "../../utils/formatRp";
+
 const Header = ({ totalAlokasiDana, totalDanaAwal, totalDanaAkhir, semua }) => {
   return (
     <div

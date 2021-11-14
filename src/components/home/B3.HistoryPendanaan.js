@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 //context
 import { GlobalContext } from "../../context/GlobalState";
+import { searchInput } from "../../theme/inputTheme";
 
 //component
 import Pendanaan from "../Pendanaan";
@@ -27,7 +28,7 @@ const HistoryPendanaan = () => {
             <Link to="/all">
               <input
                 type="search"
-                className="bg-white w-3/4 rounded-lg px-2 py-1"
+                className={searchInput}
                 placeholder="cari pendanaan"
               />
             </Link>
@@ -43,7 +44,7 @@ const HistoryPendanaan = () => {
           ) : (
             <div className="text-center my-10">
               <Link to="/all">
-                <h1 className="font-bold text-green-700">Lihat Semua</h1>
+                <h1 className="font-bold text-primary">Lihat Semua</h1>
               </Link>
             </div>
           )}

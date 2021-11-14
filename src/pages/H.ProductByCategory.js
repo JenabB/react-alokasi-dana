@@ -7,8 +7,8 @@ import Dana from "../components/danaDetail/D.Dana";
 const ProductByCategory = (props) => {
   const category = props.match.params.category;
 
-  const { semuaProduk } = useContext(GlobalContext);
-  const filtered = semuaProduk.filter((x) => x.category === category);
+  const { totalProduk } = useContext(GlobalContext);
+  const filtered = totalProduk.filter((x) => x.category === category);
 
   return (
     <div>

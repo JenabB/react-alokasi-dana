@@ -8,6 +8,8 @@ import { GlobalContext } from "../context/GlobalState";
 import AppBarWithBackButton from "../components/AppBarWithBackButton";
 import Pendanaan from "../components/Pendanaan";
 
+import { searchInput } from "../theme/inputTheme";
+
 const ViewAllPendanaan = () => {
   const [groupss, setGroupss] = useState([]);
   const [query, setQuery] = useState("");
@@ -55,7 +57,7 @@ const ViewAllPendanaan = () => {
       <div className="text-center my-7">
         <input
           type="search"
-          className="bg-gray-200 w-2/4 rounded-lg px-2 py-1"
+          className={searchInput}
           placeholder="cari pendanaan"
           value={query}
           onChange={handleQueryChange}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 //utils
+import { mainHeader } from "../../theme/rectangularTheme";
 import { formatRp } from "../../utils/formatRp";
 import { motion } from "framer-motion";
 
@@ -37,9 +38,8 @@ const TotalAlokasiDana = ({
     // menggabungkan semua produk dari semua array Pendanaan
     const allProd = [].concat(...semuaProduk.map((el) => el));
     setSemuaProduk(allProd);
-
     getTotalProduk(allProd);
-    console.log(allProd);
+
     //array untuk semua harga
     const arrayHarga = [].concat(
       ...arraySemua.map((totalHarga) =>
@@ -77,7 +77,7 @@ const TotalAlokasiDana = ({
     <div className="p-4">
       <Link to="detail">
         <motion.div
-          className="bg-primary text-white rounded-xl p-4 w-full mx-auto"
+          className={mainHeader}
           style={{ height: "200px" }}
           initial="hidden"
           animate="visible"
