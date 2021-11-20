@@ -5,6 +5,7 @@ import Helmet from "react-helmet";
 import { motion } from "framer-motion";
 import { formatRp } from "utils/formatRp";
 import { v4 as uuidv4 } from "uuid";
+import { mainHeader } from "theme/rectangularTheme";
 
 //context
 import { GlobalContext } from "context/GlobalState";
@@ -133,10 +134,10 @@ const EditPendanaan = (props) => {
 
       <AppBarWithBackButton title="Edit Pendanaan" />
 
-      <div className="mt-4 text-center">
-        <div className="lg:w-2/4 mx-auto w-full">
+      <div className="m-4 text-center ">
+        <div className="sticky top-10 z-10 lg:w-2/4 mx-auto w-full m-4">
           <motion.div
-            className="bg-green-600 sticky top-4 z-10 text-center text-white  m-4 p-4 rounded-lg"
+            className={mainHeader}
             animate={{
               scale: [2, 1],
             }}
@@ -154,7 +155,7 @@ const EditPendanaan = (props) => {
             </div>
             <div className="mt-8 text-center">
               {updatedDana.semuaProduk.length !== 0 ? (
-                <div className="bg-green-900 rounded-lg px-2 py-3">
+                <div className="bg-primaryLight rounded-lg">
                   <table className="table-fixed w-full">
                     <tr>
                       <th className="w-1/4">No.</th>
@@ -198,37 +199,14 @@ const EditPendanaan = (props) => {
           />
         </div>
 
-        <div className="lg:w-2/4 mx-auto w-full">
-          <h1 className="mt-10">Daftar Pendanaan</h1>
-          <div className="my-10 px-4">
-            <table>
-              <tr>
-                <th className="w-1/4">No.</th>
-                <th className="w-2/4">Nama</th>
-                <th className="w-2/4">Harga</th>
-                <th className="w-2/4">Aksi</th>
-              </tr>
-              {updatedDana.semuaProduk.slice(1).map((p, i) => (
-                <tr key={i}>
-                  <td>{updatedDana.semuaProduk.indexOf(p) + 1}</td>
-                  <th>{p.nama}</th>
-                  <th>{p.harga}</th>
-                  <th>
-                    <button onClick={() => handleDeleteProduk(p.id)}>
-                      Delete
-                    </button>
-                  </th>
-                </tr>
-              ))}
-            </table>
-          </div>
-        </div>
-
-        <div className="lg:w-2/4 mx-auto w-full text-center">
+        <div className="lg:w-2/4 mx-auto w-full ">
           <h1 className="mt-8">Alokasi Dana</h1>
           {updatedDana.semuaProduk.length > 0 ? (
             updatedDana.semuaProduk.map((produk, index) => (
               <div key={index} className="my-4 shadow p-4">
+                <button className="material-icons text-red text-right">
+                  delete
+                </button>
                 <h1 className="text-left pl-4">Nama</h1>
                 <input
                   className="bg-gray-300 p-2 rounded-lg my-1"

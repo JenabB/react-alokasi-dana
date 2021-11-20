@@ -1,9 +1,10 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import Reducer from "./Reducer";
-
+import categories from "components/createPendanaan/categories";
 //state awal context
 const initialState = {
   totalAlokasiDana: 0,
+  categories: categories,
   totalDanaAwal: 0,
   totalDanaAkhir: 0,
   totalProduk: [],
@@ -126,6 +127,7 @@ export const GlobalProvider = (props) => {
         totalDanaAwal: state.totalDanaAwal,
         totalDanaAkhir: state.totalDanaAkhir,
         totalProduk: state.totalProduk,
+        categories: state.categories,
         danaAwal: state.danaAwal,
         danaAkhir: state.danaAkhir,
         semuaProduk: state.semuaProduk,
