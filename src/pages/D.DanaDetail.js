@@ -75,7 +75,7 @@ const DanaDetail = () => {
           ) : (
             <div className="px-2 py-3">
               <div>
-                {detail.semuaProduk.map((dana, i) => (
+                {detail?.semuaProduk.map((dana, i) => (
                   <Dana dana={dana} key={i} />
                 ))}
               </div>

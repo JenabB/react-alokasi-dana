@@ -28,9 +28,9 @@ const EditPendanaan = (props) => {
     semuaProduk: matchDana.semuaProduk,
   });
 
-  let historyy = useHistory();
+  let history = useHistory();
 
-  const [semuaProo, setSemuaProo] = useState([...updatedDana.semuaProduk]);
+  const [semuaProduk, setSemuaProduk] = useState([...updatedDana.semuaProduk]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -48,14 +48,23 @@ const EditPendanaan = (props) => {
 
     produks[index] = { ...produk, [e.target.name]: e.target.value };
 
-    setSemuaProo(produks);
+    setUpdatedDana({ ...updatedDana, semuaProduk: produks });
   };
 
   //menyimpan ke daftar produk
   const handleProdukSubmit = (e) => {
     e.preventDefault();
-    setUpdatedDana({ ...updatedDana, danaAkhir: updatedDana.danaAwal });
-    setSemuaProo([...semuaProo, { id: uuidv4(), nama: "", harga: 0 }]);
+    setUpdatedDana({
+      ...updatedDana,
+      semuaProduk: [
+        ...semuaProduk,
+        {
+          id: uuidv4(),
+          nama: '',
+          harga: 0
+        }
+      ]
+    });
   };
 
   // const saveToHistory = () => {
@@ -78,10 +87,10 @@ const EditPendanaan = (props) => {
   // };
 
   const handleDeleteProduk = (id) => {
-    const updatedP = semuaProo.slice(1).filter((s) => s.id !== id);
+    const filteredProduct = semuaProduk.filter((s) => s.id !== id);
     setUpdatedDana({
       ...updatedDana,
-      semuaProduk: [semuaProo[0], ...updatedP],
+      semuaProduk: filteredProduct
     });
   };
 
@@ -103,10 +112,8 @@ const EditPendanaan = (props) => {
     e.preventDefault();
 
     editPendanaan(updatedDana);
-    historyy.push("/home");
+    history.push("/home");
   };
-
-  console.log(updatedDana);
 
   return (
     <motion.div
@@ -203,8 +210,10 @@ const EditPendanaan = (props) => {
           <h1 className="mt-8">Alokasi Dana</h1>
           {updatedDana.semuaProduk.length > 0 ? (
             updatedDana.semuaProduk.map((produk, index) => (
-              <div key={index} className="my-4 shadow p-4">
-                <button className="material-icons text-red text-right">
+              <div key={index} className="my-4 shadow p-4 grid justify-items-stretch">
+                <button
+                  onClick={() => handleDeleteProduk(produk.id)}
+                  className="material-icons text-red justify-self-end">
                   delete
                 </button>
                 <h1 className="text-left pl-4">Nama</h1>
@@ -243,15 +252,17 @@ const EditPendanaan = (props) => {
         >
           Tambah lagi
         </button>
-
+      </div>
+      <div className="grid justify-items-center">
         <button
-          className="bg-green-700 px-4 py-2 text-white rounded-xl"
+          className="bg-primary px-4 py-2 text-white rounded-xl justify-self-center"
+          // style={{}}
           onClick={handleSubmit}
         >
           Simpan perubahan
         </button>
       </div>
-    </motion.div>
+  </motion.div>
   );
 };
 

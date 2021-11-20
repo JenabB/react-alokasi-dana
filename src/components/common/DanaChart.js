@@ -5,10 +5,10 @@ import { GlobalContext } from "context/GlobalState";
 export default function DanaChart() {
   const { pendanaanDetail } = useContext(GlobalContext);
 
-  const data = pendanaanDetail.semuaProduk.map((dana, index) => ({
+  const data = pendanaanDetail?.semuaProduk.map((dana, index) => ({
     name: dana.nama,
     value: parseInt(dana.harga),
-  }));
+  })) || [];
 
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
