@@ -6,7 +6,7 @@ import { GlobalContext } from "context/GlobalState";
 import { searchInput } from "theme/inputTheme";
 
 //component
-import Pendanaan from "../Pendanaan";
+import Pendanaan from "components/common/Pendanaan";
 
 const HistoryPendanaan = () => {
   const { historyPendanaan } = useContext(GlobalContext);

@@ -6,7 +6,7 @@ import { GlobalContext } from "context/GlobalState";
 
 //components
 import AppBarWithBackButton from "components/AppBarWithBackButton";
-import Dana from "components/danaDetail/D.Dana";
+import Dana from "components/common/Dana";
 import Header from "components/danaDetail/D1.Header";
 import DanaChart from "components/common/DanaChart";
 import { motion } from "framer-motion";

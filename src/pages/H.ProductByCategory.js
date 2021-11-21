@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import AppBarWithBackButton from "components/AppBarWithBackButton";
 import { GlobalContext } from "context/GlobalState";
-import Dana from "components/danaDetail/D.Dana";
+import Dana from "components/common/Dana";
 import { motion } from "framer-motion";
 
 import { formatRp } from "utils/formatRp";

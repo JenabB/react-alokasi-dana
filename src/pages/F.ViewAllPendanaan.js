@@ -1,36 +1,40 @@
 import React, { useState, useEffect, useContext } from "react";
 import Helmet from "react-helmet";
+import moment from "moment";
 
 //context
 import { GlobalContext } from "context/GlobalState";
 
 //component
 import AppBarWithBackButton from "components/AppBarWithBackButton";
-import Pendanaan from "components/Pendanaan";
+import Pendanaan from "components/common/Pendanaan";
 import { motion } from "framer-motion";
 
 import { searchInput } from "theme/inputTheme";
+import { formatRp } from "utils/formatRp";
 
 const ViewAllPendanaan = () => {
-  const [groupss, setGroupss] = useState([]);
+  const [groupByDate, setGroupByDate] = useState([]);
+  console.log(groupByDate);
   const [query, setQuery] = useState("");
-  console.log(groupss);
+
   const { historyPendanaan } = useContext(GlobalContext);
 
   const handleQueryChange = (e) => {
     setQuery(e.target.value);
   };
 
-  const items = historyPendanaan.filter((data) => {
-    return data.namaPendanaan.toLowerCase().includes(query.toLowerCase());
-  });
+  // const items = historyPendanaan.filter((data) => {
+  //   return data.namaPendanaan.toLowerCase().includes(query.toLowerCase());
+  // });
 
   //grouping by date
   useEffect(() => {
     // this gives an object with dates as keys
 
     const groups = historyPendanaan.reduce((groups, dana) => {
-      const date = String(dana.createdAt).split("T")[0];
+      const date = moment(dana.createdAt).format("YYYY MMMM");
+
       if (!groups[date]) {
         groups[date] = [];
       }
@@ -40,13 +44,33 @@ const ViewAllPendanaan = () => {
 
     // Edit: to add it in the array format instead
     const groupArrays = Object.keys(groups).map((date) => {
+      const semuaProduk = [];
+      const danaAwal = [];
+
+      groups[date].forEach((el) => danaAwal.push(el.danaAwal));
+
+      const totalDanaAwal = danaAwal.reduce((prev, curr) => prev + curr, 0);
+
+      groups[date].forEach((el) => semuaProduk.push(el.semuaProduk));
+      const allProd = [].concat(...semuaProduk.map((el) => el));
+
+      const semuaHarga = [];
+      allProd.forEach((el) => semuaHarga.push(parseInt(el.harga)));
+      const totalPendanaan = semuaHarga.reduce((prev, cure) => prev + cure, 0);
+      const totalDanaAkhir = totalDanaAwal - totalPendanaan;
+
       return {
         date,
         dana: groups[date],
+        totalPendanaan: totalPendanaan,
+        totalProduk: allProd.length || null,
+        totalDanaAwal: totalDanaAwal,
+        totalDanaAkhir: totalDanaAkhir,
       };
     });
-    setGroupss(groupArrays);
+    setGroupByDate(groupArrays);
   }, [historyPendanaan]);
+
   return (
     <motion.div
       initial="hidden"
@@ -81,28 +105,34 @@ const ViewAllPendanaan = () => {
         />
       </div>
 
-      {query !== "" ? (
-        <div className="lg:w-2/4 mx-auto w-full">
-          {items.map((h, i) => (
-            <Pendanaan h={h} i={i} />
-          ))}
-        </div>
-      ) : (
-        <div className="lg:w-2/4 mx-auto w-full">
-          {historyPendanaan.map((h, i) => (
-            <Pendanaan h={h} i={i} />
-          ))}
-        </div>
-      )}
-
       <div className="lg:w-2/4 mx-auto w-full">
-        <div className="grid grid-cols-2">
-          {groupss.length > 0 ? (
-            groupss.map((g, i) => (
+        <div className="grid">
+          {groupByDate.length > 0 ? (
+            groupByDate.map((g, i) => (
               <div key={i}>
                 <h1 className="text-center my-4 font-bold text-green-700">
                   {g.date}
                 </h1>
+                <div className="p-4 m-4 text-white bg-primary rounded-md">
+                  <div className="text-center">
+                    <h1>{formatRp(g.totalPendanaan)} dana dialokasikan</h1>
+                    <div className="grid grid-cols-2 my-2 text-center">
+                      <div>
+                        <h1>Dana Awal</h1>
+                        <p>{formatRp(g.totalDanaAwal)}</p>
+                      </div>
+                      <div>
+                        <h1>Dana Akhir</h1>
+                        <p>{formatRp(g.totalDanaAkhir)}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="grid grid-cols-2 my-2 text-center">
+                    <p className="text-sm">{g.dana.length} pendanaan</p>
+                    <p className="text-sm">{g.totalProduk} produk</p>
+                  </div>
+                </div>
                 <div>
                   {g.dana.map((h, i) => (
                     <Pendanaan h={h} i={i} />

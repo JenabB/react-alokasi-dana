@@ -11,6 +11,7 @@ const initialState = {
   historyPendanaan: localStorage.getItem("history-pendanaan")
     ? JSON.parse(localStorage.getItem("history-pendanaan"))
     : [],
+  pendanaanByDate: [],
   danaAwal: 0,
   danaAkhir: 0,
   semuaProduk: [
