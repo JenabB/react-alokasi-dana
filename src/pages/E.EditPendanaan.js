@@ -14,7 +14,8 @@ import { GlobalContext } from "context/GlobalState";
 import AppBarWithBackButton from "components/AppBarWithBackButton";
 
 const EditPendanaan = (props) => {
-  const { historyPendanaan, editPendanaan } = useContext(GlobalContext);
+  const { categories, historyPendanaan, editPendanaan } =
+    useContext(GlobalContext);
 
   const id = props.match.params.id;
 
@@ -28,9 +29,11 @@ const EditPendanaan = (props) => {
     semuaProduk: matchDana.semuaProduk,
   });
 
+  const isMinus = updatedDana.danaAkhir < 0;
+
   let history = useHistory();
 
-  const [semuaProduk, setSemuaProduk] = useState([...updatedDana.semuaProduk]);
+  const [semuaProduk] = useState([...updatedDana.semuaProduk]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -60,43 +63,24 @@ const EditPendanaan = (props) => {
         ...semuaProduk,
         {
           id: uuidv4(),
-          nama: '',
-          harga: 0
-        }
-      ]
+          nama: "",
+          harga: 0,
+        },
+      ],
     });
   };
-
-  // const saveToHistory = () => {
-  //   setToHistory({
-  //     id: uuidv4(),
-  //     createdAt: new Date(),
-  //     namaPendanaan: namaPendanaan,
-  //     danaAwal: danaAwal,
-  //     danaAkhir: danaAkhir,
-  //     semuaProduk: semuaProduk,
-  //   });
-  //   Swal.fire({
-  //     icon: "success",
-  //     title: "Tersimpan",
-  //     text: `${namaPendanaan} tersimpan`,
-  //   });
-
-  //   //setelah history pendanaan disimpan, akan dilempar kembali ke home
-  //   history.push("/home");
-  // };
 
   const handleDeleteProduk = (id) => {
     const filteredProduct = semuaProduk.filter((s) => s.id !== id);
     setUpdatedDana({
       ...updatedDana,
-      semuaProduk: filteredProduct
+      semuaProduk: filteredProduct,
     });
   };
 
   useEffect(() => {
     let hasil = 0;
-
+    console.log(isMinus);
     updatedDana.semuaProduk.forEach((item) => {
       hasil += parseInt(item.harga);
     });
@@ -185,11 +169,11 @@ const EditPendanaan = (props) => {
           </motion.div>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-10 lg:w-2/4 w-full mx-auto bg-white shadow-sm p-4">
           <h1>Nama pendanaan</h1>
           <input
             type="text"
-            className="p-2 mb-6 rounded-xl bg-gray-300"
+            className="p-2 mb-6 w-full rounded-xl bg-input"
             placeholder="nama baru"
             name="namaPendanaan"
             value={updatedDana.namaPendanaan}
@@ -198,7 +182,7 @@ const EditPendanaan = (props) => {
           <h1>Dana awal</h1>
           <input
             type="number"
-            className="p-2 mb-6 rounded-xl bg-gray-300"
+            className="p-2 mb-6 w-full rounded-xl bg-input"
             placeholder="dana awal"
             name="danaAwal"
             value={updatedDana.danaAwal}
@@ -206,19 +190,23 @@ const EditPendanaan = (props) => {
           />
         </div>
 
-        <div className="lg:w-2/4 mx-auto w-full ">
+        <div className="lg:w-2/4 mx-auto w-full">
           <h1 className="mt-8">Alokasi Dana</h1>
           {updatedDana.semuaProduk.length > 0 ? (
             updatedDana.semuaProduk.map((produk, index) => (
-              <div key={index} className="my-4 shadow p-4 grid justify-items-stretch">
+              <div
+                key={index}
+                className="my-4 bg-white shadow p-4 grid justify-items-stretch"
+              >
                 <button
                   onClick={() => handleDeleteProduk(produk.id)}
-                  className="material-icons text-red justify-self-end">
+                  className="material-icons text-red justify-self-end"
+                >
                   delete
                 </button>
                 <h1 className="text-left pl-4">Nama</h1>
                 <input
-                  className="bg-gray-300 p-2 rounded-lg my-1"
+                  className="bg-input p-2 rounded-lg my-1"
                   type="text"
                   maxLength="20"
                   name="nama"
@@ -228,9 +216,20 @@ const EditPendanaan = (props) => {
                     handleProdukChange(index, e);
                   }}
                 />
+                <select
+                  name="category"
+                  className="p-2 w-full my-4"
+                  onChange={(e) => {
+                    handleProdukChange(index, e);
+                  }}
+                >
+                  {categories.map((c) => (
+                    <option value={c.value}>{c.label}</option>
+                  ))}
+                </select>
                 <h1 className="text-left pl-4 mt-4">Harga</h1>
                 <input
-                  className="bg-gray-100 p-2"
+                  className="bg-input p-2"
                   type="number"
                   name="harga"
                   value={produk.harga}
@@ -247,22 +246,26 @@ const EditPendanaan = (props) => {
         </div>
 
         <button
-          className="my-4 bg-gray-100 px-2 py-1 rounded-lg"
+          className="my-4 text-primary font-extrabold px-2 py-1 rounded-lg"
           onClick={handleProdukSubmit}
         >
           Tambah lagi
         </button>
       </div>
-      <div className="grid justify-items-center">
+      <div className="text-center m-8">
         <button
-          className="bg-primary px-4 py-2 text-white rounded-xl justify-self-center"
-          // style={{}}
+          disabled={isMinus}
+          className={
+            isMinus
+              ? "bg-disabled px-4 py-2 text-white rounded-xl"
+              : "bg-primary px-4 py-2 text-white rounded-xl"
+          }
           onClick={handleSubmit}
         >
           Simpan perubahan
         </button>
       </div>
-  </motion.div>
+    </motion.div>
   );
 };
 

@@ -9,6 +9,7 @@ module.exports = {
       white: "#FFFFFF",
       input: "#F2F6F9",
       red: "#E23B34",
+      disabled: "#868686",
 
       //category
       pribadi: "#F46339",
