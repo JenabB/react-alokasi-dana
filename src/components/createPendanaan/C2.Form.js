@@ -51,8 +51,6 @@ const Form = () => {
     getSemuaProduk(produks);
   };
 
-  console.log(semuaProduk);
-
   //menyimpan ke daftar produk
   const handleProdukSubmit = (e) => {
     e.preventDefault();
@@ -115,6 +113,8 @@ const Form = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [semuaProduk, danaAwal, namaPendanaan]);
+
+  const isMinus = danaAkhir < 0;
 
   return (
     <div>
@@ -217,21 +217,17 @@ const Form = () => {
 
         {/* button simpan akan aktif jika ada input nama pendanaan dan dana awal */}
         <div className="text-center mt-4 mb-8">
-          {isFilled ? (
-            <button
-              className="bg-primary text-white font-bold px-2 py-1 rounded"
-              onClick={saveToHistory}
-            >
-              Simpan
-            </button>
-          ) : (
-            <button
-              className="bg-formLabel text-white font-bold px-2 py-1 rounded"
-              disabled
-            >
-              Simpan
-            </button>
-          )}
+          <button
+            disabled={isMinus || isFilled}
+            className={
+              isMinus || isFilled
+                ? "bg-primary text-white font-bold px-2 py-1 rounded"
+                : "bg-disabled text-white font-bold px-2 py-1 rounded"
+            }
+            onClick={saveToHistory}
+          >
+            Simpan
+          </button>
         </div>
       </motion.div>
     </div>

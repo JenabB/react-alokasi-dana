@@ -1,4 +1,4 @@
-import Dana from "../danaDetail/D.Dana";
+import Dana from "components/common/Dana";
 
 const AllProduct = ({ totalProduk }) => {
   return (
