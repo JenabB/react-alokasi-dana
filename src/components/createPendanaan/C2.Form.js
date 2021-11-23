@@ -186,8 +186,10 @@ const Form = () => {
                     handleProdukChange(index, e);
                   }}
                 >
-                  {categories.map((c) => (
-                    <option value={c.value}>{c.label}</option>
+                  {categories.map((c, index) => (
+                    <option key={index} value={c.value}>
+                      {c.label}
+                    </option>
                   ))}
                 </select>
                 <h1 className="text-left text-formLabel mt-4">Harga</h1>
