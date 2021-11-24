@@ -31,7 +31,6 @@ const ViewAllPendanaan = () => {
 
   //grouping by date
   useEffect(() => {
-    console.log(sortField, sortAscending);
     // this gives an object with dates as keys
 
     const groups = historyPendanaan.reduce((groups, dana) => {
@@ -61,14 +60,11 @@ const ViewAllPendanaan = () => {
       const totalPendanaan = semuaHarga.reduce((prev, cure) => prev + cure, 0);
       const totalDanaAkhir = totalDanaAwal - totalPendanaan;
 
-      console.log(groups[date]);
-
       let sortedDana = groups[date].sort((a, b) => {
         if (sortField === 'totalDana') {
           a.totalDana = +a.danaAwal - +a.danaAkhir;
           b.totalDana = +b.danaAwal - +b.danaAkhir;
         }
-        console.log(a.totalDana, b.totalDana);
         if (sortAscending) return a[sortField] - b[sortField];
         return b[sortField] - a[sortField];
       });
