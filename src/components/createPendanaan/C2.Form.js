@@ -101,11 +101,12 @@ const Form = () => {
     getDanaAkhir(danaAwal - parseInt(hasil));
 
     //mencegah nama pendanaan dan dana awal kosong
-    if (namaPendanaan === "" && danaAwal <= 0) {
-      setIsfilled(false);
-    } else if (namaPendanaan === "" && isNaN(danaAwal)) {
-      setIsfilled(false);
-    } else if (namaPendanaan === "" && danaAwal > 0) {
+    if (
+      namaPendanaan === "" ||
+      danaAwal <= 0 ||
+      isNaN(danaAwal) ||
+      isNaN(danaAkhir)
+    ) {
       setIsfilled(false);
     } else {
       setIsfilled(true);
@@ -185,8 +186,10 @@ const Form = () => {
                     handleProdukChange(index, e);
                   }}
                 >
-                  {categories.map((c) => (
-                    <option value={c.value}>{c.label}</option>
+                  {categories.map((c, index) => (
+                    <option key={index} value={c.value}>
+                      {c.label}
+                    </option>
                   ))}
                 </select>
                 <h1 className="text-left text-formLabel mt-4">Harga</h1>
@@ -218,11 +221,11 @@ const Form = () => {
         {/* button simpan akan aktif jika ada input nama pendanaan dan dana awal */}
         <div className="text-center mt-4 mb-8">
           <button
-            disabled={isMinus || isFilled}
+            disabled={isMinus || !isFilled}
             className={
-              isMinus || isFilled
-                ? "bg-primary text-white font-bold px-2 py-1 rounded"
-                : "bg-disabled text-white font-bold px-2 py-1 rounded"
+              isMinus || !isFilled
+                ? "bg-disabled text-white font-bold px-2 py-1 rounded"
+                : "bg-primary text-white font-bold px-2 py-1 rounded"
             }
             onClick={saveToHistory}
           >
