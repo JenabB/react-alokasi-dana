@@ -15,7 +15,8 @@ import { formatRp } from "utils/formatRp";
 
 const ViewAllPendanaan = () => {
   const [groupByDate, setGroupByDate] = useState([]);
-  console.log(groupByDate);
+  const [sortField, setSortField] = useState('');
+  const [sortAscending, setSortAscending] = useState(false);
   const [query, setQuery] = useState("");
 
   const { historyPendanaan } = useContext(GlobalContext);
@@ -30,6 +31,7 @@ const ViewAllPendanaan = () => {
 
   //grouping by date
   useEffect(() => {
+    console.log(sortField, sortAscending);
     // this gives an object with dates as keys
 
     const groups = historyPendanaan.reduce((groups, dana) => {
@@ -59,9 +61,21 @@ const ViewAllPendanaan = () => {
       const totalPendanaan = semuaHarga.reduce((prev, cure) => prev + cure, 0);
       const totalDanaAkhir = totalDanaAwal - totalPendanaan;
 
+      console.log(groups[date]);
+
+      let sortedDana = groups[date].sort((a, b) => {
+        if (sortField === 'totalDana') {
+          a.totalDana = +a.danaAwal - +a.danaAkhir;
+          b.totalDana = +b.danaAwal - +b.danaAkhir;
+        }
+        console.log(a.totalDana, b.totalDana);
+        if (sortAscending) return a[sortField] - b[sortField];
+        return b[sortField] - a[sortField];
+      });
+
       return {
         date,
-        dana: groups[date],
+        dana: sortedDana,
         totalPendanaan: totalPendanaan,
         totalProduk: allProd.length || null,
         totalDanaAwal: totalDanaAwal,
@@ -69,7 +83,7 @@ const ViewAllPendanaan = () => {
       };
     });
     setGroupByDate(groupArrays);
-  }, [historyPendanaan]);
+  }, [historyPendanaan, sortAscending, sortField]);
 
   return (
     <motion.div
@@ -132,6 +146,16 @@ const ViewAllPendanaan = () => {
                     <p className="text-sm">{g.dana.length} pendanaan</p>
                     <p className="text-sm">{g.totalProduk} produk</p>
                   </div>
+                </div>
+                <div className="ml-2">
+                  <select className="py-1 px-2" onChange={(e) => setSortField(e.target.value)}>
+                    <option value="totalDana">Total Dana Dialokasikan</option>
+                    <option value="danaAwal">Dana Awal</option>
+                    <option value="danaAkhir">Dana Akhir</option>
+                  </select>
+                  <button className={`material-icons ml-2 text-primary transform ${sortAscending ? '' : 'rotate-180'}`} onClick={() => setSortAscending(!sortAscending)}>
+                    sort
+                  </button>
                 </div>
                 <div>
                   {g.dana.map((h, i) => (
