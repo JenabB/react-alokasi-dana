@@ -1,6 +1,11 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state, action) => {
   switch (action.type) {
+    case "EDIT_USER":
+      return {
+        ...state,
+        user: localStorage.setItem("alokasi-dana-user", action.payload),
+      };
     //mendapatkan total alokasi dana
     case "GET_TOTAL_ALOKASI_DANA":
       return {

@@ -3,6 +3,9 @@ import Reducer from "./Reducer";
 import categories from "components/createPendanaan/categories";
 //state awal context
 const initialState = {
+  user: localStorage.getItem("alokasi-dana-user")
+    ? localStorage.getItem("alokasi-dana-user")
+    : "User",
   totalAlokasiDana: 0,
   categories: categories,
   totalDanaAwal: 0,
@@ -33,6 +36,13 @@ export const GlobalProvider = (props) => {
       JSON.stringify(state.historyPendanaan)
     );
   }, [state]);
+
+  function editUser(user) {
+    dispatch({
+      type: "EDIT_USER",
+      payload: user,
+    });
+  }
 
   //mendapatkan total alokasi dana
   function getTotalAlokasiDana(dana) {
@@ -124,6 +134,7 @@ export const GlobalProvider = (props) => {
   return (
     <GlobalContext.Provider
       value={{
+        user: state.user,
         totalAlokasiDana: state.totalAlokasiDana,
         totalDanaAwal: state.totalDanaAwal,
         totalDanaAkhir: state.totalDanaAkhir,
@@ -134,6 +145,7 @@ export const GlobalProvider = (props) => {
         semuaProduk: state.semuaProduk,
         historyPendanaan: state.historyPendanaan,
         pendanaanDetail: state.pendanaanDetail,
+        editUser,
         getTotalAlokasiDana,
         getTotalDanaAwal,
         getTotalDanaAkhir,
