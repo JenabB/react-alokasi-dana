@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 
 //context
 import { GlobalContext } from "context/GlobalState";
+import User from "components/home/B1.User";
 
 const Home = () => {
   const {
@@ -46,6 +47,7 @@ const Home = () => {
       <AppBar />
 
       <div className="lg:w-2/4 mx-auto w-full">
+        <User />
         <TotalAlokasiDana
           historyPendanaan={historyPendanaan}
           totalAlokasiDana={totalAlokasiDana}
