@@ -33,8 +33,6 @@ const EditPendanaan = (props) => {
 
   let history = useHistory();
 
-  const [semuaProduk] = useState([...updatedDana.semuaProduk]);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUpdatedDana({ ...updatedDana, [name]: value });
@@ -60,10 +58,11 @@ const EditPendanaan = (props) => {
     setUpdatedDana({
       ...updatedDana,
       semuaProduk: [
-        ...semuaProduk,
+        ...updatedDana.semuaProduk,
         {
           id: uuidv4(),
           nama: "",
+          category: categories[0].value,
           harga: 0,
         },
       ],
@@ -71,7 +70,7 @@ const EditPendanaan = (props) => {
   };
 
   const handleDeleteProduk = (id) => {
-    const filteredProduct = semuaProduk.filter((s) => s.id !== id);
+    const filteredProduct = updatedDana.semuaProduk.filter((s) => s.id !== id);
     setUpdatedDana({
       ...updatedDana,
       semuaProduk: filteredProduct,
@@ -80,7 +79,6 @@ const EditPendanaan = (props) => {
 
   useEffect(() => {
     let hasil = 0;
-    console.log(isMinus);
     updatedDana.semuaProduk.forEach((item) => {
       hasil += parseInt(item.harga);
     });
@@ -218,13 +216,16 @@ const EditPendanaan = (props) => {
                 />
                 <select
                   name="category"
+                  value={produk.category}
                   className="p-2 w-full my-4"
                   onChange={(e) => {
                     handleProdukChange(index, e);
                   }}
                 >
-                  {categories.map((c) => (
-                    <option value={c.value}>{c.label}</option>
+                  {categories.map((c, index) => (
+                    <option key={index} value={c.value}>
+                      {c.label}
+                    </option>
                   ))}
                 </select>
                 <h1 className="text-left pl-4 mt-4">Harga</h1>
@@ -241,7 +242,7 @@ const EditPendanaan = (props) => {
               </div>
             ))
           ) : (
-            <h1>blm ada produk</h1>
+            <h1>Belum ada produk</h1>
           )}
         </div>
 
