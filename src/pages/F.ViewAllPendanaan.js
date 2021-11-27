@@ -15,7 +15,7 @@ import { formatRp } from "utils/formatRp";
 
 const ViewAllPendanaan = () => {
   const [groupByDate, setGroupByDate] = useState([]);
-  const [sortField, setSortField] = useState('');
+  const [sortField, setSortField] = useState("totalDana");
   const [sortAscending, setSortAscending] = useState(false);
   const [query, setQuery] = useState("");
 
@@ -61,7 +61,7 @@ const ViewAllPendanaan = () => {
       const totalDanaAkhir = totalDanaAwal - totalPendanaan;
 
       let sortedDana = groups[date].sort((a, b) => {
-        if (sortField === 'totalDana') {
+        if (sortField === "totalDana") {
           a.totalDana = +a.danaAwal - +a.danaAkhir;
           b.totalDana = +b.danaAwal - +b.danaAkhir;
         }
@@ -143,14 +143,22 @@ const ViewAllPendanaan = () => {
                     <p className="text-sm">{g.totalProduk} produk</p>
                   </div>
                 </div>
-                <div className="ml-2">
-                  <select className="py-1 px-2" onChange={(e) => setSortField(e.target.value)}>
+                <div className="ml-2 flex items-center">
+                  <select
+                    className="py-1 px-2"
+                    onChange={(e) => setSortField(e.target.value)}
+                  >
                     <option value="totalDana">Total Dana Dialokasikan</option>
                     <option value="danaAwal">Dana Awal</option>
                     <option value="danaAkhir">Dana Akhir</option>
                   </select>
-                  <button className={`material-icons ml-2 text-primary transform ${sortAscending ? '' : 'rotate-180'}`} onClick={() => setSortAscending(!sortAscending)}>
-                    sort
+                  <button
+                    className={`material-icons ml-2 text-primary transform ${
+                      sortAscending ? "" : "rotate-180"
+                    }`}
+                    onClick={() => setSortAscending(!sortAscending)}
+                  >
+                    arrow_downward
                   </button>
                 </div>
                 <div>
