@@ -216,13 +216,16 @@ const EditPendanaan = (props) => {
                 />
                 <select
                   name="category"
+                  value={produk.category}
                   className="p-2 w-full my-4"
                   onChange={(e) => {
                     handleProdukChange(index, e);
                   }}
                 >
-                  {categories.map((c) => (
-                    <option value={c.value}>{c.label}</option>
+                  {categories.map((c, index) => (
+                    <option key={index} value={c.value}>
+                      {c.label}
+                    </option>
                   ))}
                 </select>
                 <h1 className="text-left pl-4 mt-4">Harga</h1>
