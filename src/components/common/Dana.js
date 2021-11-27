@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { danaCard } from "theme/rectangularTheme";
 
 const Dana = ({ dana }) => {
-  function category(category) {
+  const category = (category) => {
     const prefix = "inline-block px-3 py-1 rounded-lg text-white my-2 bg-";
 
     switch (category) {
@@ -36,7 +36,7 @@ const Dana = ({ dana }) => {
       default:
         return prefix + "white";
     }
-  }
+  };
 
   return (
     <div className={danaCard}>
