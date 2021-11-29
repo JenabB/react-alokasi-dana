@@ -9,6 +9,7 @@ import {
   DanaDetail,
   EditPendanaan,
   ProductByCategory,
+  Report
 } from "pages";
 
 export default function Navigation() {
@@ -21,6 +22,7 @@ export default function Navigation() {
           <Route path="/create" component={CreatePendanaan} />
           <Route path="/detail" component={TotalDetail} />
           <Route path="/all" component={ViewAllPendanaan} />
+          <Route path="/report" component={Report} />
           <Route exact path="/pendanaan/:id" component={DanaDetail} />
           <Route path="/pendanaan/:id/edit" component={EditPendanaan} />
           <Route
