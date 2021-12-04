@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import Helmet from "react-helmet";
+import { Link } from "react-router-dom";
 
 //context
 import { GlobalContext } from "context/GlobalState";
@@ -9,25 +10,29 @@ import AppBarWithBackButton from "components/AppBarWithBackButton";
 import ReportChart from "components/common/ReportChart";
 import { motion } from "framer-motion";
 
-import { reportData } from '../utils/mockData';
+import { reportData } from "../utils/mockData";
 import moment from "moment";
 
 const Report = () => {
   const { historyPendanaan } = useContext(GlobalContext);
-  const [mockMode, setMockMode] = useState('1');
+  const [mockMode, setMockMode] = useState("1");
   const [chartData, setChartData] = useState("");
 
   useEffect(() => {
     const groupedData = [];
     historyPendanaan.map((item) => {
-      const month = moment(item.createdAt).format('MMMM');
-      const year = moment(item.createdAt).format('YYYY');
+      const month = moment(item.createdAt).format("MMMM");
+      const year = moment(item.createdAt).format("YYYY");
       const danaAwal = +item.danaAwal || 0;
       const danaAkhir = +item.danaAkhir || 0;
-      const totalDana = +item.totalDana || 0;
-      const sortIndex = +`${moment(item.createdAt).get('M')}${moment(item.createdAt).get('year')}`;
+      const totalDana = +item.danaAwal - +item.danaAkhir || 0;
+      const sortIndex = +`${moment(item.createdAt).get("M")}${moment(
+        item.createdAt
+      ).get("year")}`;
 
-      const index = groupedData.findIndex((obj) => obj.month === month && obj.year === year);
+      const index = groupedData.findIndex(
+        (obj) => obj.month === month && obj.year === year
+      );
       if (index > -1) {
         groupedData[index].danaAwal += +danaAwal;
         groupedData[index].danaAkhir += +danaAkhir;
@@ -39,8 +44,8 @@ const Report = () => {
           danaAwal,
           danaAkhir,
           totalDana,
-          sortIndex
-        })
+          sortIndex,
+        });
       }
       return 1;
     });
@@ -51,8 +56,8 @@ const Report = () => {
   }, [historyPendanaan]);
 
   const handleChangeMockMode = (e) => {
-    setMockMode(e.target.value)
-  }
+    setMockMode(e.target.value);
+  };
 
   return (
     <motion.div
@@ -75,17 +80,36 @@ const Report = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Report</title>
-        <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
       <AppBarWithBackButton title="Report" />
 
-      <div className="lg:w-2/4 mx-auto w-full px-2">
-        <select value={mockMode} onChange={handleChangeMockMode}>
-          <option value="1">Mock Data</option>
-          <option value="">Real Data</option>
-        </select>
-        <ReportChart data={!!mockMode ? reportData : chartData} />
+      <div>
+        {historyPendanaan.length === 0 ? (
+          <div>
+            <div className="flex justify-center text-center">
+              <img
+                style={{ height: "300px", width: "300px" }}
+                src="https://i.ibb.co/YDbsWz3/Pngtree-vector-money-bags-icon-4090508.png"
+                alt="no dana"
+              />
+            </div>
+            <div className="text-center">
+              <h1>Belum ada Pendanaan</h1>
+              <button className="bg-primary text-white px-2 py-1 rounded-lg">
+                <Link to="/create">Buat deh</Link>
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="lg:w-2/4 mx-auto w-full px-2">
+            <select value={mockMode} onChange={handleChangeMockMode}>
+              <option value="1">Mock Data</option>
+              <option value="">Real Data</option>
+            </select>
+            <ReportChart data={!!mockMode ? reportData : chartData} />
+          </div>
+        )}
       </div>
     </motion.div>
   );

@@ -9,11 +9,15 @@ import AppBarWithBackButton from "components/AppBarWithBackButton";
 import Dana from "components/common/Dana";
 import Header from "components/danaDetail/D1.Header";
 import DanaChart from "components/common/DanaChart";
+import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const DanaDetail = () => {
-  const { pendanaanDetail } = useContext(GlobalContext);
-  const detail = pendanaanDetail;
+  const { id } = useParams();
+
+  const { historyPendanaan } = useContext(GlobalContext);
+
+  const detail = historyPendanaan.find((el) => el.id == id);
   const [query, setQuery] = useState("");
 
   const handleQueryChange = (e) => {
