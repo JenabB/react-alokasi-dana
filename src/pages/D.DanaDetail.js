@@ -17,7 +17,7 @@ const DanaDetail = () => {
 
   const { historyPendanaan } = useContext(GlobalContext);
 
-  const detail = historyPendanaan.find((el) => el.id == id);
+  const detail = historyPendanaan.find((el) => +el.id === +id);
   const [query, setQuery] = useState("");
 
   const handleQueryChange = (e) => {
