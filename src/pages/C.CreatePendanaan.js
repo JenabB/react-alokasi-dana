@@ -35,7 +35,7 @@ const CreatePendanaan = () => {
 
       <AppBarWithBackButton title="Buat Pendanaan" />
 
-      <div className="lg:w-2/4 mx-auto w-full">
+      <div className="lg:w-2/4 mx-auto w-full  pb-20">
         <Header />
         <Form />
       </div>
