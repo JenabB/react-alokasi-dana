@@ -1,12 +1,12 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AppBarWithBackButton = ({ title }) => {
-  let history = useHistory();
+  let navigate = useNavigate();
 
   //kembali ke page sebelumnya
   const goBack = () => {
-    history.goBack();
+    navigate(-1);
   };
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 //context
 import { GlobalContext } from "context/GlobalState";
@@ -29,7 +29,7 @@ const Form = () => {
     setToHistory,
   } = useContext(GlobalContext);
 
-  let history = useHistory();
+  let navigate = useNavigate();
 
   //action handler
   //nama pendanaan handler
@@ -87,7 +87,7 @@ const Form = () => {
     });
 
     //setelah history pendanaan disimpan, akan dilempar kembali ke home
-    history.push("/home");
+    navigate("/home");
   };
 
   useEffect(() => {

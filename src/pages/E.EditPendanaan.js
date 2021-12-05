@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Helmet from "react-helmet";
 
 import { motion } from "framer-motion";
@@ -13,11 +13,10 @@ import { GlobalContext } from "context/GlobalState";
 //component
 import AppBarWithBackButton from "components/AppBarWithBackButton";
 
-const EditPendanaan = (props) => {
+const EditPendanaan = () => {
   const { categories, historyPendanaan, editPendanaan } =
     useContext(GlobalContext);
-
-  const id = props.match.params.id;
+  const { id } = useParams();
 
   const matchDana = historyPendanaan.find((dana) => dana.id === id);
 
@@ -31,7 +30,7 @@ const EditPendanaan = (props) => {
 
   const isMinus = updatedDana.danaAkhir < 0;
 
-  let history = useHistory();
+  let navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -94,7 +93,7 @@ const EditPendanaan = (props) => {
     e.preventDefault();
 
     editPendanaan(updatedDana);
-    history.push("/home");
+    navigate("/home");
   };
 
   return (
