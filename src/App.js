@@ -8,7 +8,6 @@ const App = () => {
   return (
     <GlobalProvider>
       <BottomNavigation />
-      {/* <Navigation /> */}
     </GlobalProvider>
   );
 };

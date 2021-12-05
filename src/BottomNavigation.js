@@ -8,14 +8,14 @@ import {
 } from "react-router-dom";
 import {
   Home,
-  Welcome,
-  CreatePendanaan,
-  TotalDetail,
   ViewAllPendanaan,
-  DanaDetail,
-  EditPendanaan,
-  ProductByCategory,
+  CreatePendanaan,
   Report,
+  // Welcome,
+  // TotalDetail,
+  // DanaDetail,
+  // EditPendanaan,
+  // ProductByCategory,
 } from "pages";
 
 export default function BottomNavigation() {
@@ -37,9 +37,6 @@ export default function BottomNavigation() {
 function BottomLayout() {
   return (
     <div>
-      {/* A "layout route" is a good place to put markup you want to
-          share across all the pages on your site, like navigation. */}
-
       <Outlet />
       <nav className="text-primary fixed bottom-0 w-full p-2 flex justify-evenly bg-white shadow-lg items-center">
         <div className="flex flex-col items-center">
