@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 
 //components
 import AppBar from "components/home/B1.AppBar";
@@ -26,9 +25,6 @@ const Home = () => {
     getSemuaProduk,
     getTotalDanaAkhir,
   } = useContext(GlobalContext);
-
-  // development only, please delete button and imports when done
-  const navigate = useNavigate();
 
   return (
     <motion.div

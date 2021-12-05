@@ -13,11 +13,10 @@ import { GlobalContext } from "context/GlobalState";
 //component
 import AppBarWithBackButton from "components/AppBarWithBackButton";
 
-const EditPendanaan = (props) => {
+const EditPendanaan = () => {
   const { categories, historyPendanaan, editPendanaan } =
     useContext(GlobalContext);
-
-  const id = props.match.params.id;
+  const { id } = useParams();
 
   const matchDana = historyPendanaan.find((dana) => dana.id === id);
 
