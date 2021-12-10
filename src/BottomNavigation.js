@@ -11,12 +11,15 @@ import {
   ViewAllPendanaan,
   CreatePendanaan,
   Report,
+  Plan,
   // Welcome,
   // TotalDetail,
   // DanaDetail,
   // EditPendanaan,
   // ProductByCategory,
 } from "pages";
+import InComplete from "components/plan/InComplete";
+import Completed from "components/plan/Completed";
 
 export default function BottomNavigation() {
   return (
@@ -27,6 +30,10 @@ export default function BottomNavigation() {
           <Route path="dana" element={<ViewAllPendanaan />} />
           <Route path="create" element={<CreatePendanaan />} />
           <Route path="report" element={<Report />} />
+          <Route path="plan" element={<Plan />}>
+            <Route index element={<InComplete />} />
+            <Route path="complete" element={<Completed />} />
+          </Route>
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
