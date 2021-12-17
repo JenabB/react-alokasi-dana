@@ -6,12 +6,13 @@ import moment from "moment";
 import { GlobalContext } from "context/GlobalState";
 
 //component
-import AppBarWithBackButton from "components/AppBarWithBackButton";
+
 import Pendanaan from "components/common/Pendanaan";
 import { motion } from "framer-motion";
 
 import { searchInput } from "theme/inputTheme";
 import { formatRp } from "utils/formatRp";
+import AppBar from "components/common/AppBar";
 
 const ViewAllPendanaan = () => {
   const [groupByDate, setGroupByDate] = useState([]);
@@ -104,7 +105,8 @@ const ViewAllPendanaan = () => {
         <title>Semua Pendanaan</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <AppBarWithBackButton title="Semua Pendanaan" />
+
+      <AppBar title="Semua Pendanaan" />
       <div className="text-center my-7">
         <input
           type="search"
@@ -115,7 +117,7 @@ const ViewAllPendanaan = () => {
         />
       </div>
 
-      <div className="lg:w-2/4 mx-auto w-full">
+      <div className="lg:w-2/4 mx-auto w-full pb-20">
         <div className="grid">
           {groupByDate.length > 0 ? (
             groupByDate.map((g, i) => (

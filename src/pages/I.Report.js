@@ -6,12 +6,13 @@ import { Link } from "react-router-dom";
 import { GlobalContext } from "context/GlobalState";
 
 //components
-import AppBarWithBackButton from "components/AppBarWithBackButton";
+
 import ReportChart from "components/common/ReportChart";
 import { motion } from "framer-motion";
 
 import { reportData } from "../utils/mockData";
 import moment from "moment";
+import AppBar from "components/common/AppBar";
 
 const Report = () => {
   const { historyPendanaan } = useContext(GlobalContext);
@@ -82,8 +83,7 @@ const Report = () => {
         <title>Report</title>
       </Helmet>
 
-      <AppBarWithBackButton title="Report" />
-
+      <AppBar title="Report" />
       <div>
         {historyPendanaan.length === 0 ? (
           <div>
