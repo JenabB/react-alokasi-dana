@@ -17,7 +17,8 @@ const DanaDetail = () => {
 
   const { historyPendanaan } = useContext(GlobalContext);
 
-  const detail = historyPendanaan.find((el) => +el.id === +id);
+  const detail = historyPendanaan.find((el) => el.id === id);
+
   const [query, setQuery] = useState("");
 
   const handleQueryChange = (e) => {
@@ -54,7 +55,7 @@ const DanaDetail = () => {
 
       <AppBarWithBackButton title="Dana Detail" />
 
-      <div className="lg:w-2/4 mx-auto w-full">
+      <div className="lg:w-2/4 mx-auto w-full pb-20">
         <Header detail={detail} />
 
         <DanaChart />

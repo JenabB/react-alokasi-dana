@@ -21,6 +21,9 @@ const initialState = {
     { createAt: new Date(), nama: "", category: "pribadi", harga: 0 },
   ], //state awal semua produk
   pendanaanDetail: null,
+  plan: localStorage.getItem("plan-dana")
+    ? JSON.parse(localStorage.getItem("plan-dana"))
+    : [],
 };
 
 //inisiasi context
@@ -35,6 +38,7 @@ export const GlobalProvider = (props) => {
       "history-pendanaan",
       JSON.stringify(state.historyPendanaan)
     );
+    localStorage.setItem("plan-dana", JSON.stringify(state.plan));
   }, [state]);
 
   function editUser(user) {
@@ -131,6 +135,27 @@ export const GlobalProvider = (props) => {
     });
   }
 
+  function createPlan(plan) {
+    dispatch({
+      type: "CREATE_PLAN",
+      payload: plan,
+    });
+  }
+
+  function completePlan(planId) {
+    dispatch({
+      type: "COMPLETE_PLAN",
+      payload: planId,
+    });
+  }
+
+  function deletePlan(planId) {
+    dispatch({
+      type: "DELETE_PLAN",
+      payload: planId,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -145,6 +170,7 @@ export const GlobalProvider = (props) => {
         semuaProduk: state.semuaProduk,
         historyPendanaan: state.historyPendanaan,
         pendanaanDetail: state.pendanaanDetail,
+        plan: state.plan,
         editUser,
         getTotalAlokasiDana,
         getTotalDanaAwal,
@@ -157,6 +183,10 @@ export const GlobalProvider = (props) => {
         deleteOnePendanaan,
         getPendanaanDetail,
         editPendanaan,
+        //plan
+        createPlan,
+        completePlan,
+        deletePlan,
       }}
     >
       {props.children}

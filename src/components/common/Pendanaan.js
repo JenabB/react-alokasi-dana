@@ -43,7 +43,7 @@ const Pendanaan = ({ h, i }) => {
     >
       <div className="flex justify-between">
         <Link
-          to={`pendanaan/${h.id}`}
+          to={`/pendanaan/${h.id}`}
           onClick={() => getPendanaanDetail(h)}
           className="text-primary font-bold text-lg"
         >

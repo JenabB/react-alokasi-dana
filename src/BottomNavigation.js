@@ -14,8 +14,9 @@ import {
   Plan,
   // Welcome,
   // TotalDetail,
-  // DanaDetail,
-  // EditPendanaan,
+  DanaDetail,
+  EditPendanaan,
+
   // ProductByCategory,
 } from "pages";
 import InComplete from "components/plan/InComplete";
@@ -28,6 +29,8 @@ export default function BottomNavigation() {
         <Route path="/" element={<BottomLayout />}>
           <Route index element={<Home />} />
           <Route path="dana" element={<ViewAllPendanaan />} />
+          <Route path="pendanaan/:id" element={<DanaDetail />} />
+          <Route path="pendanaan/:id/edit" element={<EditPendanaan />} />
           <Route path="create" element={<CreatePendanaan />} />
           <Route path="report" element={<Report />} />
           <Route path="plan" element={<Plan />}>
@@ -46,27 +49,27 @@ function BottomLayout() {
     <div>
       <Outlet />
       <nav className="text-primary fixed bottom-0 w-full p-2 flex justify-evenly bg-white shadow-lg items-center">
-        <div className="flex flex-col items-center">
-          <div className="material-icons">home</div>
-          <Link to="/">Home</Link>
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="material-icons">payment</div>
-          <Link to="/dana">Dana</Link>
-        </div>
+        <Link className="flex flex-col items-center" to="/">
+          <span className="material-icons">home</span>
+          Home
+        </Link>
+        <Link className="flex flex-col items-center" to="/dana">
+          <span className="material-icons">payment</span>
+          Dana
+        </Link>
         <div>
           <button className="material-icons" style={{ fontSize: "60px" }}>
             <Link to="/create"> add_circle</Link>
           </button>
         </div>
-        <div className="flex flex-col items-center">
-          <div className="material-icons">bar_chart</div>
-          <Link to="/report">Report</Link>
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="material-icons">event</div>
-          <Link to="/plan">Plan</Link>
-        </div>
+        <Link className="flex flex-col items-center" to="/report">
+          <span className="material-icons">bar_chart</span>
+          Report
+        </Link>
+        <Link className="flex flex-col items-center" to="/plan">
+          <span className="material-icons">event</span>
+          Plan
+        </Link>
       </nav>
     </div>
   );

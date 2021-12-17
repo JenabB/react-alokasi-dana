@@ -36,7 +36,7 @@ const HistoryPendanaan = () => {
           <div>
             {/* 6 pendanaan terbaru */}
             {group.map((h, i) => (
-              <Pendanaan h={h} i={i} />
+              <Pendanaan h={h} i={i} key={i} />
             ))}
           </div>
           {group.length < 5 ? (
