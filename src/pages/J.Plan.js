@@ -1,11 +1,12 @@
 import { useState, useContext } from "react";
-import AppBar from "components/home/B1.AppBar";
+
 import AddPlanModal from "components/plan/AddPlanModal";
 import React from "react";
 import { Outlet, NavLink } from "react-router-dom";
 import { GlobalContext } from "context/GlobalState";
 import NoPlan from "components/plan/NoPlan";
 import { motion } from "framer-motion";
+import AppBar from "components/common/AppBar";
 const Plan = () => {
   const [isShow, setIshow] = useState(false);
   const { plan } = useContext(GlobalContext);
@@ -33,7 +34,7 @@ const Plan = () => {
       }}
       className="pb-20"
     >
-      <AppBar />
+      <AppBar title="Plan" />
       <AddPlanModal isShow={isShow} handleShow={handleShow} />
       <div className="p-4">
         <h1>Tulis rencana pendanaan disini</h1>
