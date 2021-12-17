@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "context/GlobalState";
+// import React, { useContext } from "react";
+// import { GlobalContext } from "context/GlobalState";
 import Swal from "sweetalert2";
 
 const ActionPopover = ({ open, planId, handleClose }) => {
-  const { deletePlan } = useContext(GlobalContext);
+  // const { deletePlan } = useContext(GlobalContext);
 
   const handleDelete = (planId) => console.log(planId);
   return (

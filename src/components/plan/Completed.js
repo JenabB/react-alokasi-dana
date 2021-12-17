@@ -21,7 +21,8 @@ const Completed = () => {
       checked: false,
     },
   ];
-  const [value, setValue] = useState(mock);
+  const [value] = useState(mock);
+  // setValue;
   console.log(value);
 
   const handleChange = (e) => {
