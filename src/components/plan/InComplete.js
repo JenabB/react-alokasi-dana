@@ -11,9 +11,9 @@ const InComplete = () => {
 
   const item = plan.filter((el) => el.complete === false);
   console.log(item);
-  const handleChange = (e) => {
-    // setValue([...value, [e.target.name]: e.target.checked]);
-  };
+  // const handleChange = (e) => {
+  //   // setValue([...value, [e.target.name]: e.target.checked]);
+  // };
 
   const handleActionOpen = () => setActionOpen(true);
   const handleActionClose = () => setActionOpen(false);
