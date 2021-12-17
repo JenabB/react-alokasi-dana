@@ -122,7 +122,7 @@ const EditPendanaan = () => {
 
       <AppBarWithBackButton title="Edit Pendanaan" />
 
-      <div className="m-4 text-center ">
+      <div className="m-4 text-center">
         <div className="sticky top-10 z-10 lg:w-2/4 mx-auto w-full m-4">
           <motion.div
             className={mainHeader}
@@ -252,7 +252,7 @@ const EditPendanaan = () => {
           Tambah lagi
         </button>
       </div>
-      <div className="text-center m-8">
+      <div className="text-center m-8 pb-20">
         <button
           disabled={isMinus}
           className={

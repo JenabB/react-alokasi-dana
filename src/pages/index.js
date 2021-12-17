@@ -7,6 +7,7 @@ import ViewAllPendanaan from "./F.ViewAllPendanaan";
 import TotalDetail from "./G.TotalDetail";
 import ProductByCategory from "./H.ProductByCategory";
 import Report from "./I.Report";
+import Plan from "./J.Plan";
 
 export {
   Welcome,
@@ -18,4 +19,5 @@ export {
   TotalDetail,
   ProductByCategory,
   Report,
+  Plan,
 };

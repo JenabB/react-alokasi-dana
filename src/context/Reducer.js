@@ -102,6 +102,24 @@ export default (state, action) => {
         selectedBlog: action.payload,
       };
 
+    case "CREATE_PLAN":
+      return {
+        ...state,
+        plan: [action.payload, ...state.plan],
+      };
+
+    case "COMPLETE_PLAN":
+      return {
+        ...state,
+        plan: state.plan,
+      };
+
+    case "DELETE_PLAN":
+      return {
+        ...state,
+        plan: state.plan.filter((item) => +item.planId !== +action.payload),
+      };
+
     default:
       return state;
   }

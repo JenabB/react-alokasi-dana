@@ -8,7 +8,7 @@ const Dana = ({ dana }) => {
   return (
     <div className={danaCard}>
       <h1 className="text-primary text-xl font-bold">{dana.nama}</h1>
-      <div className="grid grid-cols-3 items-center">
+      <div className="grid grid-cols-2 items-center">
         <Link to={`/category/${dana.category}`}>
           <h2
             className={

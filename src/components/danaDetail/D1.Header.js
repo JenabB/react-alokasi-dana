@@ -29,19 +29,23 @@ const Header = ({ detail }) => {
             <div className="flex justify-between px-4">
               <div></div>
               <h1 className="text-3xl font-bold">{detail?.namaPendanaan}</h1>
-              <Link to={`${detail?.id}/edit`}>
+              <Link to={`edit`}>
                 <span className="material-icons md-24">edit</span>
               </Link>
             </div>
             <p>
-              {moment(detail?.createdAt).format("dddd, MMMM Do YYYY, h:mm:ss a")}
+              {moment(detail?.createdAt).format(
+                "dddd, MMMM Do YYYY, h:mm:ss a"
+              )}
             </p>
           </div>
 
           <div className="grid grid-cols-2 mt-1 bg-primary p-4 rounded">
             <div>
               <h1>Dana Awal</h1>
-              <h1 className="font-bold text-xl">{formatRp(detail?.danaAwal)}</h1>
+              <h1 className="font-bold text-xl">
+                {formatRp(detail?.danaAwal)}
+              </h1>
             </div>
             <div>
               <h1>Dana Akhir</h1>

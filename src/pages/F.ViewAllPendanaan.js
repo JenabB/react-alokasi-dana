@@ -163,7 +163,7 @@ const ViewAllPendanaan = () => {
                 </div>
                 <div>
                   {g.dana.map((h, i) => (
-                    <Pendanaan h={h} i={i} />
+                    <Pendanaan h={h} i={i} key={i} />
                   ))}
                 </div>
               </div>
