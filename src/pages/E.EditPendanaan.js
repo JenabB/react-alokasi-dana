@@ -93,7 +93,7 @@ const EditPendanaan = () => {
     e.preventDefault();
 
     editPendanaan(updatedDana);
-    navigate("/home");
+    navigate("/");
   };
 
   return (
