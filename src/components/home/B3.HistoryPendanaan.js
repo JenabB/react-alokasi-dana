@@ -18,13 +18,13 @@ const HistoryPendanaan = () => {
   }, [historyPendanaan]);
 
   return (
-    <div className="m-4 rounded-xl p-4 w-full mx-auto">
+    <div className="my-2 rounded-xl p-4 w-full mx-auto">
       <h1>Sejarah</h1>
       <hr />
 
       {historyPendanaan.length > 0 ? (
         <div>
-          <div className="text-center my-7">
+          <div className="text-center my-6">
             <Link to="/all">
               <input
                 type="search"

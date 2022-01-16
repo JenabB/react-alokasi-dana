@@ -81,7 +81,7 @@ const Pendanaan = ({ h, i }) => {
 
       <hr />
 
-      <div className="flex justify-between my-2">
+      <div className="flex justify-between text-center my-2">
         <div className="bg-tabungan text-white w-full px-2 py-1">
           <h1 className="text-sm">Dana awal</h1>
           <p>{formatRp(h.danaAwal)}</p>
