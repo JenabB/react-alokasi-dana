@@ -87,7 +87,7 @@ const Form = () => {
     });
 
     //setelah history pendanaan disimpan, akan dilempar kembali ke home
-    navigate("/home");
+    navigate("/");
   };
 
   useEffect(() => {
