@@ -107,12 +107,12 @@ const TotalAlokasiDana = ({
             {formatRp(totalAlokasiDana)}
           </h2>
           <hr />
-          <div className="grid grid-cols-2 text-center mt-4">
-            <div>
+          <div className="grid grid-cols-2 text-center mt-2">
+            <div className="bg-tabungan  p-2">
               <h1>Total Dana Awal</h1>
               <p className="font-bold">{formatRp(totalDanaAwal)}</p>
             </div>
-            <div>
+            <div className="bg-asmara p-2">
               <h1>Total Dana Akhir</h1>
               <p className="font-bold">{formatRp(totalDanaAkhir)}</p>
             </div>

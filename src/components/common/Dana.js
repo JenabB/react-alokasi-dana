@@ -10,19 +10,14 @@ const Dana = ({ dana }) => {
       <h1 className="text-primary text-xl font-bold">{dana.nama}</h1>
       <div className="grid grid-cols-2 items-center">
         <Link to={`/category/${dana.category}`}>
-          <h2
-            className={
-              "inline-block px-3 py-1 rounded-lg text-white my-2 bg-" +
-              dana.category
-            }
-          >
+          <h2 className="inline-block px-3 py-1 rounded-lg text-white my-2 bg-primary text-xs">
             {dana.category}
           </h2>
         </Link>
         <h3 className="mx-2">{formatRp(dana.harga)}</h3>
       </div>
 
-      <p className="text-gray-400 text-sm mt-4">
+      <p className="text-gray-400 text-sm ">
         {moment(dana.createdAt).fromNow()}
       </p>
     </div>
