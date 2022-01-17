@@ -64,7 +64,7 @@ const AddPlanModal = ({ isShow, handleShow }) => {
       planId: uuidv4(),
       createdAt: new Date(),
       name: payload.name,
-      price: parseInt(payload.prices),
+      price: parseInt(payload.price),
       date: payload.date,
       complete: false,
     });

@@ -13,7 +13,7 @@ import {
   Report,
   Plan,
   // Welcome,
-  // TotalDetail,
+  TotalDetail,
   DanaDetail,
   EditPendanaan,
 
@@ -28,6 +28,7 @@ export default function BottomNavigation() {
       <Routes>
         <Route path="/" element={<BottomLayout />}>
           <Route index element={<Home />} />
+          <Route path="detail" element={<TotalDetail />} />
           <Route path="dana" element={<ViewAllPendanaan />} />
           <Route path="pendanaan/:id" element={<DanaDetail />} />
           <Route path="pendanaan/:id/edit" element={<EditPendanaan />} />

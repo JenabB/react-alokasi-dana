@@ -117,7 +117,7 @@ export default (state, action) => {
     case "DELETE_PLAN":
       return {
         ...state,
-        plan: state.plan.filter((item) => +item.planId !== +action.payload),
+        plan: state.plan.filter((item) => item.planId !== action.payload),
       };
 
     default:
