@@ -5,7 +5,7 @@ import { formatRp } from "utils/formatRp";
 import ActionPopover from "./ActionPopover";
 
 const InComplete = () => {
-  const { plan } = useContext(GlobalContext);
+  const { plan, deletePlan } = useContext(GlobalContext);
   const [totalPrice, setTotalPrice] = useState(0);
   const [actionOpen, setActionOpen] = useState(false);
 
@@ -26,6 +26,11 @@ const InComplete = () => {
 
   console.log(totalPrice);
 
+  const handleDeletePlan = (planId) => {
+    console.log(planId, "ini planId");
+    deletePlan(planId);
+  };
+
   return (
     <div>
       <div className="bg-white shadow-sm p-4 m-2">
@@ -40,9 +45,12 @@ const InComplete = () => {
               handleClose={handleActionClose}
             />
             <div key={index} className="my-4 bg-white shadow-lg p-4">
-              <div>
-                <button className="material-icons" onClick={handleActionOpen}>
-                  more_horiz
+              <div className="text-right">
+                <button
+                  className="material-icons"
+                  onClick={() => handleDeletePlan(val.planId)}
+                >
+                  delete
                 </button>
               </div>
               <div className="items-center flex justify-between">
