@@ -5,7 +5,6 @@ import Helmet from "react-helmet";
 import { motion } from "framer-motion";
 import { formatRp } from "utils/formatRp";
 import { v4 as uuidv4 } from "uuid";
-import { mainHeader } from "theme/rectangularTheme";
 
 //context
 import { GlobalContext } from "context/GlobalState";
