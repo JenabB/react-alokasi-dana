@@ -8,7 +8,7 @@ import { formatRp } from "utils/formatRp";
 import { motion } from "framer-motion";
 
 const Header = () => {
-  const { danaAwal, danaAkhir, semuaProduk } = useContext(GlobalContext);
+  const { danaAwal, danaAkhir } = useContext(GlobalContext);
 
   return (
     <motion.div
