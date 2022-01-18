@@ -4,10 +4,12 @@ import AppBarWithBackButton from "components/AppBarWithBackButton";
 import { GlobalContext } from "context/GlobalState";
 import Dana from "components/common/Dana";
 import { motion } from "framer-motion";
+import { useParams } from "react-router-dom";
 
 import { formatRp } from "utils/formatRp";
-const ProductByCategory = (props) => {
-  const category = props.match.params.category;
+
+const ProductByCategory = () => {
+  const { category } = useParams();
 
   const { totalProduk } = useContext(GlobalContext);
   const filtered = totalProduk.filter((x) => x.category === category);
@@ -18,37 +20,6 @@ const ProductByCategory = (props) => {
   });
 
   const totalHarga = semuaHarga.reduce((prev, cur) => prev + cur, 0);
-  function categoryHeader(category) {
-    const prefix = "p-4 rounded-lg text-white m-4 bg-";
-
-    switch (category) {
-      case "pribadi":
-        return prefix + "pribadi";
-      case "umum":
-        return prefix + "umum";
-      case "keluarga":
-        return prefix + "keluarga";
-      case "tabungan":
-        return prefix + "tabungan";
-      case "hiburan":
-        return prefix + "hiburan";
-      case "asmara":
-        return prefix + "asmara";
-      case "pendidikan":
-        return prefix + "pendidikan";
-      case "kesehatan":
-        return prefix + "kesehatan";
-      case "pembangunan":
-        return prefix + "pembangunan";
-      case "makanan":
-        return prefix + "makanan";
-      case "ibadah":
-        return prefix + "ibadah";
-
-      default:
-        return prefix + "white";
-    }
-  }
 
   return (
     <motion.div
@@ -72,7 +43,7 @@ const ProductByCategory = (props) => {
         <title>{category}</title>
       </Helmet>
       <AppBarWithBackButton title={category} />
-      <div className={categoryHeader(category)}>
+      <div className="bg-asmara p-4 mb-4">
         <h1>
           <span className="font-bold text-lg">{formatRp(totalHarga)}</span>{" "}
           telah dialokasikan untuk {category}

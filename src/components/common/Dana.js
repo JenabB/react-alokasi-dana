@@ -9,7 +9,7 @@ const Dana = ({ dana }) => {
     <div className={danaCard}>
       <h1 className="text-primary text-xl font-bold">{dana.nama}</h1>
       <div className="grid grid-cols-2 items-center">
-        <Link to={`/category/${dana.category}`}>
+        <Link to={`/kategori/${dana.category}`}>
           <h2 className="inline-block px-3 py-1 rounded-lg text-white my-2 bg-primary text-xs">
             {dana.category}
           </h2>

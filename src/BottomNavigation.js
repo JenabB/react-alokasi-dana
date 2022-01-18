@@ -16,8 +16,7 @@ import {
   TotalDetail,
   DanaDetail,
   EditPendanaan,
-
-  // ProductByCategory,
+  ProductByCategory,
 } from "pages";
 import InComplete from "components/plan/InComplete";
 import Completed from "components/plan/Completed";
@@ -34,6 +33,7 @@ export default function BottomNavigation() {
           <Route path="pendanaan/:id/edit" element={<EditPendanaan />} />
           <Route path="create" element={<CreatePendanaan />} />
           <Route path="report" element={<Report />} />
+          <Route path="kategori/:category" element={<ProductByCategory />} />
           <Route path="plan" element={<Plan />}>
             <Route index element={<InComplete />} />
             <Route path="complete" element={<Completed />} />

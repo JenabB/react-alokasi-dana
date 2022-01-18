@@ -24,44 +24,43 @@ const Header = ({ detail }) => {
         }}
         className="px-2"
       >
-        <div className="text-center text-white mt-2">
-          <div className="bg-primary p-4 rounded">
-            <div className="flex justify-between px-4">
-              <div></div>
-              <h1 className="text-3xl font-bold">{detail?.namaPendanaan}</h1>
+        <div className=" text-white mt-2">
+          <div className="bg-kesehatan p-4 rounded">
+            <div className="flex justify-between px-2">
+              <h1 className="text-xl font-bold">{detail?.namaPendanaan}</h1>
               <Link to={`edit`}>
-                <span className="material-icons md-24">edit</span>
+                <span className="material-icons">edit</span>
               </Link>
             </div>
-            <p>
+            <p className="px-2">
               {moment(detail?.createdAt).format(
                 "dddd, MMMM Do YYYY, h:mm:ss a"
               )}
             </p>
           </div>
 
-          <div className="grid grid-cols-2 mt-1 bg-primary p-4 rounded">
+          <div className="grid grid-cols-2 mt-1 text-sm bg-asmara py-2 px-6 rounded">
             <div>
               <h1>Dana Awal</h1>
-              <h1 className="font-bold text-xl">
+              <h1 className="font-bold text-lg">
                 {formatRp(detail?.danaAwal)}
               </h1>
             </div>
             <div>
               <h1>Dana Akhir</h1>
-              <h1 className="font-bold text-xl">
+              <h1 className="font-bold text-lg">
                 {formatRp(detail?.danaAkhir)}
               </h1>
             </div>
             <div className="mt-4">
               <h1>Total Pengeluaran</h1>
-              <p className="font-bold text-xl">
+              <p className="font-bold text-lg">
                 {formatRp(detail?.danaAwal - detail?.danaAkhir)}
               </p>
             </div>
             <div className="mt-4">
               <h1>Pendanaan Produk</h1>
-              <p className="font-bold text-xl">{detail?.semuaProduk.length}</p>
+              <p className="font-bold text-lg">{detail?.semuaProduk.length}</p>
             </div>
           </div>
         </div>
