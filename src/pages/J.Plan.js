@@ -52,12 +52,12 @@ const Plan = () => {
           <>
             <nav className=" w-full p-2 flex justify-evenly bg-white shadow-lg items-center">
               <div className="flex flex-col items-center">
-                <div className="material-icons">home</div>
-                <NavLink to="/plan">incomplete</NavLink>
+                <div className="material-icons">credit_card_off</div>
+                <NavLink to="/plan">Belum Selesai</NavLink>
               </div>
               <div className="flex flex-col items-center">
-                <div className="material-icons">payment</div>
-                <NavLink to="/plan/complete">complete</NavLink>
+                <div className="material-icons">view_stream</div>
+                <NavLink to="/plan/complete">Selesai</NavLink>
               </div>
             </nav>
             <Outlet />
