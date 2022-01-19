@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { GlobalContext } from "context/GlobalState";
 import Swal from "sweetalert2";
 import { formatRp } from "utils/formatRp";
+import moment from "moment";
 
 const InComplete = () => {
   const { plan, deletePlan } = useContext(GlobalContext);
@@ -14,12 +15,10 @@ const InComplete = () => {
   // };
 
   useEffect(() => {
-    const t = item.reduce((a, b) => parseInt(a.price) + parseInt(b.price));
+    const t = item.reduce((a, b) => a + b.price, 0);
 
     setTotalPrice(t);
   }, [item]);
-
-  console.log(totalPrice);
 
   const handleDeletePlan = (planId) => {
     Swal.fire({
@@ -33,7 +32,7 @@ const InComplete = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         deletePlan(planId);
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        Swal.fire("Hapus!", "Plan sudah dihapus.", "success");
       }
     });
   };
@@ -45,13 +44,21 @@ const InComplete = () => {
         <h2>{plan.length} hal telah direncanakan</h2>
       </div>
       <div className="">
-        {plan.map((val, index) => (
+        {item.map((val, index) => (
           <>
-            <div
-              key={index}
-              className="my-4 rounded bg-white shadow-lg p-4 py-2"
-            >
-              <div className="items-center flex justify-between">
+            <div key={index} className="my-4 rounded bg-white shadow-lg ">
+              <div
+                className={
+                  moment().format() > moment(val.date).fromNow()
+                    ? "bg-asmara p-2"
+                    : "bg-tabungan p-2"
+                }
+              >
+                <h1 className="text-white font-">
+                  {moment(val.date).fromNow()}
+                </h1>
+              </div>
+              <div className="items-center flex justify-between p-2">
                 <div>
                   <h1 className="text-pribadi font-bold">{val.name}</h1>
                   <h1>{formatRp(val.price)}</h1>
