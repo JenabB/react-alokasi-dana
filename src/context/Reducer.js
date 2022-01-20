@@ -115,6 +115,18 @@ export default (state, action) => {
         plan: updatesPlan,
       };
 
+    case "EDIT_PLAN":
+      const editedPlan = state.plan.map((el) => {
+        if (el.planId === action.payload.planId) {
+          return action.payload;
+        }
+        return el;
+      });
+      return {
+        ...state,
+        plan: editedPlan,
+      };
+
     case "DELETE_PLAN":
       return {
         ...state,
