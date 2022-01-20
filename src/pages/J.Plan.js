@@ -49,7 +49,7 @@ const Plan = () => {
         </button>
 
         {plan.length > 0 ? (
-          <>
+          <div className="lg:w-2/4 mx-auto w-full pb-20">
             <nav className=" w-full p-2 flex justify-evenly bg-white shadow-lg items-center">
               <div className="flex flex-col items-center">
                 <div className="material-icons">credit_card_off</div>
@@ -61,7 +61,7 @@ const Plan = () => {
               </div>
             </nav>
             <Outlet />
-          </>
+          </div>
         ) : (
           <NoPlan />
         )}

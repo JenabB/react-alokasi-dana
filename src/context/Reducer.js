@@ -96,22 +96,23 @@ export default (state, action) => {
         historyPendanaan: updatesPendanaan,
       };
 
-    case "GET_SELECTED_BLOG":
-      return {
-        ...state,
-        selectedBlog: action.payload,
-      };
-
     case "CREATE_PLAN":
       return {
         ...state,
         plan: [action.payload, ...state.plan],
       };
 
-    case "COMPLETE_PLAN":
+    case "SET_TO_COMPLETE_PLAN":
+      const updatePlan = action.payload;
+      const updatesPlan = state.plan.map((p) => {
+        if (p.planId === updatePlan.planId) {
+          return updatePlan;
+        }
+        return p;
+      });
       return {
         ...state,
-        plan: state.plan,
+        plan: updatesPlan,
       };
 
     case "DELETE_PLAN":
