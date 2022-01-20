@@ -24,10 +24,7 @@ export default function ReportChart({ data }) {
         className="p-2 w-full my-4"
         onChange={handleDataShownChange}
       >
-        <option style={{ display: "none" }} value="">
-          Filter Data
-        </option>
-        <option value="">None</option>
+        <option value="">Semua</option>
         <option value="totalDana">Total Dana Dialokasikan</option>
         <option value="danaAwal">Dana Awal</option>
         <option value="danaAkhir">Dana Akhir</option>

@@ -9,14 +9,11 @@ import { GlobalContext } from "context/GlobalState";
 
 import ReportChart from "components/common/ReportChart";
 import { motion } from "framer-motion";
-
-import { reportData } from "../utils/mockData";
 import moment from "moment";
 import AppBar from "components/common/AppBar";
 
 const Report = () => {
   const { historyPendanaan } = useContext(GlobalContext);
-  const [mockMode, setMockMode] = useState("1");
   const [chartData, setChartData] = useState("");
 
   useEffect(() => {
@@ -55,10 +52,6 @@ const Report = () => {
 
     setChartData(sortedData);
   }, [historyPendanaan]);
-
-  const handleChangeMockMode = (e) => {
-    setMockMode(e.target.value);
-  };
 
   return (
     <motion.div
@@ -103,11 +96,7 @@ const Report = () => {
           </div>
         ) : (
           <div className="lg:w-2/4 mx-auto w-full px-2">
-            <select value={mockMode} onChange={handleChangeMockMode}>
-              <option value="1">Mock Data</option>
-              <option value="">Real Data</option>
-            </select>
-            <ReportChart data={!!mockMode ? reportData : chartData} />
+            <ReportChart data={chartData} />
           </div>
         )}
       </div>
