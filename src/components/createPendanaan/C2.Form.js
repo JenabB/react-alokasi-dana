@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 import { motion } from "framer-motion";
 import categories from "./categories";
 import { formInput } from "theme/inputTheme";
+import Suggestions from "./C3.Suggestions";
 
 const Form = () => {
   //state
@@ -137,6 +138,7 @@ const Form = () => {
           },
         }}
       >
+        {danaAwal > 0 ? <Suggestions danaAwal={danaAwal} /> : ""}
         <div className="text-center bg-white py-6 px-6 rounded">
           <h4 className="text-muted mb-6 text-lg">Buat Pendanaan</h4>
           <div className="text-left">
