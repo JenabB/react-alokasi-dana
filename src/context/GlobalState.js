@@ -142,10 +142,10 @@ export const GlobalProvider = (props) => {
     });
   }
 
-  function completePlan(planId) {
+  function setToCompletePlan(plan) {
     dispatch({
-      type: "COMPLETE_PLAN",
-      payload: planId,
+      type: "SET_TO_COMPLETE_PLAN",
+      payload: plan,
     });
   }
 
@@ -185,7 +185,7 @@ export const GlobalProvider = (props) => {
         editPendanaan,
         //plan
         createPlan,
-        completePlan,
+        setToCompletePlan,
         deletePlan,
       }}
     >
