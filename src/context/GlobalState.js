@@ -149,6 +149,13 @@ export const GlobalProvider = (props) => {
     });
   }
 
+  function editPlan(plan) {
+    dispatch({
+      type: "EDIT_PLAN",
+      payload: plan,
+    });
+  }
+
   function deletePlan(planId) {
     dispatch({
       type: "DELETE_PLAN",
@@ -186,6 +193,7 @@ export const GlobalProvider = (props) => {
         //plan
         createPlan,
         setToCompletePlan,
+        editPlan,
         deletePlan,
       }}
     >

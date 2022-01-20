@@ -4,15 +4,20 @@ import Swal from "sweetalert2";
 import { formatRp } from "utils/formatRp";
 import moment from "moment";
 import { motion } from "framer-motion";
+import EditPlanModal from "./EditPlanModal";
 
 const InComplete = () => {
   const { plan, setToCompletePlan, deletePlan } = useContext(GlobalContext);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [isEdit, setIsEdit] = useState(false);
+  const [selectedId, setSelectedId] = useState("");
+
+  const handleIsEdit = (planId) => {
+    setSelectedId(planId);
+    setIsEdit(!isEdit);
+  };
 
   const item = plan.filter((el) => el.complete === false);
-  console.log(item);
-
-  const [upPlan, setUpdate] = useState({});
 
   const handleComplete = (planId) => {
     const matchPlan = plan.find((el) => el.planId === planId);
@@ -22,12 +27,8 @@ const InComplete = () => {
       complete: !matchPlan.complete,
     };
 
-    setUpdate(updatedPlan);
-    console.log(upPlan, "ini up plan");
     setToCompletePlan(updatedPlan);
   };
-
-  console.log(plan, "ini plan");
 
   useEffect(() => {
     const t = item.reduce((a, b) => a + b.price, 0);
@@ -70,6 +71,11 @@ const InComplete = () => {
         },
       }}
     >
+      <EditPlanModal
+        isEdit={isEdit}
+        selectedId={selectedId}
+        handleEdit={handleIsEdit}
+      />
       <div className="bg-white shadow-sm rounded p-4 my-2">
         <h1>total: {formatRp(totalPrice)}</h1>
         <h2>{plan.length} hal telah direncanakan</h2>
@@ -103,7 +109,7 @@ const InComplete = () => {
                   </button>
                   <button
                     className="material-icons mx-2 text-pribadi"
-                    onClick={() => handleDeletePlan(val.planId)}
+                    onClick={() => handleIsEdit(val.planId)}
                   >
                     edit
                   </button>
