@@ -18,7 +18,7 @@ const initialState = {
   danaAwal: 0,
   danaAkhir: 0,
   semuaProduk: [
-    { createAt: new Date(), nama: "", category: "pribadi", harga: 0 },
+    { createdAt: new Date(), nama: "", category: "pribadi", harga: 0 },
   ], //state awal semua produk
   pendanaanDetail: null,
   plan: localStorage.getItem("plan-dana")

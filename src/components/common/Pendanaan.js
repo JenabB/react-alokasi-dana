@@ -73,7 +73,7 @@ const Pendanaan = ({ h, i }) => {
       </div>
 
       <div className="mb-2 flex items-center">
-        <span class="material-icons text-sm mr-2">inbox</span>
+        <span className="material-icons text-sm mr-2">inbox</span>
         <p className="text-sm text-gray-500">
           {h.semuaProduk.length} pendanaan
         </p>

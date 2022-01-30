@@ -13,7 +13,7 @@ const FloatingResetButton = () => {
       }}
       onClick={() => window.location.reload()} //melakukan reload
     >
-      <span class="material-icons md-24 text-white">restart_alt</span>
+      <span className="material-icons md-24 text-white">restart_alt</span>
     </motion.button>
   );
 };
