@@ -108,7 +108,7 @@ const InComplete = () => {
                     check_circle
                   </button>
                   <button
-                    className="material-icons mx-2 text-pribadi"
+                    className="material-icons mx-2 text-primary"
                     onClick={() => handleIsEdit(val.planId)}
                   >
                     edit

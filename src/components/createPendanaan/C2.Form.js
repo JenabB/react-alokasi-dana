@@ -167,7 +167,7 @@ const Form = () => {
           <h1 className="mt-8">Alokasi Dana</h1>
           {semuaProduk.length > 0 ? (
             semuaProduk.map((produk, index) => (
-              <div key={index} className="my-4 shadow bg-white rounded p-6">
+              <div key={index} className="my-4 shadow bg-white rounded p-4">
                 <h1 className="text-left text-formLabel">Nama</h1>
                 <input
                   className={formInput}
@@ -180,10 +180,10 @@ const Form = () => {
                     handleProdukChange(index, e);
                   }}
                 />
-                <h1 className="text-left text-formLabel mt-4">Kategori</h1>
+                <h1 className="text-left text-formLabel">Kategori</h1>
                 <select
                   name="category"
-                  className="p-2 w-full my-4"
+                  className="p-2 w-full bg-keluarga"
                   onChange={(e) => {
                     handleProdukChange(index, e);
                   }}
