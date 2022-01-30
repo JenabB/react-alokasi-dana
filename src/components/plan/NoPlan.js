@@ -10,7 +10,7 @@ const NoPlan = () => {
           alt="no plan"
         />
       </div>
-      <h1>no plan</h1>
+      <h1>Belum ada Plan</h1>
     </div>
   );
 };
