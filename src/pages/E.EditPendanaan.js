@@ -21,6 +21,7 @@ const EditPendanaan = () => {
 
   const [updatedDana, setUpdatedDana] = useState({
     id: matchDana.id,
+    createdAt: matchDana.createdAt,
     namaPendanaan: matchDana.namaPendanaan,
     danaAwal: matchDana.danaAwal,
     danaAkhir: matchDana.danaAkhir,
