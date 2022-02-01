@@ -61,6 +61,7 @@ const EditPendanaan = () => {
         {
           id: uuidv4(),
           nama: "",
+          createdAt: new Date(),
           category: categories[0].value,
           harga: 0,
         },
