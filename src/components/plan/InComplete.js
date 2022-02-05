@@ -5,12 +5,15 @@ import { formatRp } from "utils/formatRp";
 import moment from "moment";
 import { motion } from "framer-motion";
 import EditPlanModal from "./EditPlanModal";
+import { searchInput } from "theme/inputTheme";
 
 const InComplete = () => {
   const { plan, setToCompletePlan, deletePlan } = useContext(GlobalContext);
   const [totalPrice, setTotalPrice] = useState(0);
   const [isEdit, setIsEdit] = useState(false);
   const [selectedId, setSelectedId] = useState("");
+  const [query, setQuery] = useState("");
+  const [sortBy, setSortBy] = useState("terbaru");
 
   const handleIsEdit = (planId) => {
     setSelectedId(planId);
@@ -19,6 +22,15 @@ const InComplete = () => {
 
   const item = plan.filter((el) => el.complete === false);
 
+  // eslint-disable-next-line array-callback-return
+  const ddd = item.filter((dat) => {
+    if (query === null) return dat;
+    else if (dat.name.toLowerCase().includes(query.toLowerCase())) return dat;
+  });
+
+  const handleQueryChange = (e) => {
+    setQuery(e.target.value);
+  };
   const handleComplete = (planId) => {
     const matchPlan = plan.find((el) => el.planId === planId);
 
@@ -53,6 +65,20 @@ const InComplete = () => {
     });
   };
 
+  const handleSelectChange = (e) => {
+    setSortBy(e.target.value);
+  };
+
+  const da = ddd.sort((a, b) => {
+    if (sortBy === "a-z") return a.name.localeCompare(b.name);
+    else if (sortBy === "z-a") return b.name.localeCompare(a.name);
+    else if (sortBy === "termahal") return b.price - a.price;
+    else if (sortBy === "termurah") return a.price - b.price;
+    else if (sortBy === "terdekat") return new Date(a.date) - new Date(b.date);
+    else if (sortBy === "terjauh") return new Date(b.date) - new Date(a.date);
+    return ddd;
+  });
+
   return (
     <motion.div
       initial="hidden"
@@ -80,8 +106,27 @@ const InComplete = () => {
         <h1>total: {formatRp(totalPrice)}</h1>
         <h2>{plan.length} hal telah direncanakan</h2>
       </div>
-      <div className="">
-        {item.map((val, index) => (
+      <div className="text-center my-8">
+        <input
+          type="search"
+          value={query}
+          onChange={handleQueryChange}
+          className={searchInput}
+          placeholder="cari plan"
+        />
+      </div>
+      <div>
+        <select value={sortBy} onChange={handleSelectChange}>
+          <option value="a-z">A-Z</option>
+          <option value="z-a">Z-A</option>
+          <option value="terdekat">Terdekat</option>
+          <option value="terjauh">Terjauh</option>
+          <option value="termahal">Termahal</option>
+          <option value="termurah">Termurah</option>
+        </select>
+      </div>
+      <div>
+        {da.map((val, index) => (
           <>
             <div key={index} className="my-4 rounded bg-white shadow-lg ">
               <div
