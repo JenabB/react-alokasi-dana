@@ -38,7 +38,7 @@ const User = () => {
   }, [time]);
 
   return (
-    <div className="mx-4 py-2 px-4">
+    <div>
       <p>Selamat {condition}</p>
       <div className="flex">
         {isEdit ? (

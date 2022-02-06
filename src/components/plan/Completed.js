@@ -4,6 +4,8 @@ import Swal from "sweetalert2";
 import { formatRp } from "utils/formatRp";
 import moment from "moment";
 import { motion } from "framer-motion";
+import Summary from "./components/Summary";
+import SortItem from "./components/SortItem";
 
 const Completed = () => {
   const { plan, setToCompletePlan, deletePlan } = useContext(GlobalContext);
@@ -65,14 +67,12 @@ const Completed = () => {
     >
       {item.length > 0 ? (
         <>
-          <div className="bg-white shadow-sm rounded p-4 my-2">
-            <h1>total: {formatRp(totalPrice)}</h1>
-            <h2>{plan.length} hal telah direalisasikan</h2>
-          </div>
+          <Summary totalPrice={totalPrice} length={plan.length} />
+          <SortItem />
           <div className="">
             {item.map((val, index) => (
-              <>
-                <div key={index} className="my-4  rounded bg-white shadow-lg ">
+              <div key={index}>
+                <div className="my-4  rounded bg-white shadow-lg ">
                   <div
                     className={
                       moment().format() > moment(val.date).fromNow()
@@ -106,7 +106,7 @@ const Completed = () => {
                     </div>
                   </div>
                 </div>
-              </>
+              </div>
             ))}
           </div>
         </>

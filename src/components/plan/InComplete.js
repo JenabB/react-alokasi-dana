@@ -6,6 +6,8 @@ import moment from "moment";
 import { motion } from "framer-motion";
 import EditPlanModal from "./EditPlanModal";
 import { searchInput } from "theme/inputTheme";
+import Summary from "./components/Summary";
+import SortItem from "./components/SortItem";
 
 const InComplete = () => {
   const { plan, setToCompletePlan, deletePlan } = useContext(GlobalContext);
@@ -13,7 +15,7 @@ const InComplete = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [selectedId, setSelectedId] = useState("");
   const [query, setQuery] = useState("");
-  const [sortBy, setSortBy] = useState("terbaru");
+  const [sortBy, setSortBy] = useState("terdekat");
 
   const handleIsEdit = (planId) => {
     setSelectedId(planId);
@@ -102,10 +104,7 @@ const InComplete = () => {
         selectedId={selectedId}
         handleEdit={handleIsEdit}
       />
-      <div className="bg-white shadow-sm rounded p-4 my-2">
-        <h1>total: {formatRp(totalPrice)}</h1>
-        <h2>{plan.length} hal telah direncanakan</h2>
-      </div>
+      <Summary totalPrice={totalPrice} length={plan.length} />
       <div className="text-center my-8">
         <input
           type="search"
@@ -115,20 +114,11 @@ const InComplete = () => {
           placeholder="cari plan"
         />
       </div>
-      <div>
-        <select value={sortBy} onChange={handleSelectChange}>
-          <option value="a-z">A-Z</option>
-          <option value="z-a">Z-A</option>
-          <option value="terdekat">Terdekat</option>
-          <option value="terjauh">Terjauh</option>
-          <option value="termahal">Termahal</option>
-          <option value="termurah">Termurah</option>
-        </select>
-      </div>
+      <SortItem sortBy={sortBy} handleSelectChange={handleSelectChange} />
       <div>
         {da.map((val, index) => (
-          <>
-            <div key={index} className="my-4 rounded bg-white shadow-lg ">
+          <div key={index}>
+            <div className="my-4 rounded bg-white shadow-lg ">
               <div
                 className={
                   moment().format() > moment(val.date).fromNow()
@@ -167,7 +157,7 @@ const InComplete = () => {
                 </div>
               </div>
             </div>
-          </>
+          </div>
         ))}
       </div>
     </motion.div>

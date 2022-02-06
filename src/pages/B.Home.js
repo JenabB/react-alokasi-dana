@@ -47,8 +47,17 @@ const Home = () => {
       <AppBar />
 
       <div className="lg:w-2/4 mx-auto w-full pb-20">
-        <User />
-
+        <div className="flex justify-between py-4 px-8">
+          <User />
+          <button
+            className="bg-primary px-2 rounded-lg text-white"
+            onClick={() => {
+              window.location.reload(true);
+            }}
+          >
+            Update App
+          </button>
+        </div>
         <TotalAlokasiDana
           historyPendanaan={historyPendanaan}
           totalAlokasiDana={totalAlokasiDana}

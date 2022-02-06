@@ -1,52 +1,9 @@
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "context/GlobalState";
 import { v4 as uuidv4 } from "uuid";
-import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
-
-const createPlanSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required"),
-  price: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required"),
-  date: Yup.string().email("Invalid email").required("Required"),
-});
 
 const AddPlanModal = ({ isShow, handleShow }) => {
   const { createPlan } = useContext(GlobalContext);
-
-  <Formik
-    initialValues={{
-      name: "",
-      price: "",
-      date: null,
-    }}
-    validationSchema={createPlanSchema}
-    onSubmit={(values) => {
-      // same shape as initial values
-      console.log(values);
-    }}
-  >
-    {({ errors, touched }) => (
-      <Form>
-        <Field name="firstName" />
-        {errors.firstName && touched.firstName ? (
-          <div>{errors.firstName}</div>
-        ) : null}
-        <Field name="lastName" />
-        {errors.lastName && touched.lastName ? (
-          <div>{errors.lastName}</div>
-        ) : null}
-        <Field name="email" type="email" />
-        {errors.email && touched.email ? <div>{errors.email}</div> : null}
-        <button type="submit">Submit</button>
-      </Form>
-    )}
-  </Formik>;
 
   const [payload, setPayload] = useState({
     name: "",
@@ -68,7 +25,6 @@ const AddPlanModal = ({ isShow, handleShow }) => {
       date: payload.date,
       complete: false,
     });
-    console.log(payload);
   };
 
   return (
