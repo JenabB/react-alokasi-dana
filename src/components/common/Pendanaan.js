@@ -72,26 +72,26 @@ const Pendanaan = ({ h, i }) => {
         </button>
       </div>
 
-      <div className="mb-2 flex items-center">
-        <span className="material-icons text-sm mr-2">inbox</span>
-        <p className="text-sm text-gray-500">
-          {h.semuaProduk.length} pendanaan
-        </p>
+      <div className="flex justify-between pr-2 pt-1">
+        <div className="mb-2 flex items-center">
+          <span className="material-icons text-sm mr-2">inbox</span>
+          <p className="text-sm text-gray-500">
+            {h.semuaProduk.length} pendanaan
+          </p>
+        </div>
+        <p className="text-gray-400 text-xs">{moment(h.createdAt).fromNow()}</p>
       </div>
 
-      <hr />
-
-      <div className="flex justify-between text-center my-2">
+      <div className="flex justify-between text-center mb-2">
         <div className="bg-tabungan text-white w-full px-2 py-1">
-          <h1 className="text-sm">Dana awal</h1>
-          <p>{formatRp(h.danaAwal)}</p>
+          <h1 className="text-xs">Dana awal</h1>
+          <p className="text-md">{formatRp(h.danaAwal)}</p>
         </div>
         <div className="bg-asmara text-white w-full px-2 py-1">
-          <h1 className="text-sm">Dana akhir</h1>
-          <p>{formatRp(h.danaAkhir)}</p>
+          <h1 className="text-xs">Dana akhir</h1>
+          <p className="text-md">{formatRp(h.danaAkhir)}</p>
         </div>
       </div>
-      <p className="text-gray-400 text-xs">{moment(h.createdAt).fromNow()}</p>
     </motion.div>
   );
 };

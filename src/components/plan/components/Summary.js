@@ -6,7 +6,7 @@ const Summary = ({ totalPrice, length }) => {
   return (
     <div>
       <div className="bg-white shadow-sm rounded p-4 my-2">
-        <h1>total: {formatRp(totalPrice)}</h1>
+        <h1 className="text-primaryLight">total: {formatRp(totalPrice)}</h1>
         <h2>{length} hal telah direncanakan</h2>
       </div>
     </div>

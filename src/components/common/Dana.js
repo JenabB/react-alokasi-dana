@@ -16,7 +16,6 @@ const Dana = ({ dana }) => {
         </Link>
         <h3 className="mx-2">{formatRp(dana.harga)}</h3>
       </div>
-
       <p className="text-gray-400 text-sm ">
         {moment(dana.createdAt).fromNow()}
       </p>

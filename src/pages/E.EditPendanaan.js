@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Helmet from "react-helmet";
-
+import { formInput } from "theme/inputTheme";
 import { motion } from "framer-motion";
 import { formatRp } from "utils/formatRp";
 import { v4 as uuidv4 } from "uuid";
@@ -148,7 +148,7 @@ const EditPendanaan = () => {
           <h1>Nama pendanaan</h1>
           <input
             type="text"
-            className="p-2 mb-6 w-full rounded-xl bg-input"
+            className={formInput}
             placeholder="nama baru"
             name="namaPendanaan"
             value={updatedDana.namaPendanaan}
@@ -157,7 +157,7 @@ const EditPendanaan = () => {
           <h1>Dana awal</h1>
           <input
             type="number"
-            className="p-2 mb-6 w-full rounded-xl bg-input"
+            className={formInput}
             placeholder="dana awal"
             name="danaAwal"
             value={updatedDana.danaAwal}
@@ -181,7 +181,7 @@ const EditPendanaan = () => {
                 </button>
                 <h1 className="text-left pl-4">Nama</h1>
                 <input
-                  className="bg-input p-2 rounded-lg my-1"
+                  className={formInput}
                   type="text"
                   maxLength="20"
                   name="nama"
@@ -194,7 +194,7 @@ const EditPendanaan = () => {
                 <select
                   name="category"
                   value={produk.category}
-                  className="p-2 w-full my-4"
+                  className="p-2 w-full bg-keluarga"
                   onChange={(e) => {
                     handleProdukChange(index, e);
                   }}
@@ -207,7 +207,7 @@ const EditPendanaan = () => {
                 </select>
                 <h1 className="text-left pl-4 mt-4">Harga</h1>
                 <input
-                  className="bg-input p-2"
+                  className={formInput}
                   type="number"
                   name="harga"
                   value={produk.harga}
