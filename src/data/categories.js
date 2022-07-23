@@ -2,6 +2,7 @@ const categories = [
   { value: "pribadi", label: "Pribadi" },
   { value: "umum", label: "Umum" },
   { value: "keluarga", label: "Keluarga" },
+  { value: "estetika", label: "Estetika" },
   { value: "tabungan", label: "Tabungan" },
   { value: "hiburan", label: "Hiburan" },
   { value: "asmara", label: "Asmara" },

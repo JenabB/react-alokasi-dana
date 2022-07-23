@@ -2,12 +2,12 @@
 
 import FloatingResetButton from "components/FloatinResetButton";
 
-import Header from "components/createPendanaan/C1.Header";
-import Form from "components/createPendanaan/C2.Form";
+import { Header } from "components/createPendanaan";
+import { CreatePendanaanForm } from "components/form";
 import { motion } from "framer-motion";
 
 import Helmet from "react-helmet";
-import AppBar from "components/common/AppBar";
+import { AppBar } from "components/common";
 
 const CreatePendanaan = () => {
   return (
@@ -39,7 +39,7 @@ const CreatePendanaan = () => {
       <div className="lg:w-2/4 mx-auto w-full  pb-20">
         <Header />
 
-        <Form />
+        <CreatePendanaanForm />
       </div>
       <FloatingResetButton />
     </motion.div>

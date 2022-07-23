@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-
-//context
 import { GlobalContext } from "context/GlobalState";
+import { useNavigate } from "react-router-dom";
 
 //utils
 import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
 import { motion } from "framer-motion";
-import categories from "./categories";
+import { categories } from "data";
 import { formInput } from "theme/inputTheme";
-import Suggestions from "./C3.Suggestions";
+import Suggestions from "../createPendanaan/Suggestion";
 
 const Form = () => {
   //state

@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import Reducer from "./Reducer";
-import categories from "components/createPendanaan/categories";
+import { categories } from "data";
+
 //state awal context
 const initialState = {
   user: localStorage.getItem("alokasi-dana-user")
