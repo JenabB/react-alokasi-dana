@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Helmet from "react-helmet";
 
 //component
-import AppBarWithBackButton from "components/AppBarWithBackButton";
+import { AppBar } from "components/common";
 import AllProduct from "components/totalDetail/G2.AllProduct";
 import Header from "components/totalDetail/G1.Header";
 import { motion } from "framer-motion";
@@ -37,7 +37,7 @@ const TotalDetail = () => {
         <title>Total Dana Detail</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <AppBarWithBackButton title="Total Dana Detail" />
+      <AppBar isBack={true} title="Total Dana Detail" />
 
       <div className="lg:w-2/4 mx-auto w-full pb-20">
         <Header

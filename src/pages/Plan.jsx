@@ -6,7 +6,8 @@ import { Outlet, NavLink } from "react-router-dom";
 import { GlobalContext } from "context/GlobalState";
 import NoPlan from "components/plan/NoPlan";
 import { motion } from "framer-motion";
-import AppBar from "components/common/AppBar";
+import { AppBar } from "components/common";
+
 const Plan = () => {
   const [isShow, setIshow] = useState(false);
   const { plan } = useContext(GlobalContext);

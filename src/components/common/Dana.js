@@ -5,12 +5,21 @@ import { Link } from "react-router-dom";
 import { danaCard } from "theme/rectangularTheme";
 
 const Dana = ({ dana }) => {
+  const categoryColor = (category) => {
+    if (category === "kesehatan") return "bg-primaryLight";
+    if (category === "pribadi") return "bg-primary";
+    if (category === "tabungan") return "bg-secondary";
+  };
   return (
     <div className={danaCard}>
       <h1 className="text-primary text-xl font-bold">{dana.nama}</h1>
       <div className="grid grid-cols-2 items-center">
         <Link to={`/kategori/${dana.category}`}>
-          <h2 className="inline-block px-3 py-1 rounded-lg text-white my-2 bg-primary text-xs">
+          <h2
+            className={`inline-block px-3 py-1 rounded-lg text-white my-2 ${categoryColor(
+              dana.category
+            )} text-xs`}
+          >
             {dana.category}
           </h2>
         </Link>

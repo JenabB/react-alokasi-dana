@@ -25,7 +25,7 @@ const HistoryPendanaan = () => {
       {historyPendanaan.length > 0 ? (
         <div>
           <div className="text-center my-6">
-            <Link to="/all">
+            <Link to="/dana">
               <input
                 type="search"
                 className={searchInput}
@@ -43,7 +43,7 @@ const HistoryPendanaan = () => {
             ""
           ) : (
             <div className="text-center my-10">
-              <Link to="/all">
+              <Link to="/dana">
                 <h1 className="font-bold text-primary">Lihat Semua</h1>
               </Link>
             </div>

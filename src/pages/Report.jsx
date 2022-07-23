@@ -10,7 +10,7 @@ import { GlobalContext } from "context/GlobalState";
 import ReportChart from "components/common/ReportChart";
 import { motion } from "framer-motion";
 import moment from "moment";
-import AppBar from "components/common/AppBar";
+import { AppBar } from "components/common";
 
 const Report = () => {
   const { historyPendanaan } = useContext(GlobalContext);

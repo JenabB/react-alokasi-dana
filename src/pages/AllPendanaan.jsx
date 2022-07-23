@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 
 import { searchInput } from "theme/inputTheme";
 import { formatRp } from "utils/formatRp";
-import AppBar from "components/common/AppBar";
+import { AppBar } from "components/common";
 
 const ViewAllPendanaan = () => {
   const [groupByDate, setGroupByDate] = useState([]);

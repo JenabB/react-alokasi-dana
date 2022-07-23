@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
-import AppBarWithBackButton from "components/AppBarWithBackButton";
+import { AppBar } from "components/common";
 import { GlobalContext } from "context/GlobalState";
 import Dana from "components/common/Dana";
 import { motion } from "framer-motion";
@@ -42,7 +42,7 @@ const ProductByCategory = () => {
       <Helmet>
         <title>{category}</title>
       </Helmet>
-      <AppBarWithBackButton title={category} />
+      <AppBar isBack={true} title={category} />
       <div className="bg-asmara p-4 mb-4">
         <h1>
           <span className="font-bold text-lg">{formatRp(totalHarga)}</span>{" "}
