@@ -1,13 +1,14 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 import { useNavigate } from "react-router-dom";
-//app bar
+
 const AppBar = ({ title, isBack }) => {
   let navigate = useNavigate();
 
-  //kembali ke page sebelumnya
   const goBack = () => {
     navigate(-1);
   };
+
   return (
     <nav className="bg-primary flex justify-between p-4 text-center text-white">
       {isBack ? (
@@ -21,6 +22,11 @@ const AppBar = ({ title, isBack }) => {
       <div></div>
     </nav>
   );
+};
+
+AppBar.propTypes = {
+  title: PropTypes.string,
+  isBack: PropTypes.bool,
 };
 
 export default AppBar;
