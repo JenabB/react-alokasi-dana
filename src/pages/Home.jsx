@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 
 //components
-import { AppBar, HistoryPendanaan, TotalAlokasiDana } from "components/home";
+import { HistoryPendanaan, TotalAlokasiDana } from "components/home";
 import { FloatingAddButton } from "components/common";
+import { AppBar } from "components/common";
 //utils
 import { motion } from "framer-motion";
 
@@ -41,7 +42,7 @@ const Home = () => {
         },
       }}
     >
-      <AppBar />
+      <AppBar title="Alokasi Dana" />
 
       <div className="lg:w-2/4 mx-auto w-full pb-20">
         <div className="flex justify-between py-4 px-8">

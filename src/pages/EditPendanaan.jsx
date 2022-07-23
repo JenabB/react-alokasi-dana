@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 import { GlobalContext } from "context/GlobalState";
 
 //component
-import AppBarWithBackButton from "components/AppBarWithBackButton";
+import { AppBar } from "components/common";
 
 const EditPendanaan = () => {
   const { categories, historyPendanaan, editPendanaan } =
@@ -121,7 +121,7 @@ const EditPendanaan = () => {
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
-      <AppBarWithBackButton title="Edit Pendanaan" />
+      <AppBar isBack={true} title="Edit Pendanaan" />
 
       <div className="m-4 text-center">
         <div className="sticky top-10 z-10 lg:w-2/4 mx-auto w-full m-4">

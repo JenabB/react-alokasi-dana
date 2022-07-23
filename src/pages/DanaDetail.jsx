@@ -5,7 +5,7 @@ import Helmet from "react-helmet";
 import { GlobalContext } from "context/GlobalState";
 
 //components
-import AppBarWithBackButton from "components/AppBarWithBackButton";
+import { AppBar } from "components/common";
 import Dana from "components/common/Dana";
 import Header from "components/danaDetail/D1.Header";
 import DanaChart from "components/common/DanaChart";
@@ -53,7 +53,7 @@ const DanaDetail = () => {
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
-      <AppBarWithBackButton title="Dana Detail" />
+      <AppBar title="Dana Detail" isBack={true} />
 
       <div className="lg:w-2/4 mx-auto w-full pb-20">
         <Header detail={detail} />
