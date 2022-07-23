@@ -1,17 +1,14 @@
 import React, { useContext } from "react";
 
 //components
-import AppBar from "components/home/B1.AppBar";
-
-import HistoryPendanaan from "components/home/B3.HistoryPendanaan";
-import TotalAlokasiDana from "components/home/B2.TotalAlokasiDana";
-
+import { AppBar, HistoryPendanaan, TotalAlokasiDana } from "components/home";
+import { FloatingAddButton } from "components/common";
 //utils
 import { motion } from "framer-motion";
 
 //context
 import { GlobalContext } from "context/GlobalState";
-import User from "components/home/B1.User";
+import User from "components/home/User";
 
 const Home = () => {
   const {
