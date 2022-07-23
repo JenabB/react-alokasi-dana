@@ -1,13 +1,13 @@
-import Welcome from "./A.Welcome";
-import Home from "./B.Home";
-import CreatePendanaan from "./C.CreatePendanaan";
-import DanaDetail from "./D.DanaDetail";
-import EditPendanaan from "./E.EditPendanaan";
-import ViewAllPendanaan from "./F.ViewAllPendanaan";
-import TotalDetail from "./G.TotalDetail";
-import ProductByCategory from "./H.ProductByCategory";
-import Report from "./I.Report";
-import Plan from "./J.Plan";
+import Welcome from "./Welcome";
+import Home from "./Home";
+import CreatePendanaan from "./CreatePendanaan";
+import DanaDetail from "./DanaDetail";
+import EditPendanaan from "./EditPendanaan";
+import ViewAllPendanaan from "./AllPendanaan";
+import TotalDetail from "./TotalPendanaanDetail";
+import ProductByCategory from "./ProductByCategory";
+import Report from "./Report";
+import Plan from "./Plan";
 
 export {
   Welcome,
