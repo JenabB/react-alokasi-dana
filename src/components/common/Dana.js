@@ -6,10 +6,24 @@ import { danaCard } from "theme/rectangularTheme";
 
 const Dana = ({ dana }) => {
   const categoryColor = (category) => {
-    if (category === "kesehatan") return "bg-primaryLight";
-    if (category === "pribadi") return "bg-primary";
-    if (category === "tabungan") return "bg-secondary";
+    if (category === "pribadi") return "bg-pribadi";
+    if (category === "umum") return "bg-umum";
+    if (category === "keluarga") return "bg-keluarga";
+    if (category === "tabungan") return "bg-tabungan";
+    if (category === "hiburan") return "bg-hiburan";
+    if (category === "asmara") return "bg-asmara";
+    if (category === "pendidikan") return "bg-pendidikan";
+    if (category === "kesehatan") return "bg-kesehatan";
+    if (category === "pembangunan") return "bg-pembangunan";
+    if (category === "makanan") return "bg-makanan";
+    if (category === "ibadah") return "bg-ibadah";
+    if (category === "estetika") return "bg-estetika";
+    if (category === "cicilan") return "bg-cicilan";
+    if (category === "tagihan") return "bg-tagihan";
+
+    return "bg-primary";
   };
+
   return (
     <div className={danaCard}>
       <h1 className="text-primary text-xl font-bold">{dana.nama}</h1>

@@ -1,12 +1,10 @@
 import { useState, useContext } from "react";
+import { AppBar } from "components/common";
+import { AddPlanModal, NoPlan } from "components/plan";
 
-import AddPlanModal from "components/plan/AddPlanModal";
-import React from "react";
 import { Outlet, NavLink } from "react-router-dom";
 import { GlobalContext } from "context/GlobalState";
-import NoPlan from "components/plan/NoPlan";
 import { motion } from "framer-motion";
-import { AppBar } from "components/common";
 
 const Plan = () => {
   const [isShow, setIshow] = useState(false);

@@ -18,8 +18,7 @@ import {
   EditPendanaan,
   ProductByCategory,
 } from "pages";
-import InComplete from "components/plan/InComplete";
-import Completed from "components/plan/Completed";
+import { Completed, InComplete } from "components/plan";
 
 export default function BottomNavigation() {
   return (
