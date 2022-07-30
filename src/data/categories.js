@@ -13,6 +13,7 @@ const categories = [
   { value: "ibadah", label: "Ibadah" },
   { value: "cicilan", label: "Cicilan" },
   { value: "tagihan", label: "Tagihan" },
+  { value: "investasi", label: "Investasi" },
 ];
 
 export default categories;

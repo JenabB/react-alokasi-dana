@@ -8,6 +8,8 @@ import TotalDetail from "./TotalPendanaanDetail";
 import ProductByCategory from "./ProductByCategory";
 import Report from "./Report";
 import Plan from "./Plan";
+import Template from "./Template";
+import TemplateDetail from "./TemplateDetail";
 
 export {
   Welcome,
@@ -20,4 +22,6 @@ export {
   ProductByCategory,
   Report,
   Plan,
+  Template,
+  TemplateDetail,
 };

@@ -133,6 +133,17 @@ export default (state, action) => {
         plan: state.plan.filter((item) => item.planId !== action.payload),
       };
 
+    case "SET_TO_SELECTED_TEMPLATE_DETAIL":
+      return {
+        ...state,
+        selectedTemplateDetail: action.payload,
+      };
+
+    case "SET_TO_SELECTED_TEMPLATE":
+      return {
+        ...state,
+        selectedTemplate: action.payload,
+      };
     default:
       return state;
   }

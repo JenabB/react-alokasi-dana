@@ -197,7 +197,11 @@ const Form = () => {
                   className={formInput}
                   type="number"
                   name="harga"
-                  value={produk.harga}
+                  value={
+                    produk.harga && produk.harga.includes("%")
+                      ? danaAwal * (produk.harga.replace("%", "") / 100)
+                      : produk.harga
+                  }
                   placeholder="harga"
                   onChange={(e) => {
                     handleProdukChange(index, e);

@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import Reducer from "./Reducer";
-import { categories } from "data";
+import { categories, templatePendanaan } from "data";
 
 //state awal context
 const initialState = {
@@ -22,9 +22,20 @@ const initialState = {
     { createdAt: new Date(), nama: "", category: "pribadi", harga: 0 },
   ], //state awal semua produk
   pendanaanDetail: null,
+
   plan: localStorage.getItem("plan-dana")
     ? JSON.parse(localStorage.getItem("plan-dana"))
     : [],
+  templatePendanaan: templatePendanaan,
+  selectedTemplateDetail: {},
+  selectedTemplate: [
+    {
+      createdAt: new Date(),
+      nama: "",
+      category: "pribadi",
+      harga: 0,
+    },
+  ],
 };
 
 //inisiasi context
@@ -164,6 +175,20 @@ export const GlobalProvider = (props) => {
     });
   }
 
+  function setToSelectedTemplateDetail(template) {
+    dispatch({
+      type: "SET_TO_SELECTED_TEMPLATE_DETAIL",
+      payload: template,
+    });
+  }
+
+  function setToSelectedTemplate(template) {
+    dispatch({
+      type: "SET_TO_SELECTED_TEMPLATE",
+      payload: template,
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -179,6 +204,9 @@ export const GlobalProvider = (props) => {
         historyPendanaan: state.historyPendanaan,
         pendanaanDetail: state.pendanaanDetail,
         plan: state.plan,
+        templatePendanaan: state.templatePendanaan,
+        selectedTemplateDetail: state.selectedTemplateDetail,
+        selectedTemplate: state.selectedTemplate,
         editUser,
         getTotalAlokasiDana,
         getTotalDanaAwal,
@@ -196,6 +224,9 @@ export const GlobalProvider = (props) => {
         setToCompletePlan,
         editPlan,
         deletePlan,
+        //templatePendanaan
+        setToSelectedTemplateDetail,
+        setToSelectedTemplate,
       }}
     >
       {props.children}

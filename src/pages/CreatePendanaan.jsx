@@ -1,7 +1,5 @@
-//components
-
 import FloatingResetButton from "components/FloatinResetButton";
-
+import { Link } from "react-router-dom";
 import { Header } from "components/createPendanaan";
 import { CreatePendanaanForm } from "components/form";
 import { motion } from "framer-motion";
@@ -38,6 +36,12 @@ const CreatePendanaan = () => {
 
       <div className="lg:w-2/4 mx-auto w-full  pb-20">
         <Header />
+
+        <div className="m-10">
+          <button className=" text-primary font-bold">
+            <Link to="/template-pendanaan">Lebih cepat dengan Template</Link>
+          </button>
+        </div>
 
         <CreatePendanaanForm />
       </div>

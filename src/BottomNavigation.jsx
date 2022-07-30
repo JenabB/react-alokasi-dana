@@ -17,6 +17,8 @@ import {
   DanaDetail,
   EditPendanaan,
   ProductByCategory,
+  Template,
+  TemplateDetail,
 } from "pages";
 import { Completed, InComplete } from "components/plan";
 
@@ -33,6 +35,11 @@ export default function BottomNavigation() {
           <Route path="create" element={<CreatePendanaan />} />
           <Route path="report" element={<Report />} />
           <Route path="kategori/:category" element={<ProductByCategory />} />
+          <Route path="template-pendanaan" element={<Template />} />
+          <Route
+            path="template-pendanaan/:templateid"
+            element={<TemplateDetail />}
+          />
           <Route path="plan" element={<Plan />}>
             <Route index element={<InComplete />} />
             <Route path="complete" element={<Completed />} />
