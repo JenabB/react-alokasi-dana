@@ -50,9 +50,9 @@ const templateInitial = [
       {
         id: uuidv4(),
         createdAt: new Date(),
-        nama: "Lebih 100%",
-        category: "ibadah",
-        harga: "300%",
+        nama: "Listrik Bulanan",
+        category: "tagihan",
+        harga: "55000",
       },
     ],
   },

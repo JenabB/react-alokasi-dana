@@ -10,14 +10,16 @@ const TemplateItem = ({ item }) => {
   };
 
   return (
-    <div>
+    <div className="m-4">
       <Link to={`${item.templateId}`} onClick={() => handleToDetail(item)}>
         <div className="bg-white shadow-sm block p-4">
-          <h1>{item.name}</h1>
+          <h1 className="font-bold">{item.name}</h1>
           <p>{item.items.length} Pendanaan</p>
         </div>
       </Link>
-      <button>Use this template</button>
+      <div className="bg-primary text-white rounded-md text-center shadow-sm block p-4 mt-4">
+        <button className="">Use this template</button>
+      </div>
     </div>
   );
 };
