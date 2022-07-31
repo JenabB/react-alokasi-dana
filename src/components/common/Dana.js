@@ -7,7 +7,8 @@ import { GlobalContext } from "context/GlobalState";
 import { useContext } from "react";
 
 const Dana = ({ dana }) => {
-  const { danaAwal } = useContext(GlobalContext);
+  const { pendanaanDetail } = useContext(GlobalContext);
+
   const categoryColor = (category) => {
     if (category === "pribadi") return "bg-pribadi";
     if (category === "umum") return "bg-umum";
@@ -26,10 +27,10 @@ const Dana = ({ dana }) => {
 
     return "bg-primary";
   };
-  const hargaFinal =
-    dana.harga && dana.harga.includes("%")
-      ? danaAwal * (+dana.harga.replace("%", "") / 100)
-      : dana.harga;
+
+  const hargaFinal = dana.harga.includes("%")
+    ? pendanaanDetail.danaAwal * (dana.harga.replace("%", "") / 100)
+    : dana.harga;
 
   return (
     <div className={danaCard}>
