@@ -74,7 +74,7 @@ const TotalAlokasiDana = ({
   }, [historyPendanaan]);
 
   return (
-    <div className="p-4">
+    <div className="p-4 lg:max-w-[50%]">
       <Link to="detail">
         <motion.div
           className={mainHeader}

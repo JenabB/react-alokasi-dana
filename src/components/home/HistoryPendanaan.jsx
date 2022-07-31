@@ -33,7 +33,7 @@ const HistoryPendanaan = () => {
               />
             </Link>
           </div>
-          <div>
+          <div className="grid md:grid-cols-2">
             {/* 6 pendanaan terbaru */}
             {group.map((h, i) => (
               <Pendanaan h={h} i={i} key={i} />

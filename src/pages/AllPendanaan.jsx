@@ -117,8 +117,8 @@ const ViewAllPendanaan = () => {
         />
       </div>
 
-      <div className="lg:w-2/4 mx-auto w-full pb-20">
-        <div className="grid">
+      <div className=" mx-auto w-full pb-20">
+        <div className="grid md:grid-cols-2">
           {groupByDate.length > 0 ? (
             groupByDate.map((g, i) => (
               <div key={i}>

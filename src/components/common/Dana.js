@@ -28,9 +28,10 @@ const Dana = ({ dana }) => {
     return "bg-primary";
   };
 
-  const hargaFinal = dana.harga.includes("%")
-    ? pendanaanDetail.danaAwal * (dana.harga.replace("%", "") / 100)
-    : dana.harga;
+  const hargaFinal =
+    dana.harga && dana.harga.includes("%")
+      ? pendanaanDetail.danaAwal * (+dana.harga.replace("%", "") / 100)
+      : dana.harga;
 
   return (
     <div className={danaCard}>

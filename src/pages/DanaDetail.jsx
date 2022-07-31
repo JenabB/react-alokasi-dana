@@ -49,23 +49,25 @@ const DanaDetail = () => {
     >
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Dana Detail</title>
+        <title>Pendanaan Detail</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
-      <AppBar title="Dana Detail" isBack={true} />
+      <AppBar title="Pendanaan Detail" isBack={true} />
 
-      <div className="lg:w-2/4 mx-auto w-full pb-20">
-        <Header detail={detail} />
+      <div className=" mx-auto w-full pb-20">
+        <div className="grid md:grid-cols-2">
+          <Header detail={detail} />
 
-        <DanaChart />
+          <DanaChart />
+        </div>
 
         <div>
           <h1 className="text-center mt-10">Alokasi Dana</h1>
           <div className="text-center my-4">
             <input
               type="search"
-              className="bg-gray-200 rounded-full px-2 py-1"
+              className="bg-gray-200 md:w-3/4 rounded-md px-3 py-2"
               placeholder="cari pendanaan"
               value={query}
               onChange={handleQueryChange}
@@ -79,7 +81,7 @@ const DanaDetail = () => {
             </div>
           ) : (
             <div className="px-2 py-3">
-              <div>
+              <div className="grid md:grid-cols-3">
                 {detail?.semuaProduk.map((dana, i) => (
                   <Dana dana={dana} key={i} />
                 ))}

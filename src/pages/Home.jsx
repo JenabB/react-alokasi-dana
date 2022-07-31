@@ -43,7 +43,7 @@ const Home = () => {
     >
       <AppBar title="Alokasi Dana" />
 
-      <div className="lg:w-2/4 mx-auto w-full pb-20">
+      <div className="mx-auto w-full pb-20">
         <div className="flex justify-between py-4 px-8">
           <User />
           <button
