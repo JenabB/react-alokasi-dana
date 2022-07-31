@@ -3,8 +3,11 @@ import { formatRp } from "utils/formatRp";
 
 import { Link } from "react-router-dom";
 import { danaCard } from "theme/rectangularTheme";
+import { GlobalContext } from "context/GlobalState";
+import { useContext } from "react";
 
 const Dana = ({ dana }) => {
+  const { danaAwal } = useContext(GlobalContext);
   const categoryColor = (category) => {
     if (category === "pribadi") return "bg-pribadi";
     if (category === "umum") return "bg-umum";
@@ -23,6 +26,10 @@ const Dana = ({ dana }) => {
 
     return "bg-primary";
   };
+  const hargaFinal =
+    dana.harga && dana.harga.includes("%")
+      ? danaAwal * (+dana.harga.replace("%", "") / 100)
+      : dana.harga;
 
   return (
     <div className={danaCard}>
@@ -37,7 +44,7 @@ const Dana = ({ dana }) => {
             {dana.category}
           </h2>
         </Link>
-        <h3 className="mx-2">{formatRp(dana.harga)}</h3>
+        <h3 className="mx-2">{formatRp(hargaFinal)}</h3>
       </div>
       <p className="text-gray-400 text-sm ">
         {moment(dana.createdAt).fromNow()}

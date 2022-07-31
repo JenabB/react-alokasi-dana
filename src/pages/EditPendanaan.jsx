@@ -13,7 +13,7 @@ import { GlobalContext } from "context/GlobalState";
 import { AppBar } from "components/common";
 
 const EditPendanaan = () => {
-  const { categories, historyPendanaan, editPendanaan } =
+  const { danaAwal, categories, historyPendanaan, editPendanaan } =
     useContext(GlobalContext);
   const { id } = useParams();
 
@@ -80,7 +80,11 @@ const EditPendanaan = () => {
   useEffect(() => {
     let hasil = 0;
     updatedDana.semuaProduk.forEach((item) => {
-      hasil += parseInt(item.harga);
+      const hargaFinal =
+        item.harga && item.harga.includes("%")
+          ? danaAwal * (+item.harga.replace("%", "") / 100)
+          : item.harga;
+      hasil += parseInt(hargaFinal);
     });
 
     setUpdatedDana({
@@ -210,7 +214,11 @@ const EditPendanaan = () => {
                   className={formInput}
                   type="number"
                   name="harga"
-                  value={produk.harga}
+                  value={
+                    produk.harga && produk.harga.includes("%")
+                      ? danaAwal * (produk.harga.replace("%", "") / 100)
+                      : produk.harga
+                  }
                   placeholder="harga"
                   onChange={(e) => {
                     handleProdukChange(index, e);
