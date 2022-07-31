@@ -93,7 +93,11 @@ const Form = () => {
     let hasil = 0;
 
     semuaProduk.forEach((item) => {
-      hasil += parseInt(item.harga);
+      const hargaFinal =
+        item.harga && item.harga.includes("%")
+          ? danaAwal * (+item.harga.replace("%", "") / 100)
+          : item.harga;
+      hasil += parseInt(hargaFinal);
     });
 
     //dana akhir = dana awal - semua harga dari produk
@@ -164,8 +168,11 @@ const Form = () => {
         <div className="text-center">
           <h1 className="mt-8">Alokasi Dana</h1>
           {semuaProduk.length > 0 ? (
-            semuaProduk.map((produk, index) => (
-              <div key={index} className="my-4 shadow bg-white rounded p-4">
+            semuaProduk.map((produk, produkIndex) => (
+              <div
+                key={produkIndex}
+                className="my-4 shadow bg-white rounded p-4"
+              >
                 <h1 className="text-left text-formLabel">Nama</h1>
                 <input
                   className={formInput}
@@ -175,7 +182,7 @@ const Form = () => {
                   value={produk.nama}
                   placeholder="produk"
                   onChange={(e) => {
-                    handleProdukChange(index, e);
+                    handleProdukChange(produkIndex, e);
                   }}
                 />
                 <h1 className="text-left text-formLabel">Kategori</h1>
@@ -183,14 +190,20 @@ const Form = () => {
                   name="category"
                   className="p-2 w-full bg-keluarga"
                   onChange={(e) => {
-                    handleProdukChange(index, e);
+                    handleProdukChange(produkIndex, e);
                   }}
                 >
-                  {categories.map((c, index) => (
-                    <option key={index} value={c.value}>
-                      {c.label}
-                    </option>
-                  ))}
+                  <option selected={produk.category} value={produk.category}>
+                    {produk.category[0].toUpperCase() +
+                      produk.category.slice(1)}
+                  </option>
+                  {categories
+                    .filter((el) => el.value !== produk.category)
+                    .map((c, index) => (
+                      <option key={index} value={c.value}>
+                        {c.label}
+                      </option>
+                    ))}
                 </select>
                 <h1 className="text-left text-formLabel mt-4">Harga</h1>
                 <input
@@ -204,7 +217,7 @@ const Form = () => {
                   }
                   placeholder="harga"
                   onChange={(e) => {
-                    handleProdukChange(index, e);
+                    handleProdukChange(produkIndex, e);
                   }}
                 />
               </div>
